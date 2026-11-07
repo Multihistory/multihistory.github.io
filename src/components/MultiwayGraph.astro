@@ -1,0 +1,64 @@
+---
+// Multiway graph of a string rewriting system, drawn as SVG at build time:
+// pale yellow state boxes, grey-blue arrows. Histories branch and merge again.
+// Layers fade in one after another (static under prefers-reduced-motion).
+import { layout, type Rule } from "../lib/multiway";
+
+interface Props {
+  rules: Rule[];
+  init: string;
+  steps: number;
+  width?: number;
+  height?: number;
+  labels?: boolean;
+  animate?: boolean;
+  class?: string;
+  title?: string;
+}
+const { rules, init, steps, width = 560, height = 520, labels = true, animate = true, class: cls, title } = Astro.props;
+const pad = labels ? 40 : 12;
+const g = layout(rules, init, steps, width - 2 * pad, height - 2 * pad);
+const at = new Map(g.nodes.map((n) => [n.id, n]));
+const boxW = (s: string) => (labels ? s.length * 8.4 + 16 : 12);
+const boxH = labels ? 24 : 12;
+const id = `mw-${Math.abs([...init + rules.flat().join()].reduce((h, c) => (h * 31 + c.charCodeAt(0)) | 0, 7))}`;
+
+const edges = g.edges.map((e) => {
+  const a = at.get(e.from)!, b = at.get(e.to)!;
+  const x1 = a.x + pad, y1 = a.y + pad + boxH / 2, x2 = b.x + pad, y2 = b.y + pad - boxH / 2 - 3;
+  // Same-layer or upward edges bow out to the side so they stay visible.
+  if (b.layer <= a.layer) {
+    const bend = 46 + Math.abs(x2 - x1) * 0.2;
+    return { d: `M${a.x + pad + boxW(a.id) / 2},${a.y + pad} C${a.x + pad + boxW(a.id) / 2 + bend},${a.y + pad - bend} ${b.x + pad + boxW(b.id) / 2 + bend},${b.y + pad - bend} ${b.x + pad + boxW(b.id) / 2 + 3},${b.y + pad}`, layer: a.layer };
+  }
+  const my = (y1 + y2) / 2;
+  return { d: `M${x1},${y1} C${x1},${my} ${x2},${my} ${x2},${y2}`, layer: a.layer };
+});
+---
+<svg class:list={["mw", cls, { animate }]} viewBox={`0 0 ${width} ${height}`} role={title ? "img" : undefined} aria-hidden={title ? undefined : "true"} aria-label={title}>
+  <defs>
+    <marker id={`${id}-arrow`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,1 L9,5 L0,9 z" fill="var(--edge)" />
+    </marker>
+  </defs>
+  <g class="edges">
+    {edges.map((e) => <path d={e.d} style={`--d:${e.layer}`} marker-end={`url(#${id}-arrow)`} />)}
+  </g>
+  <g class="states">
+    {g.nodes.map((n) => (
+      <g style={`--d:${n.layer}`} transform={`translate(${n.x + pad} ${n.y + pad})`}>
+        <rect x={-boxW(n.id) / 2} y={-boxH / 2} width={boxW(n.id)} height={boxH} rx={labels ? 5 : 3} />
+        {labels && <text y="0.5" dominant-baseline="middle" text-anchor="middle">{n.id}</text>}
+      </g>
+    ))}
+  </g>
+</svg>
+<style>
+  .mw { width: 100%; height: auto; overflow: visible; }
+  .edges path { fill: none; stroke: var(--edge); stroke-width: 1.3; opacity: .85; }
+  .states rect { fill: var(--state); stroke: var(--state-edge); stroke-width: 1.1; }
+  .states text { font-family: var(--font-mono); font-size: 13px; fill: var(--ink); letter-spacing: .04em; }
+  .animate .states > g, .animate .edges path { animation: mw-in .7s ease-out both; animation-delay: calc(var(--d) * .32s + .1s); }
+  .animate .edges path { animation-delay: calc(var(--d) * .32s + .26s); }
+  @keyframes mw-in { from { opacity: 0; } }
+</style>

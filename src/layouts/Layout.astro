@@ -1,0 +1,80 @@
+---
+// Site layout: header, footer, fonts and colours (src/styles/global.css).
+import "../styles/global.css";
+import { site, href } from "../data/site";
+
+interface Props { title?: string; description?: string }
+const { title, description = site.description } = Astro.props;
+const fullTitle = title ? `${title} · ${site.name}` : site.name;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {site.noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta name="theme-color" content="#fcfbf7" />
+    <link rel="icon" href={href("/favicon.svg")} type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="mh-header">
+      <div class="wrap bar">
+        <a class="brand" href={href("/")}>
+          <svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
+            <g fill="none" stroke="var(--edge)" stroke-width="1.6">
+              <path d="M20 9 C20 14 10 14 10 20" /><path d="M20 9 C20 14 30 14 30 20" />
+              <path d="M10 20 C10 26 20 26 20 31" /><path d="M30 20 C30 26 20 26 20 31" />
+            </g>
+            <path d="M10 20 L30 20" stroke="var(--causal)" stroke-width="1.6" stroke-dasharray="2.5 2.5" />
+            <g fill="var(--state)" stroke="var(--state-edge)" stroke-width="1.4">
+              <rect x="15" y="4" width="10" height="7" rx="2" /><rect x="5" y="16.5" width="10" height="7" rx="2" />
+              <rect x="25" y="16.5" width="10" height="7" rx="2" /><rect x="15" y="29" width="10" height="7" rx="2" />
+            </g>
+          </svg>
+          <span>{site.name}</span>
+        </a>
+        <nav aria-label="Main">
+          {site.nav.map((item) => <a href={href(item.href)}>{item.label}</a>)}
+          {site.github
+            ? <a class="gh" href={site.github}>GitHub</a>
+            : <span class="gh" aria-disabled="true" title="The GitHub organisation does not exist yet">GitHub <span class="soon">soon</span></span>}
+          <a class="gh" href="https://www.youtube.com/@MultiHistoryScience">YouTube</a>
+        </nav>
+      </div>
+    </header>
+    <main><slot /></main>
+    <footer class="mh-footer">
+      <div class="wrap foot">
+        <div>
+          <strong>{site.name}</strong>
+          <p class="muted">An independent research collaboration on rewrite systems, hypergraphs, causality and emergent spacetime. Not affiliated with or endorsed by Wolfram Foundation or Wolfram Research Inc. — it does not claim ownership of their names, projects, or materials.</p>
+        </div>
+        <div>
+          <p><a href="https://www.youtube.com/@MultiHistoryScience">YouTube channel</a></p>
+          <p class="muted proto">Prototype, first hosted at <a href="https://arity.science/multihistory/">arity.science/multihistory</a>.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+<style>
+  .mh-header { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+  .bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1.5rem; padding-block: .7rem; }
+  .brand { display: inline-flex; align-items: center; gap: .55rem; font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+  .brand:hover { color: var(--ink); }
+  nav { display: flex; align-items: center; flex-wrap: wrap; gap: .2rem 1.3rem; font-size: .95rem; }
+  nav a { color: var(--muted); text-decoration: none; }
+  nav a:hover { color: var(--ink); }
+  .gh { display: inline-flex; align-items: center; gap: .4rem; padding: .25rem .65rem; border: 1px solid var(--ink); border-radius: 5px; color: var(--ink); font-weight: 500; }
+  .gh[aria-disabled="true"] { border-style: dashed; border-color: var(--rule-strong); color: var(--muted); cursor: not-allowed; }
+  .mh-footer { border-top: 1px solid var(--rule); padding-block: 2.2rem 2.6rem; font-size: .9rem; background: var(--panel); }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem 3rem; }
+  .foot > div { max-width: 62ch; }
+  .foot p { margin: .35rem 0 0; }
+  @media (max-width: 640px) { nav { gap: .2rem 1rem; font-size: .9rem; } }
+</style>

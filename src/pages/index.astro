@@ -1,0 +1,185 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import MultiwayGraph from "../components/MultiwayGraph.astro";
+import Timeline from "../components/Timeline.astro";
+import { site, href } from "../data/site";
+import { people, person, photo, timeline, hasStatement, link } from "../lib/multihistory";
+import streams from "../data/streams.json";
+import projects from "../data/projects.json";
+import resources from "../data/resources.json";
+
+const key = timeline.filter((e) => e.key);
+const names = (slugs: string[]) => slugs.map((s) => person(s)).filter(Boolean);
+---
+<Layout>
+  <section class="hero wrap">
+    <div class="hero-text">
+      <p class="label">Research collaboration · prototype</p>
+      <h1>{site.name}</h1>
+      <p class="lead">An independent collaboration among researchers who have worked on topics around rewrite systems, hypergraphs, causality and emergent spacetime in connection to the Wolfram Physics Project. Its purpose is to document and preserve their contributions, support independent networking, and coordinate possible future independent research in related directions.</p>
+      <p class="purpose">Not affiliated with or endorsed by Wolfram Foundation or Wolfram Research Inc. — it does not claim ownership of their names, projects, or materials.</p>
+      <div class="actions">
+        <a class="btn primary" href={href("/timeline/")}>Detailed timeline →</a>
+        <a class="btn" href={href("/statements/")}>Personal statements</a>
+        {site.github
+          ? <a class="btn" href={site.github}>GitHub organisation</a>
+          : <span class="btn" aria-disabled="true" title="The GitHub organisation does not exist yet">GitHub organisation <span class="soon">soon</span></span>}
+      </div>
+    </div>
+    <figure class="hero-graph">
+      <MultiwayGraph rules={[["AB", "BBA"], ["A", "B"]]} init="AAB" steps={6} width={520} height={500} title="Multiway graph of the string rewriting rules AB → BBA and A → B starting from AAB: histories branch and then merge into a single final state" />
+      <figcaption class="mono muted">Multiway graph of {"{AB → BBA, A → B}"} from AAB: many histories, one outcome.</figcaption>
+    </figure>
+  </section>
+
+  <section class="block wrap" id="contributions">
+    <p class="label">Contributions</p>
+    <h2>Streams of ideas at a glance</h2>
+    <p class="intro-text">A high-level summary of contributions that can be traced to members of the collaboration, independently of the project's branding. Each is backed by the evidence in the <a href={href("/timeline/")}>detailed timeline</a>.</p>
+    <div class="streams">
+      {streams.map((s) => (
+        <article class="cell stream">
+          <p class="years mono">{s.years}</p>
+          <h3>{s.title}</h3>
+          <p class="who">
+            {names(s.people).map((p) => <span class="chip"><span class="dot" style={`--c:${p!.color}`} />{p!.name}</span>)}
+          </p>
+          <p class="text" set:html={s.html} />
+          {s.evidence.length > 0 && (
+            <p class="ev">{s.evidence.map((l) => <a href={link(l.href)}>{l.label}</a>)}</p>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="block wrap" id="people">
+    <p class="label">People</p>
+    <h2>The collaboration</h2>
+    <p class="intro-text">Current members, with others who worked on the foundations of the project expected to join.</p>
+    <ul class="people">
+      {people.map((p) => {
+        const img = photo(p.photo);
+        return (
+          <li class="cell person" style={`--c:${p.color}`}>
+            {img
+              ? <Image src={img} alt="" width={160} height={160} class="avatar" />
+              : <span class="avatar initials" aria-hidden="true">{p.name.split(" ").map((w) => w[0]).slice(0, 2).join("")}</span>}
+            <div>
+              <h3>{p.href ? <a href={p.href}>{p.name}</a> : p.name}</h3>
+              {p.focus && <p class="focus">{p.focus}</p>}
+              <p class="links mono">
+                <a href={`${href("/timeline/")}?person=${p.slug}`}>Timeline</a>
+                {hasStatement(p.slug) ? <a href={href(`/statements/#${p.slug}`)}>Statement</a> : <span class="muted">Statement forthcoming</span>}
+              </p>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+
+  <section class="block wrap" id="projects">
+    <p class="label">Active projects</p>
+    <h2>What the collaboration is working on</h2>
+    <div class="projects">
+      {projects.map((p) => (
+        <article class="cell project">
+          <p class="status mono">{p.status}</p>
+          <h3>{p.title}</h3>
+          <p set:html={p.html} />
+          <p class="who">{names(p.people).map((x) => <span class="chip"><span class="dot" style={`--c:${x!.color}`} />{x!.name}</span>)}</p>
+          {p.links.length > 0 && <p class="ev">{p.links.map((l) => <a href={link(l.href)}>{l.label}</a>)}</p>}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="block wrap" id="timeline">
+    <p class="label">Timeline</p>
+    <h2>Summary</h2>
+    <p class="intro-text">Main milestones. The <a href={href("/timeline/")}>detailed timeline</a> lists every entry with its evidence and can be filtered by person.</p>
+    <div class="cell tl-cell">
+      <Timeline entries={key} />
+      <a class="btn primary" href={href("/timeline/")}>Open the detailed timeline →</a>
+    </div>
+  </section>
+
+  <section class="block wrap" id="resources">
+    <p class="label">Computational resources</p>
+    <h2>Code and tools</h2>
+    <p class="intro-text">Software written by members of the collaboration for hypergraph rewriting, multiway systems and related mathematics.</p>
+    <div class="resources">
+      {resources.map((r) => (
+        <a class="cell resource" href={link(r.href)}>
+          <p class="kind mono">{r.kind}</p>
+          <h3>{r.name}</h3>
+          <p set:html={r.html} />
+          <p class="who">{names(r.people).map((x) => <span class="chip"><span class="dot" style={`--c:${x!.color}`} />{x!.name}</span>)}</p>
+        </a>
+      ))}
+      <div class:list={["cell resource org", { pending: !site.github }]}>
+        <p class="kind mono">Organisation</p>
+        <h3>{site.name} on GitHub</h3>
+        <p>{site.github ? "The collaboration's shared GitHub organisation, for its code, notebooks and data." : "A shared GitHub organisation will collect the collaboration's code, notebooks and data."}</p>
+        {site.github
+          ? <a class="btn" href={site.github}>Open on GitHub →</a>
+          : <span class="btn" aria-disabled="true">Coming soon</span>}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; padding-block: clamp(3rem, 8vw, 6rem) clamp(2.5rem, 6vw, 4.5rem); }
+  h1 { font-size: clamp(2.6rem, 1.6rem + 4.4vw, 4.6rem); line-height: 1; margin: 0 0 1.2rem; letter-spacing: -0.025em; }
+  .lead { font-size: clamp(1.12rem, 1rem + .5vw, 1.32rem); line-height: 1.5; margin: 0 0 1rem; }
+  .purpose { color: var(--muted); max-width: 60ch; margin: 0 0 1.8rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .hero-graph { margin: 0; }
+  .hero-graph figcaption { text-align: center; font-size: .76rem; margin-top: .6rem; }
+
+  .chip { display: inline-flex; align-items: center; gap: .35rem; margin-right: .8rem; white-space: nowrap; }
+  .who { font-size: .9rem; color: var(--ink); margin: 0 0 .7rem; display: flex; flex-wrap: wrap; row-gap: .15rem; }
+  .ev { display: flex; flex-wrap: wrap; gap: .2rem .9rem; font-size: .88rem; margin: auto 0 0; padding-top: .8rem; border-top: 1px dashed var(--rule); }
+
+  .streams { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 1rem; }
+  .stream { display: flex; flex-direction: column; padding: 1.4rem 1.4rem 1.1rem; }
+  .stream h3 { margin: .2rem 0 .7rem; font-size: 1.3rem; }
+  .years, .status, .kind { margin: 0; color: var(--causal); font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; }
+  .stream .text { color: var(--muted); font-size: .97rem; margin: 0 0 .9rem; }
+
+  .people { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 1rem; }
+  .person { display: grid; grid-template-columns: 84px 1fr; gap: 1rem; align-items: center; padding: 1rem 1.1rem; border-left: 4px solid var(--c); }
+  .avatar { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 1px solid var(--rule); }
+  .initials { display: grid; place-items: center; background: var(--state); color: #7a5b06; font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; border-color: var(--state-edge); }
+  .person h3 { margin: 0 0 .2rem; font-size: 1.15rem; }
+  .person h3 a { color: var(--ink); text-decoration: none; }
+  .person h3 a:hover { color: var(--causal); }
+  .focus { margin: 0 0 .35rem; color: var(--muted); font-size: .92rem; line-height: 1.45; }
+  .links { display: flex; flex-wrap: wrap; gap: .1rem 1rem; margin: 0; font-size: .76rem; }
+
+  .projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); gap: 1rem; }
+  .project { display: flex; flex-direction: column; padding: 1.5rem; }
+  .project h3 { margin: .2rem 0 .6rem; font-size: 1.3rem; }
+  .project > p:not(.status):not(.who):not(.ev) { color: var(--muted); font-size: .97rem; }
+
+  .tl-cell { padding: clamp(1.2rem, 3vw, 2.2rem); }
+  .tl-cell .btn { margin-top: .5rem; }
+
+  .resources { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 1rem; }
+  .resource { display: flex; flex-direction: column; padding: 1.3rem 1.4rem; color: var(--ink); text-decoration: none; transition: border-color .15s, transform .15s; }
+  a.resource:hover { border-color: var(--causal); transform: translateY(-2px); color: var(--ink); }
+  .resource h3 { margin: .2rem 0 .5rem; font-size: 1.2rem; font-family: var(--font-mono); font-weight: 600; letter-spacing: -.01em; }
+  .resource > p:not(.kind):not(.who) { color: var(--muted); font-size: .95rem; }
+  .resource .who { margin-top: auto; }
+  .org.pending { background: transparent; border-style: dashed; }
+  .org .btn { align-self: flex-start; margin-top: auto; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-graph { max-width: 460px; margin-inline: auto; width: 100%; }
+  }
+  @media (max-width: 420px) { .person { grid-template-columns: 64px 1fr; } .avatar { width: 64px; height: 64px; } }
+</style>

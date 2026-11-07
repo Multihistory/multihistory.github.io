@@ -1,0 +1,13 @@
+/* Type scale and layout sizes, independent of colour/fonts. */
+:root {
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --measure: 68ch;
+  --wide: 1120px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --radius: 10px;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.94rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --step-2: clamp(1.6rem, 1.4rem + 1vw, 2.2rem);
+  --step-3: clamp(2.2rem, 1.8rem + 2vw, 3.4rem);
+}

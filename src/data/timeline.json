@@ -1,0 +1,1283 @@
+[
+  {
+    "date": "2014-07",
+    "type": "Course",
+    "people": [
+      "max-piskunov"
+    ],
+    "html": "Max’s Wolfram Science Summer School project on planar network substitution systems, with the stated goal “to figure out the fundamental theory of physics”; a second project on deterministic network systems follows in 2015.",
+    "sources": [
+      {
+        "label": "2014 project",
+        "href": "https://education.wolfram.com/summer/school/alumni/2014/piskunov"
+      },
+      {
+        "label": "2015 project",
+        "href": "https://education.wolfram.com/summer/school/alumni/2015/piskunov"
+      }
+    ]
+  },
+  {
+    "date": "2018-10-07",
+    "type": "Code",
+    "people": [
+      "max-piskunov"
+    ],
+    "html": "First commit of <a href=\"https://github.com/maxitg/SetReplace\">SetReplace</a>, Max’s engine for set (hypergraph) substitution systems; a C++ core with proactive match indexing follows in April 2019. It becomes the simulation engine of the Physics Project.",
+    "sources": [
+      {
+        "label": "First commit",
+        "href": "https://github.com/maxitg/SetReplace/commit/29778d8dda29b69e33a00e9c9cf7ed062699ae0b"
+      },
+      {
+        "label": "C++ core (#13)",
+        "href": "https://github.com/maxitg/SetReplace/pull/13"
+      },
+      {
+        "label": "Backstory: “by January 2019 he had code running”",
+        "href": "https://writings.stephenwolfram.com/2020/04/how-we-got-here-the-backstory-of-the-wolfram-physics-project/"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2019-07-10",
+    "type": "Course",
+    "people": [
+      "max-piskunov"
+    ],
+    "html": "Wolfram Summer School 2019: Max’s project on confluent set substitution systems, built on SetReplace. At this Summer School, Max and Jonathan Gorard urge Stephen Wolfram to restart the physics project.",
+    "sources": [
+      {
+        "label": "Project",
+        "href": "https://community.wolfram.com/groups/-/m/t/1729148"
+      },
+      {
+        "label": "Technical introduction, acknowledgements",
+        "href": "https://www.wolframphysics.org/technical-introduction/additional-material/acknowledgements/"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2019-09-12",
+    "type": "Code",
+    "people": [
+      "max-piskunov"
+    ],
+    "html": "SetReplace gains causal graph generation for hypergraph rewriting (layered causal graphs follow in December).",
+    "sources": [
+      {
+        "label": "PR #71",
+        "href": "https://github.com/maxitg/SetReplace/pull/71"
+      },
+      {
+        "label": "PR #148",
+        "href": "https://github.com/maxitg/SetReplace/commit/384a9fd15924d3cd6a601c297ab348883773ada6"
+      }
+    ]
+  },
+  {
+    "date": "2019-10-11",
+    "type": "Code",
+    "people": [
+      "max-piskunov"
+    ],
+    "html": "<code>SetSubstitutionSystem</code> is renamed <code>WolframModel</code> in SetReplace: the function used throughout the project’s publications.",
+    "sources": [
+      {
+        "label": "PR #88",
+        "href": "https://github.com/maxitg/SetReplace/pull/88"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2019-10-18",
+    "type": "Livestream",
+    "people": [
+      "max-piskunov"
+    ],
+    "html": "Pre-launch working sessions with Stephen Wolfram begin (types of graphs, multiway systems, rule enumeration); Max is listed on about forty sessions through 2021.",
+    "sources": [
+      {
+        "label": "Livestream archive",
+        "href": "https://www.wolframphysics.org/livestreams/"
+      }
+    ]
+  },
+  {
+    "date": "2019-12-04",
+    "type": "Code",
+    "people": [
+      "max-piskunov"
+    ],
+    "html": "<code>MultiwaySystem</code> is published in the Wolfram Function Repository, contributed by Jonathan Gorard, Stephen Wolfram and Max Piskunov.",
+    "sources": [
+      {
+        "label": "Function page",
+        "href": "https://resources.wolframcloud.com/FunctionRepository/resources/MultiwaySystem/"
+      }
+    ]
+  },
+  {
+    "date": "2020-01-12",
+    "type": "Code",
+    "people": [
+      "max-piskunov"
+    ],
+    "html": "<code>WolframModelPlot</code>, the hypergraph renderer behind the project’s figures, is added to SetReplace.",
+    "sources": [
+      {
+        "label": "PR #175",
+        "href": "https://github.com/maxitg/SetReplace/commit/51a6d8ab5a8087fc674169136957397303a75b8a"
+      }
+    ]
+  },
+  {
+    "date": "2020-04-14",
+    "type": "Milestone",
+    "people": [],
+    "html": "Stephen Wolfram announces the Wolfram Physics Project. The announcement names Jonathan Gorard and Max Piskunov as the two young physicists who, at the 2019 Summer School, urged him to pursue it.",
+    "sources": [
+      {
+        "label": "Announcement",
+        "href": "https://writings.stephenwolfram.com/2020/04/finally-we-may-have-a-path-to-the-fundamental-theory-of-physics-and-its-beautiful/"
+      }
+    ],
+    "context": true,
+    "key": true
+  },
+  {
+    "date": "2020-04-15",
+    "type": "Milestone",
+    "people": [],
+    "html": "Technical introduction, “A Class of Models with the Potential to Represent Fundamental Physics”, and (28 April) Jonathan Gorard’s “Some Relativistic and Gravitational Properties of the Wolfram Model”.",
+    "sources": [
+      {
+        "label": "arXiv:2004.08210",
+        "href": "https://arxiv.org/abs/2004.08210"
+      },
+      {
+        "label": "arXiv:2004.14810",
+        "href": "https://arxiv.org/abs/2004.14810"
+      }
+    ],
+    "context": true
+  },
+  {
+    "date": "2020-06-21",
+    "type": "Code",
+    "people": [
+      "max-piskunov"
+    ],
+    "html": "SetReplace adds the expressions–events graph (later the token–event graph) and an event selection option that evaluates multiway systems.",
+    "sources": [
+      {
+        "label": "PR #382",
+        "href": "https://github.com/maxitg/SetReplace/pull/382"
+      },
+      {
+        "label": "PR #381",
+        "href": "https://github.com/maxitg/SetReplace/pull/381"
+      }
+    ]
+  },
+  {
+    "date": "2020-07-13",
+    "type": "Course",
+    "people": [
+      "nikolay-murzin"
+    ],
+    "html": "Wolfram Summer School 2020: Nik’s project on multi-perspective 3D graph embeddings and multispace (function <code>MultispacePlot3D</code>). Stephen Wolfram credits the idea of visualizing multispace with a 3D layout to him.",
+    "sources": [
+      {
+        "label": "Project",
+        "href": "https://community.wolfram.com/t/wss20-multi-perspectives-3d-graph-embeddings-and-multispace/16320"
+      },
+      {
+        "label": "MultispacePlot3D",
+        "href": "https://resources.wolframcloud.com/FunctionRepository/resources/MultispacePlot3D"
+      },
+      {
+        "label": "Credit",
+        "href": "https://writings.stephenwolfram.com/2020/07/a-burst-of-physics-progress-at-the-2020-wolfram-summer-school/"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2020-07-15",
+    "type": "Course",
+    "people": [
+      "xerxes-arsiwalla"
+    ],
+    "html": "Wolfram Summer School 2020: Xerxes’s project “Homotopic foundations of Wolfram Models” identifies multiway and rulial structures with ∞-groupoids and an ∞-topos, via homotopy type theory (mentor: Jonathan Gorard).",
+    "sources": [
+      {
+        "label": "Project",
+        "href": "https://community.wolfram.com/groups/-/m/t/2032113"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2020-07-23",
+    "type": "Livestream",
+    "people": [
+      "xerxes-arsiwalla",
+      "max-piskunov"
+    ],
+    "html": "Working sessions “Metamathematics”, parts 1–3, with Stephen Wolfram, Jonathan Gorard, Xerxes Arsiwalla, Max Piskunov and Matthew Szudzik.",
+    "sources": [
+      {
+        "label": "Livestream archive",
+        "href": "https://www.wolframphysics.org/livestreams/"
+      }
+    ]
+  },
+  {
+    "date": "2020-08-05",
+    "type": "Bulletin",
+    "people": [
+      "xerxes-arsiwalla"
+    ],
+    "html": "Jonathan Gorard’s bulletin on homotopy type theory and the Wolfram model is “a writeup of work done in collaboration with Xerxes Arsiwalla and Stephen Wolfram”. It credits Xerxes with treating multiway rules as type constructors and with observing that categorical quantum mechanics arises from foliating the rulial multiway system.",
+    "sources": [
+      {
+        "label": "Bulletin",
+        "href": "https://bulletins.wolframphysics.org/2020/08/a-candidate-geometrical-formalism-for-the-foundations-of-mathematics-and-physics/"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2020-10-05",
+    "type": "Paper",
+    "people": [
+      "xerxes-arsiwalla"
+    ],
+    "html": "“ZX-Calculus and Extended Hypergraph Rewriting Systems I”, with Jonathan Gorard and M. Namuduri, followed by part II and “Fast Automated Reasoning over String Diagrams using Multiway Causal Structure” (2021).",
+    "sources": [
+      {
+        "label": "arXiv:2010.02752",
+        "href": "https://arxiv.org/abs/2010.02752"
+      },
+      {
+        "label": "arXiv:2103.15820",
+        "href": "https://arxiv.org/abs/2103.15820"
+      },
+      {
+        "label": "arXiv:2105.04057",
+        "href": "https://arxiv.org/abs/2105.04057"
+      }
+    ]
+  },
+  {
+    "date": "2020-10-16",
+    "type": "Code",
+    "people": [
+      "nikolay-murzin"
+    ],
+    "html": "Nik starts DiagramProcess, computable diagrams of abstract processes, with ZX-style spiders added that month; it is continued from 2024 as DiagrammaticComputation, with Ian Ford.",
+    "sources": [
+      {
+        "label": "DiagramProcess",
+        "href": "https://github.com/sw1sh/DiagramProcess"
+      },
+      {
+        "label": "DiagrammaticComputation",
+        "href": "https://github.com/WolframInstitute/DiagrammaticComputation"
+      }
+    ]
+  },
+  {
+    "date": "2020-10-30",
+    "type": "Bulletin",
+    "people": [
+      "max-piskunov"
+    ],
+    "html": "“Local Multiway Systems: A New Approach to Wolfram Model Evolution”. Stephen Wolfram writes that Max “has suggested instead the idea of local multiway systems” and did the first implementation.",
+    "sources": [
+      {
+        "label": "Bulletin",
+        "href": "https://bulletins.wolframphysics.org/2020/10/local-multiway-systems-a-new-approach-to-wolfram-model-evolution/"
+      },
+      {
+        "label": "Research note",
+        "href": "https://github.com/maxitg/SetReplace/blob/master/Research/LocalMultiwaySystem/LocalMultiwaySystem.md"
+      },
+      {
+        "label": "Credit",
+        "href": "https://writings.stephenwolfram.com/2020/07/a-burst-of-physics-progress-at-the-2020-wolfram-summer-school/"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2020-11-13",
+    "type": "Code",
+    "people": [
+      "max-piskunov"
+    ],
+    "html": "C++ evaluators for combinators (CombinatorEvolve) and, in January 2021, Post tag systems (PostTagSystem), credited in the corresponding essays.",
+    "sources": [
+      {
+        "label": "CombinatorEvolve",
+        "href": "https://github.com/maxitg/CombinatorEvolve"
+      },
+      {
+        "label": "PostTagSystem",
+        "href": "https://github.com/maxitg/PostTagSystem"
+      }
+    ]
+  },
+  {
+    "date": "2020-11-16",
+    "type": "Bulletin",
+    "people": [
+      "max-piskunov"
+    ],
+    "html": "“Confluence and Causal Invariance”, a bulletin by Max showing that claimed equivalences between the two notions do not hold in general.",
+    "sources": [
+      {
+        "label": "Bulletin",
+        "href": "https://bulletins.wolframphysics.org/2020/11/confluence-and-causal-invariance/"
+      }
+    ]
+  },
+  {
+    "date": "2020-12-28",
+    "type": "Role",
+    "people": [
+      "utkarsh-bajaj"
+    ],
+    "html": "As a Junior Research Affiliate of the Wolfram Physics Project, Utkarsh publishes <code>RelativisticInertialDeformedRegion</code> and, in April 2021, “Visual Appearance of Extended Objects in Special Relativity”, which thanks Nik Murzin for help.",
+    "sources": [
+      {
+        "label": "Function",
+        "href": "https://resources.wolframcloud.com/FunctionRepository/resources/RelativisticInertialDeformedRegion/"
+      },
+      {
+        "label": "arXiv:2104.03908",
+        "href": "https://arxiv.org/abs/2104.03908"
+      }
+    ]
+  },
+  {
+    "date": "2021-01-14",
+    "type": "Course",
+    "people": [
+      "nikolay-murzin"
+    ],
+    "html": "Nik mentors Wolfram-model physics projects at the Winter and Summer Schools (spin–statistics for multiway systems, dimension tensors, causal invariance, (2+1)-dimensional quantum gravity); one student writes that most of the functions “were practically done by him”.",
+    "sources": [
+      {
+        "label": "Spin–statistics (WWS21)",
+        "href": "https://community.wolfram.com/t/wws21-towards-a-spin-statistics-theorem-for-wolfram-model-multiway-systems/17407"
+      },
+      {
+        "label": "Causal invariance (WSS21)",
+        "href": "https://community.wolfram.com/t/wss21-towards-proving-causal-invariance-in-the-wolfram-model/18487"
+      }
+    ]
+  },
+  {
+    "date": "2021-03-31",
+    "type": "Code",
+    "people": [
+      "max-piskunov"
+    ],
+    "html": "A generic multihistory type system for SetReplace, with <code>MultisetSubstitutionSystem</code>, which treats rules as black boxes.",
+    "sources": [
+      {
+        "label": "PR #624",
+        "href": "https://github.com/maxitg/SetReplace/pull/624"
+      }
+    ]
+  },
+  {
+    "date": "2021-05-22",
+    "type": "Paper",
+    "people": [
+      "xerxes-arsiwalla"
+    ],
+    "html": "“Homotopies in Multiway (Non-Deterministic) Rewriting Systems as n-Fold Categories”, with Jonathan Gorard and Hatem Elshatlawy (Complex Systems, 2022).",
+    "sources": [
+      {
+        "label": "arXiv:2105.10822",
+        "href": "https://arxiv.org/abs/2105.10822"
+      }
+    ]
+  },
+  {
+    "date": "2021-07-13",
+    "type": "Course",
+    "people": [
+      "carlos-zapata-carratala",
+      "xerxes-arsiwalla"
+    ],
+    "html": "Wolfram Summer School 2021, Fundamental Physics track: Carlos presents “Into the Ternary World”, the Arity Science programme, and first meets Xerxes Arsiwalla.",
+    "sources": [
+      {
+        "label": "Project",
+        "href": "https://community.wolfram.com/groups/-/m/t/2313171"
+      }
+    ]
+  },
+  {
+    "date": "2021-09-09",
+    "type": "Milestone",
+    "people": [],
+    "html": "“Multicomputation: A Fourth Paradigm for Theoretical Science”. Its acknowledgements thank Xerxes Arsiwalla, Nik Murzin and Max Piskunov, among others, “for discussions and help with the general paradigm”.",
+    "sources": [
+      {
+        "label": "Essay",
+        "href": "https://writings.stephenwolfram.com/2021/09/multicomputation-a-fourth-paradigm-for-theoretical-science/"
+      }
+    ],
+    "context": true
+  },
+  {
+    "date": "2021-09-11",
+    "type": "Code",
+    "people": [
+      "nikolay-murzin"
+    ],
+    "html": "First public commit of the Wolfram Quantum Framework; the early commit history (quantum bases, states, operators, circuits) is Nik’s. He presents it with Mads Bahrami at the 2022 Wolfram Technology Conference.",
+    "sources": [
+      {
+        "label": "Commit history",
+        "href": "https://github.com/WolframResearch/QuantumFramework/commits/main?until=2021-09-30"
+      },
+      {
+        "label": "AWS blog: “a key developer”",
+        "href": "https://aws.amazon.com/blogs/quantum-computing/introducing-the-wolfram-quantum-framework-for-amazon-braket/"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2021-09-14",
+    "type": "Livestream",
+    "people": [
+      "nikolay-murzin",
+      "xerxes-arsiwalla",
+      "max-piskunov"
+    ],
+    "html": "Working sessions “Foundations of Multicomputation” and “Multiway Systems Based on Numbers”, then (November 2021 to February 2022) a run of metamathematics sessions with Nik.",
+    "sources": [
+      {
+        "label": "Session listing",
+        "href": "https://livestreams.stephenwolfram.com/category/research-working-sessions/page/6/"
+      },
+      {
+        "label": "Foundations of Multicomputation",
+        "href": "https://youtu.be/p1sOyDy6MFA"
+      }
+    ]
+  },
+  {
+    "date": "2021-11-04",
+    "type": "Paper",
+    "people": [
+      "xerxes-arsiwalla"
+    ],
+    "html": "“Pregeometric Spaces from Wolfram Model Rewriting Systems as Homotopy Types”, with Jonathan Gorard (Int. J. Theor. Phys., 2024). Six days later, the essay introducing the ruliad cites it.",
+    "sources": [
+      {
+        "label": "arXiv:2111.03460",
+        "href": "https://arxiv.org/abs/2111.03460"
+      },
+      {
+        "label": "Journal",
+        "href": "https://doi.org/10.1007/s10773-024-05576-0"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2021-11-10",
+    "type": "Milestone",
+    "people": [],
+    "html": "“The Concept of the Ruliad”. It describes the ruliad in terms of ∞-groupoids and points to the paper by Xerxes Arsiwalla and Jonathan Gorard for the technical treatment.",
+    "sources": [
+      {
+        "label": "Essay",
+        "href": "https://writings.stephenwolfram.com/2021/11/the-concept-of-the-ruliad/"
+      }
+    ],
+    "context": true
+  },
+  {
+    "date": "2022-01-13",
+    "type": "Course",
+    "people": [
+      "richard-assar"
+    ],
+    "html": "Wolfram Winter School 2022: Richard’s project “Characterisation of infinitary rewrite systems” connects continuous dynamical systems with the Physics Project.",
+    "sources": [
+      {
+        "label": "Project",
+        "href": "https://community.wolfram.com/groups/-/m/t/2445379"
+      }
+    ]
+  },
+  {
+    "date": "2022-01-21",
+    "type": "Paper",
+    "people": [
+      "carlos-zapata-carratala",
+      "xerxes-arsiwalla"
+    ],
+    "html": "“An Invitation to Higher Arity Science”, with Xerxes Arsiwalla (Complex Systems, 2024).",
+    "sources": [
+      {
+        "label": "arXiv:2201.09738",
+        "href": "https://arxiv.org/abs/2201.09738"
+      }
+    ]
+  },
+  {
+    "date": "2022-03-07",
+    "type": "Credit",
+    "people": [
+      "xerxes-arsiwalla"
+    ],
+    "html": "“The Physicalization of Metamathematics” notes input from Xerxes Arsiwalla and that “Xerxes and Jonathan have now also been developing connections with homotopy type theory”.",
+    "sources": [
+      {
+        "label": "Essay",
+        "href": "https://writings.stephenwolfram.com/2022/03/the-physicalization-of-metamathematics-and-its-implications-for-the-foundations-of-mathematics/"
+      }
+    ]
+  },
+  {
+    "date": "2022-03-07",
+    "type": "Credit",
+    "people": [
+      "nikolay-murzin"
+    ],
+    "html": "“The Physicalization of Metamathematics” acknowledges “extensive help on this project from James Boyd and Nik Murzin”.",
+    "sources": [
+      {
+        "label": "Essay",
+        "href": "https://writings.stephenwolfram.com/2022/03/the-physicalization-of-metamathematics-and-its-implications-for-the-foundations-of-mathematics/"
+      }
+    ]
+  },
+  {
+    "date": "2022-04-06",
+    "type": "Milestone",
+    "people": [],
+    "html": "Launch of the Wolfram Institute, with the Physics Project as its “definite seed”.",
+    "sources": [
+      {
+        "label": "Announcement",
+        "href": "https://writings.stephenwolfram.com/2022/04/weve-got-a-science-opportunity-overload-its-time-to-launch-the-wolfram-institute/"
+      }
+    ],
+    "context": true
+  },
+  {
+    "date": "2022-05-01",
+    "type": "Paper",
+    "people": [
+      "carlos-zapata-carratala",
+      "xerxes-arsiwalla"
+    ],
+    "html": "“Heaps of Fish”, with Xerxes Arsiwalla and Taliesin Beynon, treats associativity as a confluence property of hypergraph rewrite systems (Theoretical Computer Science, 2024).",
+    "sources": [
+      {
+        "label": "arXiv:2205.05456",
+        "href": "https://arxiv.org/abs/2205.05456"
+      },
+      {
+        "label": "Journal",
+        "href": "https://doi.org/10.1016/j.tcs.2024.114915"
+      }
+    ]
+  },
+  {
+    "date": "2022-05-14",
+    "type": "Code",
+    "people": [
+      "nikolay-murzin"
+    ],
+    "html": "Nik starts the Multicomputation package (the <code>Multi</code> container and <code>MultiwaySystem</code>); he is its principal code author per the public commit history.",
+    "sources": [
+      {
+        "label": "Commit history",
+        "href": "https://github.com/WolframInstitute/Multicomputation/commits/master"
+      },
+      {
+        "label": "Paclet",
+        "href": "https://resources.wolframcloud.com/PacletRepository/resources/Wolfram/Multicomputation/"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2022-07-19",
+    "type": "Course",
+    "people": [
+      "utkarsh-bajaj"
+    ],
+    "html": "Wolfram Summer School 2022: Utkarsh compiles models of computation (finite automata, Turing and register machines, a small functional language) into hypergraph rewriting systems.",
+    "sources": [
+      {
+        "label": "Project",
+        "href": "https://community.wolfram.com/t/wss22-compiling-different-models-of-computation-into-hypergraph-rewriting/20343"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2022-07-21",
+    "type": "Post",
+    "people": [
+      "nikolay-murzin"
+    ],
+    "html": "“Branchial wormholes”: Nik proposes a branchial graph that joins only events whose inputs overlap.",
+    "sources": [
+      {
+        "label": "Post",
+        "href": "https://community.wolfram.com/t/branchial-wormholes/20377"
+      }
+    ]
+  },
+  {
+    "date": "2022-12-02",
+    "type": "Paper",
+    "people": [
+      "xerxes-arsiwalla"
+    ],
+    "html": "“A Cosine Rule-Based Discrete Sectional Curvature for Graphs”, with J. F. du Plessis.",
+    "sources": [
+      {
+        "label": "arXiv:2212.04406",
+        "href": "https://arxiv.org/abs/2212.04406"
+      }
+    ]
+  },
+  {
+    "date": "2023",
+    "type": "Idea",
+    "people": [
+      "carlos-zapata-carratala",
+      "xerxes-arsiwalla"
+    ],
+    "html": "After joining the Wolfram Institute, discussions with Xerxes Arsiwalla and Jonathan Gorard lead Carlos to the idea of infrageometry: a dictionary of conventional differential geometry built on discrete combinatorial data structures, with pure rewrite rules as the computational framework. This dictionary is Carlos’s initial vision for the project, which Stephen Wolfram supports. Carlos leads the conceptual framework; Jonathan contributes applications in physics.",
+    "sources": [],
+    "statement": "carlos-zapata-carratala",
+    "key": true
+  },
+  {
+    "date": "2023-01-05",
+    "type": "Paper",
+    "people": [
+      "carlos-zapata-carratala",
+      "xerxes-arsiwalla"
+    ],
+    "html": "“Beyond Binary: Hypermatrix Algebra and Irreducible Arity in Higher-Order Systems”, with Maximilian Schich, Taliesin Beynon and Xerxes Arsiwalla (Advances in Complex Systems, 2023).",
+    "sources": [
+      {
+        "label": "arXiv:2301.07494",
+        "href": "https://arxiv.org/abs/2301.07494"
+      }
+    ]
+  },
+  {
+    "date": "2023-02-06",
+    "type": "Code",
+    "people": [
+      "nikolay-murzin",
+      "carlos-zapata-carratala"
+    ],
+    "html": "Nik creates the Hypergraph repository and Carlos joins it a week later: a Wolfram Language package for hypergraphs, hypergraph rewriting and hypermatrix algebra (paclet 1.0.0, March 2023).",
+    "sources": [
+      {
+        "label": "Commit history",
+        "href": "https://github.com/WolframInstitute/Hypergraph/commits/main"
+      },
+      {
+        "label": "Paclet",
+        "href": "https://resources.wolframcloud.com/PacletRepository/resources/WolframInstitute/Hypergraph/"
+      }
+    ]
+  },
+  {
+    "date": "2023-09-12",
+    "type": "Livestream",
+    "people": [
+      "carlos-zapata-carratala"
+    ],
+    "html": "“Infracalculus: Beyond Discrete and Continuous?”, the first of a public series of live sessions on calculus and geometry on hypergraphs with Jonathan Gorard (19 September: “Infrageometry: Beyond Discrete and Continuous?”).",
+    "sources": [
+      {
+        "label": "Session 1",
+        "href": "https://www.youtube.com/watch?v=CY9ZwYiftxA"
+      },
+      {
+        "label": "Session 2",
+        "href": "https://www.youtube.com/watch?v=93ZZFGYltgM"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2023-09-27",
+    "type": "Livestream",
+    "people": [
+      "utkarsh-bajaj",
+      "carlos-zapata-carratala"
+    ],
+    "html": "Utkarsh joins the infrageometry live sessions with Jonathan Gorard and Carlos; Nik Murzin joins in November.",
+    "sources": [
+      {
+        "label": "Session (Gorard, Zapata, Bajaj)",
+        "href": "https://www.youtube.com/watch?v=NdlDlcK78_g"
+      },
+      {
+        "label": "Session (with Murzin)",
+        "href": "https://www.youtube.com/watch?v=qEWM_frjmxw"
+      }
+    ]
+  },
+  {
+    "date": "2023-09-29",
+    "type": "Credit",
+    "people": [
+      "richard-assar",
+      "nikolay-murzin"
+    ],
+    "html": "“Expression Evaluation and Fundamental Physics” thanks Wolfram Institute fellows Richard Assar and “especially Nik Murzin” for their help.",
+    "sources": [
+      {
+        "label": "Essay",
+        "href": "https://writings.stephenwolfram.com/2023/09/expression-evaluation-and-fundamental-physics/"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-03",
+    "type": "Livestream",
+    "people": [
+      "carlos-zapata-carratala",
+      "nikolay-murzin"
+    ],
+    "html": "“Research Working Session: Infrageometry” with Stephen Wolfram, Jonathan Gorard, Nik Murzin and Carlos; a second session with Wolfram, Gorard and Carlos follows on 14 December.",
+    "sources": [
+      {
+        "label": "Session listing",
+        "href": "https://livestreams.stephenwolfram.com/category/research-working-sessions/"
+      },
+      {
+        "label": "3 Nov",
+        "href": "https://youtu.be/7Fd251752Fw"
+      },
+      {
+        "label": "14 Dec",
+        "href": "https://youtu.be/ut-PphYVLhU"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-07",
+    "type": "Paper",
+    "people": [
+      "xerxes-arsiwalla"
+    ],
+    "html": "“Pregeometry, Formal Language and Constructivist Foundations of Physics”, with Hatem Elshatlawy and Dean Rickles, after “Ruliology: Linking Computation, Observers and Physical Law” (August 2023).",
+    "sources": [
+      {
+        "label": "arXiv:2311.03973",
+        "href": "https://arxiv.org/abs/2311.03973"
+      },
+      {
+        "label": "arXiv:2308.16068",
+        "href": "https://arxiv.org/abs/2308.16068"
+      }
+    ]
+  },
+  {
+    "date": "2024-02-09",
+    "type": "Talk",
+    "people": [
+      "carlos-zapata-carratala"
+    ],
+    "html": "“Higher-Arity Algebra via Hypergraph Rewriting”, invited seminar at GReTA (Graph Transformation Theory and Applications), whose organisers include Nicolas Behr.",
+    "sources": [
+      {
+        "label": "Seminar",
+        "href": "https://www.irif.fr/~greta/event/2024-feb-09/"
+      }
+    ]
+  },
+  {
+    "date": "2024-05-08",
+    "type": "Post",
+    "people": [
+      "nikolay-murzin"
+    ],
+    "html": "“String rewriting trace graphs”, relating trace graphs to token–event graphs and causal graphs of multiway string rewriting.",
+    "sources": [
+      {
+        "label": "Post",
+        "href": "https://community.wolfram.com/t/string-rewriting-trace-graphs/23967"
+      }
+    ]
+  },
+  {
+    "date": "2024-06",
+    "type": "Statement",
+    "people": [
+      "carlos-zapata-carratala"
+    ],
+    "html": "Carlos works directly with Stephen Wolfram for a few months to formalize infrageometry. They differ on the approach and its mathematical foundations, and that collaboration ends around June 2024.",
+    "sources": [],
+    "statement": "carlos-zapata-carratala"
+  },
+  {
+    "date": "2024-08-16",
+    "type": "Grant",
+    "people": [
+      "carlos-zapata-carratala"
+    ],
+    "html": "Carlos begins a grant application to the John Templeton Foundation, coordinated with Nicolas Behr, Josh Grochow and Alexander Kolpakov. Its two pillars: metamathematical questions from the Arity Science programme, and infrageometry, deriving geometry-like structures from pure hypergraph rewriting.",
+    "sources": [],
+    "statement": "carlos-zapata-carratala",
+    "key": true
+  },
+  {
+    "date": "2024-08-29",
+    "type": "Milestone",
+    "people": [],
+    "html": "“Five Most Productive Years” names infrageometry and infracalculus as a direction for the Physics Project, without naming contributors.",
+    "sources": [
+      {
+        "label": "Essay",
+        "href": "https://writings.stephenwolfram.com/2024/08/five-most-productive-years-what-happened-and-whats-next/"
+      }
+    ],
+    "context": true
+  },
+  {
+    "date": "2024-09-02",
+    "type": "Paper",
+    "people": [
+      "utkarsh-bajaj"
+    ],
+    "html": "“Hypergraph rewriting and Causal structure of λ-calculus”: events and causality for double-pushout hypergraph rewriting, and an algorithm for causal relations in λ-evaluation.",
+    "sources": [
+      {
+        "label": "arXiv:2409.01006",
+        "href": "https://arxiv.org/abs/2409.01006"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2024-09-11",
+    "type": "Code",
+    "people": [
+      "nikolay-murzin"
+    ],
+    "html": "Nik starts the Lambda package (lambda diagrams, lambda trees), later used for “The Ruliology of Lambdas” (2025), which thanks him for extensive help.",
+    "sources": [
+      {
+        "label": "Repository",
+        "href": "https://github.com/sw1sh/WolframLambda"
+      },
+      {
+        "label": "Paclet",
+        "href": "https://resources.wolframcloud.com/PacletRepository/resources/Wolfram/Lambda/"
+      },
+      {
+        "label": "Essay",
+        "href": "https://writings.stephenwolfram.com/2025/09/the-ruliology-of-lambdas/"
+      }
+    ]
+  },
+  {
+    "date": "2024-10-25",
+    "type": "Livestream",
+    "people": [
+      "carlos-zapata-carratala"
+    ],
+    "html": "Infrageometry live session, followed on 28 October by a working-session review of the Hypergraph paclet with Nik Murzin.",
+    "sources": [
+      {
+        "label": "Infrageometry",
+        "href": "https://www.youtube.com/watch?v=IggArVlZR_k"
+      },
+      {
+        "label": "Hypergraph Paclet Review",
+        "href": "https://www.youtube.com/watch?v=gLUEcUj3gn0"
+      }
+    ]
+  },
+  {
+    "date": "2024-11-01",
+    "type": "Paper",
+    "people": [
+      "nikolay-murzin"
+    ],
+    "html": "“Quantum Potato Chips”, first author, with Tenorio, Rodriguez, McNally and Bahrami.",
+    "sources": [
+      {
+        "label": "arXiv:2411.01082",
+        "href": "https://arxiv.org/abs/2411.01082"
+      }
+    ]
+  },
+  {
+    "date": "2025-01-16",
+    "type": "Course",
+    "people": [
+      "pavel-hajek",
+      "carlos-zapata-carratala",
+      "xerxes-arsiwalla",
+      "nikolay-murzin"
+    ],
+    "html": "Wolfram Winter School 2025: Pavel’s project “Lie brackets on hypergraphs” generalizes the insertion Lie bracket to hypergraphs and induces Poisson brackets on functions of hypergraphs, asking for a Hamiltonian formalism for hypergraph rewriting. It thanks “Carlos Zapata-Carratalá for setting the direction of the project” and Nik Murzin for pair programming. By Pavel’s account, the bracket was suggested by Carlos and Xerxes; he rooted it at a hyperedge, related it to the commutator of linearized “blow-up” rewriting rules, and explored graded and higher-arity versions and the representability of Lie algebras on subsets of rules.",
+    "sources": [
+      {
+        "label": "Project",
+        "href": "https://community.wolfram.com/groups/-/m/t/3358052"
+      }
+    ],
+    "statement": "pavel-hajek",
+    "key": true
+  },
+  {
+    "date": "2025-01-16",
+    "type": "Course",
+    "people": [
+      "utkarsh-bajaj",
+      "carlos-zapata-carratala"
+    ],
+    "html": "Utkarsh co-mentors Winter School projects on vector fields on graphs and their derivations (a discrete Leibniz rule) and on engineering geometries from hypergraph rewriting. Carlos and Utkarsh discuss discrete analogues of differential geometry.",
+    "sources": [
+      {
+        "label": "Vector fields on graphs",
+        "href": "https://community.wolfram.com/t/wws25-exploring-vector-fields-on-graphs-and-their-derivations/25012"
+      },
+      {
+        "label": "Geometries from rewriting",
+        "href": "https://community.wolfram.com/t/wws25-exploring-ruliological-engineering-of-well-defined-geometries-from-hypergraph-rewriting/25008"
+      }
+    ],
+    "statement": "carlos-zapata-carratala"
+  },
+  {
+    "date": "2025-03-18",
+    "type": "Talk",
+    "people": [
+      "pavel-hajek"
+    ],
+    "html": "“Insertion Lie Bracket for Hypergraphs”, project presentation; the bracket is added to the Hypergraph paclet in April 2025 (release 1.2.1 lists Nikolay Murzin, Carlos Zapata-Carratalá and Pavel Hajek as contributors).",
+    "sources": [
+      {
+        "label": "Recording",
+        "href": "https://www.youtube.com/watch?v=27jGLskGDdY"
+      },
+      {
+        "label": "Commit",
+        "href": "https://github.com/WolframInstitute/Hypergraph/commit/ab0478a"
+      }
+    ]
+  },
+  {
+    "date": "2025-04-22",
+    "type": "Paper",
+    "people": [
+      "xerxes-arsiwalla"
+    ],
+    "html": "“Towards a Generalized Theory of Observers”, with Hatem Elshatlawy and Dean Rickles.",
+    "sources": [
+      {
+        "label": "arXiv:2504.16225",
+        "href": "https://arxiv.org/abs/2504.16225"
+      }
+    ]
+  },
+  {
+    "date": "2025-06-04",
+    "type": "Grant",
+    "people": [
+      "carlos-zapata-carratala"
+    ],
+    "html": "The John Templeton Foundation awards “Causality, Observers and Computation: A New Approach to Fundamental Physics and Metamathematics” (grant 63655, October 2025 to September 2027), with Carlos Zapata-Carratalá and Stephen Wolfram as project leaders.",
+    "sources": [
+      {
+        "label": "Grant page",
+        "href": "https://www.templeton.org/grant/causality-observers-and-computation-a-new-approach-to-fundamental-physics-and-metamathematics"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2025-09-02",
+    "type": "Code",
+    "people": [
+      "richard-assar"
+    ],
+    "html": "First commit of HypergraphRewritingEngine, Richard’s parallel multiway hypergraph rewriting engine with exact isomorphism handling; a CUDA GPU engine and an interactive visualiser follow in December 2025.",
+    "sources": [
+      {
+        "label": "Repository",
+        "href": "https://github.com/WolframInstitute/HypergraphRewritingEngine"
+      },
+      {
+        "label": "GPU engine",
+        "href": "https://github.com/WolframInstitute/HypergraphRewritingEngine/commit/82c3c9275f9d1e56ce567b05ccf22e3b2b13422d"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2025-10",
+    "type": "Role",
+    "people": [
+      "pavel-hajek",
+      "carlos-zapata-carratala"
+    ],
+    "html": "The Templeton project starts and Pavel joins the Wolfram Institute as a research fellow on it; he and Carlos hold several sessions ideating and discussing research directions. His first contributions are to the Wolfram Function Repository (among them <code>GromovHausdorffDistance</code>), the DiscreteGeometry paclet and the P vs NP blog project, which thanks him for his help.",
+    "sources": [
+      {
+        "label": "CV",
+        "href": "https://p135246.github.io/assets/pdf/cv-academic.pdf"
+      },
+      {
+        "label": "Funding note",
+        "href": "https://github.com/WolframInstitute/Infrageometry"
+      },
+      {
+        "label": "GromovHausdorffDistance",
+        "href": "https://resources.wolframcloud.com/FunctionRepository/resources/GromovHausdorffDistance/"
+      },
+      {
+        "label": "P vs NP essay",
+        "href": "https://writings.stephenwolfram.com/2026/01/p-vs-np-and-the-difficulty-of-computation-a-ruliological-approach/"
+      }
+    ],
+    "statement": [
+      "carlos-zapata-carratala",
+      "pavel-hajek"
+    ],
+    "key": true
+  },
+  {
+    "date": "2025-11-11",
+    "type": "Talk",
+    "people": [
+      "carlos-zapata-carratala"
+    ],
+    "html": "Public overview of the Templeton project by Carlos.",
+    "sources": [
+      {
+        "label": "Recording",
+        "href": "https://www.youtube.com/watch?v=pRnj-4I6Hc0"
+      }
+    ]
+  },
+  {
+    "date": "2025-12-23",
+    "type": "Paper",
+    "people": [
+      "xerxes-arsiwalla"
+    ],
+    "html": "“Quantum Gates from Wolfram Model Multiway Rewriting Systems”, with Dündar and Hatem Elshatlawy.",
+    "sources": [
+      {
+        "label": "arXiv:2512.20587",
+        "href": "https://arxiv.org/abs/2512.20587"
+      }
+    ]
+  },
+  {
+    "date": "2026",
+    "type": "Statement",
+    "people": [
+      "carlos-zapata-carratala"
+    ],
+    "html": "Carlos develops and finalizes a project applying axiomatic relativity, as in the original writings of Marzke and Wheeler, and the construction of geometric clocks to causal graphs arising from hypergraph rewriting, concluding that a formal set-theoretic structure allows geometric clocks and signal functions in discrete causal graphs.",
+    "sources": [],
+    "statement": "carlos-zapata-carratala"
+  },
+  {
+    "date": "2026-01-17",
+    "type": "Talk",
+    "people": [
+      "pavel-hajek"
+    ],
+    "html": "“Computational Experiments at Wolfram Institute”, Winter School Geometry and Physics, Srní; on 20 February, “Infrageometry: Geometry Emerging from Hypergraph Rewriting” in Madrid.",
+    "sources": [
+      {
+        "label": "Srní slides",
+        "href": "https://p135246.github.io/assets/pdf/srni-2026-computational-experiments.pdf"
+      },
+      {
+        "label": "Madrid slides",
+        "href": "https://p135246.github.io/assets/pdf/madrid-2026-infrageometry.pdf"
+      },
+      {
+        "label": "Write-up",
+        "href": "https://p135246.github.io/wolfram/2026/03/31/talks-infrageometry-srni-madrid.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-04",
+    "type": "Code",
+    "people": [
+      "pavel-hajek"
+    ],
+    "html": "Pavel describes his agentic, AI-assisted research workflow and the Claude computational research plugin he developed.",
+    "sources": [
+      {
+        "label": "Post",
+        "href": "https://p135246.github.io/wolfram/software/2026/03/04/ai-assisted-computational-research.html"
+      },
+      {
+        "label": "Plugin",
+        "href": "https://github.com/WolframInstitute/ClaudePluginComputationalResearch"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-10",
+    "type": "Code",
+    "people": [
+      "pavel-hajek",
+      "nikolay-murzin"
+    ],
+    "html": "Pavel publishes the Infrageometry code base (Infrageometry, SyntheticInfrageometry, InfraAnalysis, InfraCausality, InfraGaugeTheory), supported by Templeton grant 63655. By his account, he was assigned to infrageometry under the direction of Stephen Wolfram, to develop Carlos’s dictionary from the point of view of minimal models of geometric phenomena on graphs. After initial meetings with Wolfram and Nik Murzin, he proposed a concrete pipeline for obtaining an emergent spacetime, with spatial and gauge directions, from a single-history branch of the multiway system for given observers. He implemented observer-scale dependence in minimal models of spatial geometry, arriving at the notion of renormalizable geometry, and a minimal model of fibered graphs, which he began relating to lattice gauge theory with his student collaborator Ioana Milea. He started InfraCausality, a toolkit for discrete special relativity on causal graphs, as a grant deliverable; the repositories also include contributions from Nik Murzin, Dugan Hammock and student collaborators.",
+    "sources": [
+      {
+        "label": "Infrageometry",
+        "href": "https://github.com/WolframInstitute/Infrageometry"
+      },
+      {
+        "label": "InfraCausality",
+        "href": "https://github.com/WolframInstitute/InfraCausality"
+      }
+    ],
+    "statement": "pavel-hajek",
+    "key": true
+  },
+  {
+    "date": "2026-04-17",
+    "type": "Event",
+    "people": [
+      "pavel-hajek"
+    ],
+    "html": "“Bridging Wolfram Models and Mathematical Physics”, Austin, organized with support from the Templeton grant.",
+    "sources": [
+      {
+        "label": "Programme",
+        "href": "https://wolframinstitute.org/wolfram-models-conference"
+      },
+      {
+        "label": "Pavel’s note",
+        "href": "https://p135246.github.io/wolfram/2026/03/31/talks-infrageometry-srni-madrid.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-09",
+    "type": "Paper",
+    "people": [
+      "richard-assar"
+    ],
+    "html": "HypergraphRewritingEngine v1.0.0-rc2, with Richard’s technical report “Rewriting the Universe: High-Performance Hypergraph Rewriting for the Wolfram Physics Project”.",
+    "sources": [
+      {
+        "label": "Release",
+        "href": "https://github.com/WolframInstitute/HypergraphRewritingEngine/releases/tag/v1.0.0-rc2"
+      },
+      {
+        "label": "Report (PDF)",
+        "href": "https://github.com/WolframInstitute/HypergraphRewritingEngine/blob/master/paper/main.pdf"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-18",
+    "type": "Paper",
+    "people": [
+      "utkarsh-bajaj",
+      "xerxes-arsiwalla"
+    ],
+    "html": "“Discrete geometry and de-Rham cohomology of graphs”, Utkarsh’s Oxford MSc dissertation: forms on graphs with coordinate systems and a de Rham theorem (external supervisor: Xerxes Arsiwalla).",
+    "sources": [
+      {
+        "label": "arXiv:2610.25302",
+        "href": "https://arxiv.org/abs/2610.25302"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2026-10-19",
+    "type": "Statement",
+    "people": [
+      "carlos-zapata-carratala"
+    ],
+    "html": "Carlos’s position at the Wolfram Foundation ends, and with it his role as project leader of the Templeton grant.",
+    "sources": [],
+    "statement": "carlos-zapata-carratala",
+    "key": true
+  },
+  {
+    "date": "2026-11-02",
+    "type": "Collaboration",
+    "people": [
+      "carlos-zapata-carratala",
+      "max-piskunov",
+      "xerxes-arsiwalla",
+      "nikolay-murzin",
+      "utkarsh-bajaj",
+      "pavel-hajek",
+      "richard-assar"
+    ],
+    "html": "Multi-History Science starts as a research collaboration, with this website and a YouTube channel. For the Arity Science project, whose collaborators are among its members, it is a branching out and a continuation of its research streams.",
+    "sources": [
+      {
+        "label": "Website",
+        "href": "https://multihistory.org/"
+      },
+      {
+        "label": "YouTube channel",
+        "href": "https://www.youtube.com/@MultiHistoryScience"
+      },
+      {
+        "label": "Arity Science timeline",
+        "href": "https://arity.science/#timeline"
+      }
+    ],
+    "key": true
+  },
+  {
+    "date": "2026-11-06",
+    "type": "Seminar",
+    "people": [
+      "carlos-zapata-carratala",
+      "max-piskunov",
+      "xerxes-arsiwalla",
+      "nikolay-murzin",
+      "utkarsh-bajaj",
+      "pavel-hajek",
+      "richard-assar"
+    ],
+    "html": "First Hyperseminar, the seminar series of the Multi-History Science collaboration.",
+    "sources": [
+      {
+        "label": "YouTube channel",
+        "href": "https://www.youtube.com/@MultiHistoryScience"
+      }
+    ],
+    "key": true
+  }
+]

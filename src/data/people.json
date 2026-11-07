@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "pavel-hajek",
+    "name": "Pavel Hajek",
+    "href": "https://p135246.github.io/",
+    "photo": "Pavel.jpg",
+    "color": "#3a72b8",
+    "focus": "Insertion Lie brackets on hypergraphs; infrageometry: minimal models of geometry on graphs, renormalizable geometry, emergent spacetime from a single-history branch; InfraCausality."
+  },
+  {
+    "slug": "max-piskunov",
+    "name": "Max Piskunov",
+    "href": "https://github.com/maxitg",
+    "photo": null,
+    "color": "#2b8f83",
+    "focus": "Author of SetReplace, the engine behind WolframModel; local multiway systems."
+  },
+  {
+    "slug": "xerxes-arsiwalla",
+    "name": "Xerxes Arsiwalla",
+    "href": "https://scholar.google.com/citations?user=zQy1qhsAAAAJ",
+    "photo": "Xerxes.jpg",
+    "color": "#6f8a1f",
+    "focus": "Homotopy types and higher categories for multiway systems; pregeometry; observers."
+  },
+  {
+    "slug": "nikolay-murzin",
+    "name": "Nikolay Murzin",
+    "href": "https://github.com/sw1sh",
+    "photo": "Nik.jpg",
+    "color": "#b83c74",
+    "focus": "Multicomputation, quantum and diagrammatic software; multispace visualization."
+  },
+  {
+    "slug": "utkarsh-bajaj",
+    "name": "Utkarsh Bajaj",
+    "href": "",
+    "photo": null,
+    "color": "#a87a0a",
+    "focus": "Computation as hypergraph rewriting; causal structure of λ-calculus; discrete geometry on graphs."
+  },
+  {
+    "slug": "carlos-zapata-carratala",
+    "name": "Carlos Zapata-Carratalá",
+    "href": "https://zapatacarratala.me",
+    "photo": "Carlos.jpg",
+    "color": "#d4651c",
+    "focus": "Differential geometry and higher-arity algebra; infrageometry; causality and geometric clocks. Led the Templeton grant."
+  },
+  {
+    "slug": "richard-assar",
+    "name": "Richard Assar",
+    "href": "https://richardassar.github.io/cv/",
+    "photo": "Richard.jpg",
+    "color": "#7d55b5",
+    "focus": "High-performance parallel and GPU multiway hypergraph rewriting."
+  }
+]

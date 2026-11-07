@@ -1,0 +1,207 @@
+[
+  {
+    "title": "Hypergraph rewriting engines",
+    "years": "2018 – 2026",
+    "people": [
+      "max-piskunov",
+      "richard-assar"
+    ],
+    "html": "The software that made the models computable. Max wrote SetReplace (2018–2021), the engine behind <code>WolframModel</code>, with causal graphs, multiway evaluation and the hypergraph plots used in the project’s publications. Richard wrote HypergraphRewritingEngine (2025–2026), a parallel and GPU multiway engine with exact isomorphism handling.",
+    "evidence": [
+      {
+        "label": "SetReplace",
+        "href": "https://github.com/maxitg/SetReplace"
+      },
+      {
+        "label": "Backstory credit",
+        "href": "https://writings.stephenwolfram.com/2020/04/how-we-got-here-the-backstory-of-the-wolfram-physics-project/"
+      },
+      {
+        "label": "HypergraphRewritingEngine",
+        "href": "https://github.com/WolframInstitute/HypergraphRewritingEngine"
+      }
+    ]
+  },
+  {
+    "title": "Local multiway systems and token–event graphs",
+    "years": "2020 – 2021",
+    "people": [
+      "max-piskunov"
+    ],
+    "html": "Multiway evolution within a single pool of tokens, without global state isomorphism, proposed and first implemented by Max; with it the expressions–events (token–event) graph, a generic multihistory type system, and a bulletin showing that confluence and causal invariance are not equivalent in general.",
+    "evidence": [
+      {
+        "label": "Local multiway systems",
+        "href": "https://bulletins.wolframphysics.org/2020/10/local-multiway-systems-a-new-approach-to-wolfram-model-evolution/"
+      },
+      {
+        "label": "Confluence and causal invariance",
+        "href": "https://bulletins.wolframphysics.org/2020/11/confluence-and-causal-invariance/"
+      }
+    ]
+  },
+  {
+    "title": "Homotopy types and higher categories for multiway systems",
+    "years": "2020 – 2021",
+    "people": [
+      "xerxes-arsiwalla"
+    ],
+    "html": "Multiway rules as type constructors, completions as homotopies, and the rulial limit as an ∞-groupoid: a framing first documented in Xerxes’s Summer School 2020 project and developed with Jonathan Gorard in a series of papers, more than a year before the ruliad essay that cites them.",
+    "evidence": [
+      {
+        "label": "WSS 2020 project",
+        "href": "https://community.wolfram.com/groups/-/m/t/2032113"
+      },
+      {
+        "label": "2020 bulletin",
+        "href": "https://bulletins.wolframphysics.org/2020/08/a-candidate-geometrical-formalism-for-the-foundations-of-mathematics-and-physics/"
+      },
+      {
+        "label": "arXiv:2111.03460",
+        "href": "https://arxiv.org/abs/2111.03460"
+      }
+    ]
+  },
+  {
+    "title": "Pregeometry, formal language and observers",
+    "years": "2023 – 2025",
+    "people": [
+      "xerxes-arsiwalla"
+    ],
+    "html": "Homotopy type theory as the building blocks of a theory of pregeometry, and a general theory of observers across physics and computation, in papers led by Xerxes with Hatem Elshatlawy and Dean Rickles.",
+    "evidence": [
+      {
+        "label": "arXiv:2311.03973",
+        "href": "https://arxiv.org/abs/2311.03973"
+      },
+      {
+        "label": "arXiv:2504.16225",
+        "href": "https://arxiv.org/abs/2504.16225"
+      }
+    ]
+  },
+  {
+    "title": "Infrageometry",
+    "years": "2023 – 2026",
+    "people": [
+      "carlos-zapata-carratala",
+      "utkarsh-bajaj",
+      "pavel-hajek",
+      "nikolay-murzin"
+    ],
+    "html": "Geometry derived from pure hypergraph rewriting. Carlos’s initial vision, from 2023, was a dictionary of differential geometry on discrete combinatorial structures, developed in discussion with Xerxes Arsiwalla and Jonathan Gorard. Stephen Wolfram supported it; he and Carlos came to differ on the approach and its mathematical foundations. Utkarsh worked on discrete difference operators and vector fields on graphs, and later de Rham cohomology of graphs. Nik took part in the live sessions from 2023 and in the 2025 InfraGeometry paclet review. From October 2025, under the Templeton grant Carlos led, Pavel was assigned to infrageometry under Wolfram’s direction, to develop Carlos’s dictionary from the point of view of minimal models of geometric phenomena on graphs. He proposed a pipeline for an emergent spacetime, with spatial and gauge directions, from a single-history branch of the multiway system for given observers, arrived at the notion of renormalizable geometry, and developed research repositories (Infrageometry, InfraAnalysis, InfraCausality, InfraGaugeTheory) as grant deliverables, with contributions from Nik, Dugan Hammock and student collaborators.",
+    "evidence": [
+      {
+        "label": "2023 live sessions",
+        "href": "https://www.youtube.com/watch?v=CY9ZwYiftxA"
+      },
+      {
+        "label": "2025 paclet review",
+        "href": "https://www.youtube.com/watch?v=a_GebCl2qqk"
+      },
+      {
+        "label": "Infrageometry code",
+        "href": "https://github.com/WolframInstitute/Infrageometry"
+      },
+      {
+        "label": "Carlos’s statement",
+        "href": "~/statements/#carlos-zapata-carratala"
+      },
+      {
+        "label": "Pavel’s statement",
+        "href": "~/statements/#pavel-hajek"
+      }
+    ]
+  },
+  {
+    "title": "Higher-arity algebra and hypergraph Lie brackets",
+    "years": "2021 – 2025",
+    "people": [
+      "carlos-zapata-carratala",
+      "xerxes-arsiwalla",
+      "pavel-hajek",
+      "nikolay-murzin"
+    ],
+    "html": "Associativity as a confluence property of hypergraph rewriting, hypermatrix algebra, and an insertion Lie bracket on hypergraphs, suggested by Carlos and Xerxes and generalized by Pavel in a Winter School project (rooted at a hyperedge, related to the commutator of linearized “blow-up” rewriting rules, with graded and higher-arity versions), implemented in the Hypergraph paclet by Nik, Carlos and Pavel.",
+    "evidence": [
+      {
+        "label": "Heaps of Fish",
+        "href": "https://arxiv.org/abs/2205.05456"
+      },
+      {
+        "label": "Lie brackets on hypergraphs",
+        "href": "https://community.wolfram.com/groups/-/m/t/3358052"
+      },
+      {
+        "label": "Hypergraph paclet",
+        "href": "https://github.com/WolframInstitute/Hypergraph"
+      },
+      {
+        "label": "Graded bracket (commit)",
+        "href": "https://github.com/WolframInstitute/Hypergraph/commit/6122892"
+      },
+      {
+        "label": "Pavel’s statement",
+        "href": "~/statements/#pavel-hajek"
+      }
+    ]
+  },
+  {
+    "title": "Multicomputation, quantum and diagrammatic software",
+    "years": "2020 – 2025",
+    "people": [
+      "nikolay-murzin"
+    ],
+    "html": "Visualizing multispace with 3D multi-perspective layouts (credited to Nik by Stephen Wolfram), and the principal code of the Multicomputation, Quantum Framework, diagrammatic computation and lambda-calculus packages used across the multicomputational work.",
+    "evidence": [
+      {
+        "label": "Multispace credit",
+        "href": "https://writings.stephenwolfram.com/2020/07/a-burst-of-physics-progress-at-the-2020-wolfram-summer-school/"
+      },
+      {
+        "label": "Multicomputation",
+        "href": "https://github.com/WolframInstitute/Multicomputation"
+      },
+      {
+        "label": "Quantum Framework",
+        "href": "https://github.com/WolframResearch/QuantumFramework"
+      }
+    ]
+  },
+  {
+    "title": "Computation as hypergraph rewriting",
+    "years": "2022 – 2024",
+    "people": [
+      "utkarsh-bajaj"
+    ],
+    "html": "Compiling automata, Turing and register machines and a functional language into hypergraph rewriting systems, and defining events and causal structure for λ-calculus evaluation through double-pushout hypergraph rewriting.",
+    "evidence": [
+      {
+        "label": "WSS 2022 project",
+        "href": "https://community.wolfram.com/t/wss22-compiling-different-models-of-computation-into-hypergraph-rewriting/20343"
+      },
+      {
+        "label": "arXiv:2409.01006",
+        "href": "https://arxiv.org/abs/2409.01006"
+      }
+    ]
+  },
+  {
+    "title": "Causality, observers and geometric clocks",
+    "years": "2024 – 2026",
+    "people": [
+      "carlos-zapata-carratala"
+    ],
+    "html": "Axiomatic relativity in the manner of Marzke and Wheeler applied to causal graphs from hypergraph rewriting: geometric clocks and signal functions in discrete causal graphs. Also the scientific framing of the Templeton grant “Causality, Observers and Computation”.",
+    "evidence": [
+      {
+        "label": "Grant 63655",
+        "href": "https://www.templeton.org/grant/causality-observers-and-computation-a-new-approach-to-fundamental-physics-and-metamathematics"
+      },
+      {
+        "label": "Carlos’s statement",
+        "href": "~/statements/#carlos-zapata-carratala"
+      }
+    ]
+  }
+]

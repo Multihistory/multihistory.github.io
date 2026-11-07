@@ -1,0 +1,66 @@
+/* Multi-History Science site styles.
+   Light "computational notebook" style: warm white paper, pale yellow state boxes,
+   grey-blue multiway arrows and orange causal edges. */
+@import "@fontsource-variable/source-sans-3";
+@import "@fontsource-variable/source-serif-4";
+@import "@fontsource-variable/source-code-pro";
+@import "./scale.css";
+@import "./reset.css";
+
+:root {
+  --font-body: "Source Sans 3 Variable", system-ui, sans-serif;
+  --font-display: "Source Serif 4 Variable", Georgia, serif;
+  --font-mono: "Source Code Pro Variable", ui-monospace, monospace;
+  --wide: 1160px;
+  --measure: 70ch;
+
+  --paper: #fcfbf7;
+  --panel: #ffffff;
+  --ink: #1f2430;
+  --muted: #5f6774;
+  --rule: #e4e0d4;
+  --rule-strong: #cfc9b8;
+  --state: #fff3cc;
+  --state-edge: #d4a72c;
+  --edge: #7a879f;
+  --causal: #d4651c;
+  --branch: #4c8a58;
+  --link: #24589a;
+  /* Names the shared reset expects. */
+  --bg: var(--paper); --text: var(--ink); --accent: var(--link); --border: var(--rule);
+  color-scheme: light;
+}
+
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); overflow-x: clip; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.75rem, 1.35rem + 1.5vw, 2.5rem); margin: 0 0 1.25rem; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--causal); }
+::selection { background: var(--state); }
+
+.wrap { width: min(100% - 2 * var(--gutter), var(--wide)); margin-inline: auto; }
+.mono { font-family: var(--font-mono); font-size: 0.82rem; }
+.muted { color: var(--muted); }
+.label { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--causal); margin: 0 0 0.8rem; display: flex; align-items: center; gap: .55rem; }
+.label::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--causal); flex: none; }
+.block { padding-block: clamp(3rem, 7vw, 5.5rem); scroll-margin-top: 64px; }
+.block + .block { border-top: 1px solid var(--rule); }
+.intro-text { max-width: var(--measure); color: var(--muted); font-size: 1.06rem; margin: -0.4rem 0 2rem; }
+
+/* A "cell": the notebook-like card used across the pages. */
+.cell { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; box-shadow: 0 1px 0 rgba(31, 36, 48, .04); }
+
+.btn { display: inline-flex; align-items: center; gap: .5rem; padding: .6rem 1.05rem; border-radius: 6px; border: 1px solid var(--ink); color: var(--ink); background: var(--panel); text-decoration: none; font-size: .95rem; font-weight: 500; transition: background-color .15s, color .15s; }
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn.primary { background: var(--ink); color: var(--paper); }
+.btn.primary:hover { background: var(--causal); border-color: var(--causal); color: #fff; }
+.btn[aria-disabled="true"] { border-style: dashed; border-color: var(--rule-strong); color: var(--muted); background: transparent; cursor: not-allowed; }
+.btn[aria-disabled="true"]:hover { background: transparent; color: var(--muted); }
+.soon { font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; padding: .1rem .4rem; border-radius: 3px; background: var(--state); color: #7a5b06; }
+
+/* Person colour dots (timeline and people). */
+.dot { display: inline-block; width: .7em; height: .7em; border-radius: 50%; background: var(--c, var(--edge)); flex: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

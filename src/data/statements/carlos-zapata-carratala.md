@@ -1,0 +1,16 @@
+---
+person: carlos-zapata-carratala
+received: 2026-11-02
+---
+
+My involvement with the physics project came in as someone with a background in differential geometry and an interest in hypergraph rewriting independently, motivated from the Arity Science project. When I first joined the Wolfram Institute, discussions with Xerxes Arsiwalla and Jonathan Gorard led to the ideation of the infrageometry project. Terms such as infracalculus were being used at that time by Stephen Wolfram, and I thought that the physics project needed a foundation in a different kind of mathematics that uses discrete combinatorial data structures as a substance and pure rewrite rules as the computational framework to give it life.
+
+This kickstarted a research process by which I tried to build a dictionary with all of conventional differential geometry, to which Jonathan was also contributing some ideas, where he would suggest some applications in physics while I was leading the conceptual framework and general directions. Then I worked for a few months directly with Stephen Wolfram to make those things formalized until around June 2024, when that collaboration ended.
+
+At that point, I was starting to work on a JTF grant application that eventually became the Causality, Observers and Computation grant, which I led as project leader until October 19th, 2026, when my position at the Wolfram Foundation ended. That grant had two scientific pillars of open questions and research directions. One was the questions stemming from the Arity Science project, particularly those that had a metamathematical angle and had some overlap or conceptual resonance with the metamathematics project that Wolfram did a few years before. The other was the infrageometry project, where geometry-like structures were to be derived from pure hypergraph rewriting. The grant application was written, developed and coordinated with three other universities, with Nicolas Behr, Josh Grochow and Alex Kolpakov. Eventually it was awarded, and in October 2025 it began.
+
+In that process, Pavel Hajek joined as postdoc in the project, and together we had several sessions where we ideated and discussed multiple directions. During this time, I also had conversations with Utkarsh Bajaj about discrete analogs of differential geometry, having worked with him in a winter school where he did a project on discrete difference operators on graphs that to this day has led to several further developments. Pavel went on to work with Stephen on infrageometry. My involvement in the infrageometry project ended, and later my position at the Wolfram Foundation ended as well.
+
+During that time, I also developed and finalized a research project in which axiomatic relativity, as presented in the original writings of Marzke and Wheeler, and the construction of a geometric clock were going to be applied to causal graphs arising from hypergraph rewriting. I concluded some investigations with AI as well, to conclude that there was a formal set-theoretic structure that allowed for the construction of geometric clocks and signal functions in discrete causal graphs, and how they connected to the hypergraph rewriting systems that generated them.
+
+This is the extent of my involvement so far.

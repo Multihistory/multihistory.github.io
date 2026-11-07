@@ -1,0 +1,85 @@
+[
+  {
+    "name": "SetReplace",
+    "kind": "Wolfram Language + C++ · 2018–2025",
+    "people": [
+      "max-piskunov"
+    ],
+    "href": "https://github.com/maxitg/SetReplace",
+    "html": "Engine for set and hypergraph substitution systems: <code>WolframModel</code>, causal and token–event graphs, multiway and local multiway evolution, hypergraph plots."
+  },
+  {
+    "name": "HypergraphRewritingEngine",
+    "kind": "C++ / CUDA · 2025–2026",
+    "people": [
+      "richard-assar"
+    ],
+    "href": "https://github.com/WolframInstitute/HypergraphRewritingEngine",
+    "html": "Parallel and GPU multiway hypergraph rewriting with exact canonicalization, deterministic results and an interactive visualiser."
+  },
+  {
+    "name": "Hypergraph",
+    "kind": "Wolfram Language paclet · 2023–2026",
+    "people": [
+      "nikolay-murzin",
+      "carlos-zapata-carratala",
+      "pavel-hajek"
+    ],
+    "href": "https://github.com/WolframInstitute/Hypergraph",
+    "html": "Hypergraphs, hypergraph rewriting and hypermatrix algebra, including the hypergraph insertion bracket."
+  },
+  {
+    "name": "Multicomputation",
+    "kind": "Wolfram Language paclet · 2022–2026",
+    "people": [
+      "nikolay-murzin"
+    ],
+    "href": "https://github.com/WolframInstitute/Multicomputation",
+    "html": "Multiway systems and the <code>Multi</code> container for multicomputational models."
+  },
+  {
+    "name": "QuantumFramework",
+    "kind": "Wolfram Language paclet · 2021–",
+    "people": [
+      "nikolay-murzin"
+    ],
+    "href": "https://github.com/WolframResearch/QuantumFramework",
+    "html": "Quantum states, operators, circuits and measurements; Nik wrote its early code base, with the Wolfram quantum computation team."
+  },
+  {
+    "name": "DiagrammaticComputation · Lambda",
+    "kind": "Wolfram Language paclets · 2020–2025",
+    "people": [
+      "nikolay-murzin"
+    ],
+    "href": "https://github.com/WolframInstitute/DiagrammaticComputation",
+    "html": "Compositional string-diagram calculus (with Ian Ford) and lambda-calculus diagrams and trees."
+  },
+  {
+    "name": "Infrageometry",
+    "kind": "Wolfram Language · 2026",
+    "people": [
+      "pavel-hajek"
+    ],
+    "href": "https://github.com/WolframInstitute/Infrageometry",
+    "html": "Experimental code for geometry emerging from large graphs at large observer scales, with companion repositories for causality, analysis and gauge theory."
+  },
+  {
+    "name": "Hyperiad",
+    "kind": "Python notebook · 2026",
+    "people": [
+      "carlos-zapata-carratala"
+    ],
+    "href": "https://arity.science/hyperiad/",
+    "html": "A browser notebook for hypergraph rewriting and higher-arity mathematics, from the Arity Science programme."
+  },
+  {
+    "name": "PostTagSystem · CombinatorEvolve",
+    "kind": "C++ · 2020–2021",
+    "people": [
+      "max-piskunov"
+    ],
+    "href": "https://github.com/maxitg/PostTagSystem",
+    "html": "Fast evolvers for Post tag systems and combinators, used in the corresponding studies of computational irreducibility."
+  }
+]

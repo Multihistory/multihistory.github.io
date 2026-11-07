@@ -1,0 +1,70 @@
+---
+// Timeline drawn like a causal graph: a spine of events, each node coloured by the people
+// involved (grey, hollow nodes are milestones of the Wolfram Physics Project itself).
+import { person, shortDate, link, statementsOf, type Entry } from "../lib/multihistory";
+import { href } from "../data/site";
+
+interface Props { entries: Entry[]; detailed?: boolean }
+const { entries, detailed = false } = Astro.props;
+const years = [...new Set(entries.map((e) => e.date.slice(0, 4)))];
+const firstName = (slug: string) => person(slug)?.name.split(" ")[0] ?? slug;
+---
+<div class:list={["tl", { detailed }]}>
+  {years.map((y) => (
+    <section class="year" data-year={y}>
+      <h3 class="mono">{y}</h3>
+      <ol>
+        {entries.filter((e) => e.date.startsWith(y)).map((e) => (
+          <li class:list={{ context: e.context }} data-people={e.people.join(" ")} data-context={e.context ? "1" : undefined}>
+            <span class="node" aria-hidden="true">
+              {e.context
+                ? <span class="dot hollow" />
+                : e.people.map((p) => <span class="dot" style={`--c:${person(p)?.color}`} />)}
+            </span>
+            <div class="body">
+              <p class="meta mono"><span class="date">{shortDate(e.date) || y}</span><span class="type">{e.type}</span>
+                {e.people.length > 0 && <span class="who">{e.people.map((p) => person(p)?.name).join(", ")}</span>}</p>
+              <p class="what" set:html={e.html} />
+              {detailed && (e.sources.length > 0 || e.statement) && (
+                <p class="src">
+                  {e.sources.length > 0 && <span class="mono k">Evidence</span>}
+                  {e.sources.map((s) => <a href={link(s.href)}>{s.label}</a>)}
+                  {statementsOf(e).map((s) => <a class="stmt" href={href(`/statements/#${s}`)}>{firstName(s)}’s statement</a>)}
+                </p>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))}
+</div>
+<style>
+  .tl { display: grid; gap: 0; }
+  .year { display: grid; grid-template-columns: 76px 1fr; gap: 1rem; }
+  .year[hidden] { display: none; }
+  .year h3 { margin: 0; padding-top: .35rem; font-size: .95rem; color: var(--causal); font-weight: 600; position: sticky; top: 68px; align-self: start; }
+  ol { list-style: none; margin: 0; padding: 0 0 1.5rem; position: relative; }
+  /* The spine. */
+  ol::before { content: ""; position: absolute; left: 11px; top: .2rem; bottom: 0; width: 1.5px; background: var(--rule-strong); }
+  li { position: relative; display: grid; grid-template-columns: 24px 1fr; gap: .9rem; padding-bottom: 1.1rem; }
+  li[hidden] { display: none; }
+  .node { display: flex; flex-direction: column; align-items: center; gap: 2px; padding-top: .4rem; position: relative; z-index: 1; }
+  .node .dot { width: 12px; height: 12px; border: 2px solid var(--paper); box-sizing: content-box; }
+  .node .dot.hollow { background: var(--paper); border: 2px solid var(--edge); width: 8px; height: 8px; box-shadow: 0 0 0 2px var(--paper); }
+  .body p { margin: 0; }
+  .meta { display: flex; flex-wrap: wrap; gap: .2rem .8rem; color: var(--muted); font-size: .76rem; margin-bottom: .15rem !important; }
+  .date { color: var(--ink); font-weight: 500; min-width: 3.6em; }
+  .type { text-transform: uppercase; letter-spacing: .08em; color: var(--causal); }
+  .context .type { color: var(--edge); }
+  .who { color: var(--muted); }
+  .what { line-height: 1.55; }
+  .context .what { color: var(--muted); }
+  .src { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .9rem; margin-top: .35rem !important; font-size: .9rem; }
+  .src .k { font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+  .stmt { color: var(--branch); }
+  @media (max-width: 640px) {
+    .year { grid-template-columns: 1fr; gap: .4rem; }
+    .year h3 { position: static; }
+  }
+</style>
