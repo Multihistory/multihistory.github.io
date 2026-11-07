@@ -1,7 +1,7 @@
 # Multi-History Science
 
 Source for https://multihistory.org, maintained in https://github.com/Multihistory/website.
-The supplied Astro design comes from the original ZIP, retained in Git history.
+The supplied Astro design comes from the original ZIP. At the owner's request, the ZIP was removed from the source tree and published branch history before making this repository public.
 The initial text is synchronized with https://arity.science/multihistory/ and its timeline and statements pages.
 The standalone repository is the maintained source after deployment. The Arity copy is not changed here.
 

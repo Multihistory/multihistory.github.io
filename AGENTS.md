@@ -170,4 +170,4 @@ The style is a light "computational notebook" look inspired by the general graph
 
 ## Administration update — 7 November 2026
 
-The initial migration uses the current Arity home, timeline and statements pages for textual content, preserving this package's design. The website repository is the maintained standalone source. Keep `noindex: true` until explicitly asked otherwise. The original ZIP remains in Git history.
+The initial migration uses the current Arity home, timeline and statements pages for textual content, preserving this package's design. The website repository is the maintained standalone source. Keep `noindex: true` until explicitly asked otherwise. At the owner's request, the original ZIP was removed from the tree and published branch history before the repository became public.
