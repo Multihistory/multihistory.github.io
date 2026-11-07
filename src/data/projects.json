@@ -38,6 +38,29 @@
     "links": []
   },
   {
+    "title": "Emergent Spacetime",
+    "status": "Ongoing",
+    "people": [
+      "pavel-hajek"
+    ],
+    "html": "How could space and time emerge in hypergraph rewriting models of the universe?",
+    "links": [
+      {
+        "label": "Repository",
+        "href": "https://github.com/Multihistory/EmergentGeometry"
+      }
+    ]
+  },
+  {
+    "title": "InfraEconomics",
+    "status": "Proposed",
+    "people": [
+      "pavel-hajek"
+    ],
+    "html": "What are the simplest computational models that exhibit economic phenomena? Following the approach of infrageometry, we explore two directions. In one direction, we ask whether observable economic behavior can emerge from simple systems with resource constraints and local interactions. For example, consider a cellular automaton with an additional rule: whenever the number of black cells exceeds 20, five black cells in the densest region turn white. How does this constraint affect the automaton’s behavior, and how does it recover after these disaster events? Does deleting cells in the densest region have different consequences from deleting them randomly? Which observables have a meaningful economic interpretation, and how do their patterns vary across families of cellular automata? The other infra-direction represents economic states as hypergraphs and economic processes, such as production, exchange, and consumption, as elementary rewriting rules. Can these models recover familiar economic curves, and under what assumptions? Which minimal mechanisms determine stability, shortages, and recovery after disruption?",
+    "links": []
+  },
+  {
     "title": "An independent attribution record",
     "status": "Ongoing",
     "people": [
