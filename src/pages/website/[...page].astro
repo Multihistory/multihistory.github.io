@@ -1,0 +1,25 @@
+---
+import { href } from "../../data/site";
+
+export function getStaticPaths() {
+  return [undefined, "timeline", "statements"].map((page) => ({ params: { page } }));
+}
+
+const { page } = Astro.params;
+const destination = href(page ? `/${page}/` : "/");
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Page moved | Multi-History Science</title>
+    <meta name="robots" content="noindex" />
+    <script define:vars={{ destination }}>
+      window.location.replace(destination + window.location.search + window.location.hash);
+    </script>
+    <meta http-equiv="refresh" content={`0;url=${destination}`} />
+  </head>
+  <body>
+    <p>This page has moved. <a href={destination}>Continue to the new address</a>.</p>
+  </body>
+</html>
