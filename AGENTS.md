@@ -41,7 +41,7 @@ The owner's stated purpose, to keep in mind on every edit: *the goal is not to a
 - [Astro](https://astro.build) 7, a static site with no client framework. Node 22 or newer.
 - Fonts come from Fontsource packages: Source Serif 4 (headings), Source Sans 3 (body), Source Code Pro (mono).
 - `npm install`, then `npm run dev` (local server), `npm run build` (output in `dist/`), `npm run preview`.
-- Pushes to `main` deploy `dist/` through GitHub Actions to GitHub Pages at https://multihistory.org. See README.md for DNS and deployment details. `public/_headers` is inherited from the original host and is not applied by GitHub Pages.
+- Pushes to `main` deploy `dist/` through GitHub Actions to GitHub Pages at https://multihistory.github.io/website/. `public/_headers` is inherited from the original host and is not applied by GitHub Pages.
 - **Before publishing:**
   - `npm run build` must succeed.
   - Check every changed page at 1280px and 390px wide. There must be no horizontal scroll at 390px.
@@ -156,7 +156,7 @@ The style is a light "computational notebook" look inspired by the general graph
 ## 9. Open tasks
 
 - Collect personal statements from Max, Xerxes, Nik, Utkarsh and Richard. Add each as `src/data/statements/<slug>.md`, then link timeline entries to it with `statement` where it adds information.
-- The public domain in `src/data/site.ts` is `https://multihistory.org`, with an empty base path.
+- The provisional site uses `https://multihistory.github.io` with base path `/website`. The intended custom domain is `multihistory.org`.
 - When the owner says so, set `noindex: false`. That re-enables the sitemap and canonical links.
 - Active projects (`projects.json`) are a draft confirmed by the owner. Update them as members report.
 
