@@ -4,7 +4,7 @@
 export const site = {
   name: "Multi-History Science",
   // Public address of the site, used for canonical links and the sitemap. Change it with the domain.
-  url: "https://multihistory.github.io",
+  url: "https://multihistory.org",
   base: "",
   description:
     "Multi-History Science: an independent collaboration among researchers who have worked on rewrite systems, hypergraphs, causality and emergent spacetime in connection to the Wolfram Physics Project, documenting and preserving their contributions.",
