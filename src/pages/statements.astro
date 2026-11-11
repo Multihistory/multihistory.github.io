@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import { href } from "../data/site";
 import { people, photo, statements, hasStatement } from "../lib/multihistory";
 
-const fmt = (d: string) => new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+const fmt = (d: string) => new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 const pending = people.filter((p) => !hasStatement(p.slug));
 ---
 <Layout title="Personal statements" description="Personal statements by members of the Multi-History Science collaboration about their involvement in, and idea contributions to, the Wolfram Physics Project.">
