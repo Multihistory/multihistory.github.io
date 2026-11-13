@@ -26,7 +26,10 @@ const pending = people.filter((p) => !hasStatement(p.slug));
               <p class="mono muted">Statement received {fmt(received)} · <a href={`${href("/timeline/")}?person=${slug}`}>timeline entries</a>{note && <> · {note}</>}</p>
             </div>
           </header>
-          <div class="text"><Content /></div>
+          <details class="statement-copy">
+            <summary>See more</summary>
+            <div class="text"><Content /></div>
+          </details>
         </article>
       );
     })}
@@ -47,6 +50,9 @@ const pending = people.filter((p) => !hasStatement(p.slug));
   .avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 1px solid var(--rule); }
   .statement h2 { margin: 0 0 .15rem; font-size: 1.6rem; }
   .statement header p { margin: 0; font-size: .78rem; }
+  .statement-copy summary { color: var(--link); cursor: pointer; font-family: var(--font-mono); font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+  .statement-copy summary::marker { color: var(--accent); }
+  .statement-copy[open] summary { margin-bottom: 1.2rem; }
   .text { max-width: var(--measure); font-family: var(--font-display); font-size: 1.08rem; line-height: 1.7; }
   .text :global(p) { margin: 0 0 1.1em; }
   .text :global(ul) { padding-left: 1.2em; margin: 0 0 1.1em; }
