@@ -7,7 +7,7 @@ export const site = {
   url: "https://multihistory.github.io",
   base: "",
   description:
-    "Multi-History Science: an independent collaboration among researchers who have worked on rewrite systems, hypergraphs, causality and emergent spacetime in connection to the Wolfram Physics Project, documenting and preserving their contributions.",
+    "An independent collaboration among researchers who have worked on rewrite systems, hypergraphs, causality, and emergent spacetime in connection with the Wolfram Physics Project. Its purpose is to document and preserve their contributions, support continued collaboration and networking, and coordinate possible future independent research in related directions.",
   // GitHub organisation; set to null to show the buttons as "coming soon" instead.
   github: "https://github.com/Multihistory" as string | null,
   // true keeps the site out of search engines (robots noindex, no canonical link).
@@ -16,6 +16,7 @@ export const site = {
   nav: [
     { label: "Contributions", href: "/#contributions" },
     { label: "People", href: "/#people" },
+    { label: "Join us", href: "/#join" },
     { label: "Projects", href: "/#projects" },
     { label: "Timeline", href: "/timeline/" },
     { label: "Resources", href: "/#resources" },

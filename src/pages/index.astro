@@ -17,7 +17,7 @@ const names = (slugs: string[]) => slugs.map((s) => person(s)).filter(Boolean);
     <div class="hero-text">
       <p class="label">Research collaboration · prototype</p>
       <h1>{site.name}</h1>
-      <p class="lead">An independent collaboration among researchers who have worked on topics around rewrite systems, hypergraphs, causality and emergent spacetime in connection to the Wolfram Physics Project. Its purpose is to document and preserve their contributions, support independent networking, and coordinate possible future independent research in related directions.</p>
+      <p class="lead">An independent collaboration among researchers who have worked on rewrite systems, hypergraphs, causality, and emergent spacetime in connection with the Wolfram Physics Project. Its purpose is to document and preserve their contributions, support continued collaboration and networking, and coordinate possible future independent research in related directions.</p>
       <p class="purpose">Not affiliated with or endorsed by Wolfram Foundation or Wolfram Research Inc. — it does not claim ownership of their names, projects, or materials.</p>
       <div class="actions">
         <a class="btn primary" href={href("/timeline/")}>Detailed timeline →</a>
@@ -96,6 +96,18 @@ const names = (slugs: string[]) => slugs.map((s) => person(s)).filter(Boolean);
     </div>
   </section>
 
+  <section class="block wrap" id="join">
+    <p class="label">Join us</p>
+    <h2>Interested in contributing?</h2>
+    <div class="cell invitation">
+      <p>Are you interested in rewrite systems, hypergraphs, causality, emergent spacetime, or related topics? Would you like to contribute, discuss an idea with one of the researchers, or develop a project toward completion under this umbrella?</p>
+      <p>Let us know. We welcome conversations about possible mentorship and independent collaboration; arrangements depend on the people and project involved.</p>
+      <p class="invitation-links">
+        <a class="btn primary" href="https://www.youtube.com/@MultiHistoryScience">Hyperseminar livestream →</a>
+      </p>
+    </div>
+  </section>
+
   <section class="block wrap" id="timeline">
     <p class="label">Timeline</p>
     <h2>Summary</h2>
@@ -164,6 +176,11 @@ const names = (slugs: string[]) => slugs.map((s) => person(s)).filter(Boolean);
   .project { display: flex; flex-direction: column; padding: 1.5rem; }
   .project h3 { margin: .2rem 0 .6rem; font-size: 1.3rem; }
   .project > p:not(.status):not(.who):not(.ev) { color: var(--muted); font-size: .97rem; }
+
+  .invitation { max-width: 62rem; padding: clamp(1.3rem, 3vw, 2rem); }
+  .invitation p { max-width: 60ch; color: var(--muted); }
+  .invitation p:first-child { margin-top: 0; }
+  .invitation-links { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 0; }
 
   .tl-cell { padding: clamp(1.2rem, 3vw, 2.2rem); }
   .tl-cell .btn { margin-top: .5rem; }
