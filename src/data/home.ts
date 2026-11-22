@@ -35,7 +35,4 @@ export const home = {
     geometry: geometryCover,
     physics: null,
   },
-  otherProjects: [
-    { title: "Emergent Economy", tags: ["Foundational economy", "Minimal models"], href: "~/projects/#emergent-economy" },
-  ],
 };

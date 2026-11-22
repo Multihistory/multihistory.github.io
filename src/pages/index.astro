@@ -123,19 +123,6 @@ const introduction = `${home.introduction} ${home.projectName}.`;
         <h2 id="projects-title">Other projects</h2>
         <a class="home-link" id="projects" href={href("/projects/")}>More projects <span aria-hidden="true">→</span></a>
       </div>
-      <div class="research-grid">
-        {home.otherProjects.map((project) => (
-          <a class="project-card" href={link(project.href)}>
-            <div>
-              <h3>{project.title}</h3>
-              <ul class="tags" aria-label="Topics">
-                {project.tags.map((tag) => <li>{tag}</li>)}
-              </ul>
-            </div>
-            <span class="home-link" aria-hidden="true">→</span>
-          </a>
-        ))}
-      </div>
     </section>
     <p class="inspiration">This concept was inspired by <a href={home.arityUrl}>Arity Science</a>.</p>
   </div>
@@ -230,8 +217,8 @@ const introduction = `${home.introduction} ${home.projectName}.`;
   .milestones strong { font-size: .94rem; line-height: 1.28; font-weight: 650; }
   .video-grid { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 2rem) / 3); gap: 1rem; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
   .video-grid::-webkit-scrollbar { display: none; }
-  .video-card, .guide-card, .project-card { border: 1px solid var(--rule); border-radius: 9px; background: var(--panel); color: var(--ink); text-decoration: none; }
-  .video-card:hover, .project-card:hover { border-color: #9daea4; box-shadow: 0 2px 9px #25382d10; color: var(--ink); }
+  .video-card, .guide-card { border: 1px solid var(--rule); border-radius: 9px; background: var(--panel); color: var(--ink); text-decoration: none; }
+  .video-card:hover { border-color: #9daea4; box-shadow: 0 2px 9px #25382d10; color: var(--ink); }
   .video-card { display: flex; flex-direction: column; overflow: hidden; scroll-snap-align: start; }
   .video-card:focus-visible { outline-offset: -3px; }
   .video-cover { position: relative; aspect-ratio: 16 / 9; background: #111525; }
@@ -254,9 +241,6 @@ const introduction = `${home.introduction} ${home.projectName}.`;
   .guide-card h3 { font-size: clamp(1.4rem, 2.25vw, 1.85rem); letter-spacing: -.025em; margin: 0 0 .3rem; }
   .guide-card p { color: var(--muted); margin: 0 0 .9rem; line-height: 1.35; }
   .guide-status { margin-top: auto; padding-top: .7rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .875rem; }
-  .project-card { display: flex; justify-content: space-between; align-items: center; gap: .875rem; padding: .875rem 1rem; }
-  .project-card h3 { font-size: 1.375rem; margin: 0 0 .45rem; }
-  .project-card .tags { margin: 0; }
   .inspiration { margin: .75rem 0 0; color: var(--muted); font-size: .9rem; }
   .inspiration a { color: var(--home-green); }
 
