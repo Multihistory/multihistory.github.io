@@ -1,5 +1,6 @@
 ---
 import { href } from "../data/site";
+import { initialSeminars } from "../data/home";
 import Layout from "../layouts/Layout.astro";
 
 const principles = [
@@ -18,7 +19,7 @@ const principles = [
 <Layout title="Founding principles" description="The founding principles of the Multi-History Science collaboration.">
   <article class="wrap reading">
     <a class="back" href={href("/#about")}>About the collaboration</a>
-    <p class="eyebrow muted">From the initial Hyperseminar meeting</p>
+    <p class="eyebrow muted">From the initial Hyperseminars</p>
     <h1>Founding principles</h1>
 
     <ul class="principles">
@@ -26,8 +27,15 @@ const principles = [
     </ul>
 
     <section>
-      <h2>Initial meeting</h2>
-      <a href="https://www.youtube.com/watch?v=ssW5TOolokQ">Watch Hyperseminar #2</a>
+      <h2>Initial Hyperseminars</h2>
+      <ul class="meeting-links">
+        {initialSeminars.map((seminar) => (
+          <li>
+            <a href={`https://www.youtube.com/watch?v=${seminar.videoId}`}>Hyperseminar #{seminar.number} · {seminar.title}</a>
+            {seminar.number === 2 && <a href={href("/hyperseminar/02/multihistory-initial-meeting.pdf")}>View presentation (PDF)</a>}
+          </li>
+        ))}
+      </ul>
     </section>
   </article>
 </Layout>
@@ -40,4 +48,6 @@ const principles = [
   h2 { margin: 1.6rem 0 .35rem; font-size: var(--step-1); }
   .principles { padding-left: 1.25rem; }
   .principles li + li { margin-top: .25rem; }
+  .meeting-links { display: grid; gap: .35rem; margin: 0; padding: 0; list-style: none; }
+  .meeting-links li { display: flex; flex-wrap: wrap; gap: .25rem 1.2rem; }
 </style>

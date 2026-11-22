@@ -6,11 +6,34 @@ import { href } from "../data/site";
 <Layout title="Contact us">
   <section class="wrap contact" aria-labelledby="contact-title">
     <h1 id="contact-title">Contact us</h1>
-    <p>For questions or corrections about the website, use the <a href="https://github.com/Multihistory/multihistory.github.io/issues">public GitHub issue tracker</a>.</p>
+    <form class="contact-form" action="https://github.com/Multihistory/multihistory.github.io/issues/new" method="get" aria-describedby="contact-note">
+      <label for="contact-subject">Subject</label>
+      <input id="contact-subject" name="title" required maxlength="100" />
+      <label for="contact-message">Message <span>(up to 650 characters)</span></label>
+      <textarea id="contact-message" name="body" rows="5" required maxlength="650"></textarea>
+      <p id="contact-note">This opens a draft on GitHub. Posted issues are public.</p>
+      <button class="btn primary" type="submit">Continue on GitHub</button>
+    </form>
     <p>For research inquiries, see the profile links alongside the <a href={href("/statements/")}>personal statements</a>.</p>
   </section>
 </Layout>
 
 <style>
   .contact { max-width: 760px; padding-block: clamp(2rem, 5vw, 3.5rem); }
+  .contact-form { display: grid; gap: .45rem; margin: 0 0 1.5rem; }
+  .contact-form label { font-weight: 600; }
+  .contact-form label span { color: var(--muted); font-size: .9rem; font-weight: 400; }
+  .contact-form input, .contact-form textarea {
+    min-width: 0;
+    padding: .65rem .75rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: 6px;
+    background: var(--panel);
+    color: var(--ink);
+    font: inherit;
+  }
+  .contact-form textarea { resize: vertical; }
+  .contact-form input + label { margin-top: .4rem; }
+  #contact-note { color: var(--muted); font-size: .9rem; margin: .35rem 0; }
+  .contact-form button { justify-self: start; cursor: pointer; }
 </style>

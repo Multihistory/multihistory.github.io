@@ -18,13 +18,15 @@ const introduction = `${home.introduction} ${home.projectName}.`;
         <p class="hero-note">{home.purpose}</p>
         <div class="hero-actions">
           <a class="home-primary" href="#research">Explore the research <span aria-hidden="true">→</span></a>
-          <a class="home-link" href="#people">Personal statements <span aria-hidden="true">→</span></a>
+          <a class="home-link" href={href("/statements/")}>Personal statements <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <div class="hero-art" aria-hidden="true">
         <img src={href("/multihistory-mark.svg")} alt="" width="218" height="232" />
       </div>
     </section>
+
+    <p class="inspiration">This concept was inspired by <a href={home.arityUrl}>Arity Science</a>.</p>
 
     <section class="home-section" id="people" aria-labelledby="people-title">
       <div class="section-heading">
@@ -100,31 +102,27 @@ const introduction = `${home.introduction} ${home.projectName}.`;
         {researchAreas.map((area) => {
           const cover = home.guideCovers[area.slug];
           return (
-            <article class="guide-card">
+            <a class="guide-card" href={href(`/guides/${area.slug}/`)}>
               {cover
                 ? <Image class="guide-cover" src={cover} width={720} widths={[360, 720]} sizes="(max-width: 610px) 100vw, 360px" alt="" />
-                : <div class="guide-cover guide-placeholder" aria-hidden="true">TBD</div>}
+                : <div class="guide-cover guide-placeholder" aria-hidden="true"></div>}
               <div class="guide-copy">
                 <ul class="tags" aria-label="Topics">
                   {area.tags.map((tag) => <li>{tag}</li>)}
                 </ul>
                 <h3>{area.title}</h3>
                 <p>{area.question}</p>
-                <span class="guide-status">Guide TBD</span>
+                <span class="guide-action home-link">Open guide <span aria-hidden="true">→</span></span>
               </div>
-            </article>
+            </a>
           );
         })}
       </div>
     </section>
 
-    <section class="home-section" id="other-research" aria-labelledby="projects-title">
-      <div class="section-heading">
-        <h2 id="projects-title">Other projects</h2>
-        <a class="home-link" id="projects" href={href("/projects/")}>More projects <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
-    <p class="inspiration">This concept was inspired by <a href={home.arityUrl}>Arity Science</a>.</p>
+    <p class="more-projects" id="other-research">
+      <a class="home-link" id="projects" href={href("/projects/")}>More projects <span aria-hidden="true">→</span></a>
+    </p>
   </div>
 </Layout>
 
@@ -218,7 +216,7 @@ const introduction = `${home.introduction} ${home.projectName}.`;
   .video-grid { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 2rem) / 3); gap: 1rem; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
   .video-grid::-webkit-scrollbar { display: none; }
   .video-card, .guide-card { border: 1px solid var(--rule); border-radius: 9px; background: var(--panel); color: var(--ink); text-decoration: none; }
-  .video-card:hover { border-color: #9daea4; box-shadow: 0 2px 9px #25382d10; color: var(--ink); }
+  .video-card:hover, .guide-card:hover { border-color: #9daea4; box-shadow: 0 2px 9px #25382d10; color: var(--ink); }
   .video-card { display: flex; flex-direction: column; overflow: hidden; scroll-snap-align: start; }
   .video-card:focus-visible { outline-offset: -3px; }
   .video-cover { position: relative; aspect-ratio: 16 / 9; background: #111525; }
@@ -234,13 +232,15 @@ const introduction = `${home.introduction} ${home.projectName}.`;
   .research-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
   .guide-card { display: grid; grid-template-rows: auto 1fr; overflow: hidden; min-width: 0; }
   .guide-cover { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: #eae6dd; }
-  .guide-placeholder { display: grid; place-items: center; background: #edf0e6; color: var(--muted); font-weight: 650; letter-spacing: .08em; }
+  .guide-placeholder { background: #edf0e6; }
   .guide-copy { display: flex; flex-direction: column; padding: 1.05rem 1.15rem; }
   .tags { display: flex; flex-wrap: wrap; gap: .25rem .375rem; margin: 0 0 .55rem; padding: 0; list-style: none; }
   .tags li { background: #edf0e9; color: #344c42; font-size: .8rem; font-weight: 650; border: 1px solid #e4e9df; padding: 0 .5rem; border-radius: 20px; line-height: 1.65; }
   .guide-card h3 { font-size: clamp(1.4rem, 2.25vw, 1.85rem); letter-spacing: -.025em; margin: 0 0 .3rem; }
   .guide-card p { color: var(--muted); margin: 0 0 .9rem; line-height: 1.35; }
-  .guide-status { margin-top: auto; padding-top: .7rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .875rem; }
+  .guide-action { margin-top: auto; padding-top: .7rem; border-top: 1px solid var(--rule); text-align: right; }
+  .guide-card:hover .guide-action { text-decoration: underline; }
+  .more-projects { margin: 1rem 0 0; }
   .inspiration { margin: .75rem 0 0; color: var(--muted); font-size: .9rem; }
   .inspiration a { color: var(--home-green); }
 

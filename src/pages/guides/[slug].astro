@@ -1,0 +1,40 @@
+---
+import type { InferGetStaticPropsType } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import { href } from "../../data/site";
+import { researchAreas } from "../../data/research";
+
+export function getStaticPaths() {
+  return researchAreas.map((area) => ({ params: { slug: area.slug }, props: { area } }));
+}
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { area } = Astro.props;
+---
+
+<Layout title={area.title} description={area.question}>
+  <section class="wrap guide" aria-labelledby="guide-title">
+    <a class="back" href={href("/#research")}>Main research areas</a>
+    <h1 id="guide-title">{area.title}</h1>
+    <p class="question">{area.question}</p>
+    <p class="placeholder">TBD</p>
+  </section>
+</Layout>
+
+<style>
+  .guide { max-width: 760px; padding-block: clamp(2rem, 5vw, 3.5rem); }
+  .back { font-size: .95rem; font-weight: 600; }
+  h1 { margin: .75rem 0 .55rem; }
+  .question { color: var(--muted); font-size: var(--step-1); line-height: 1.4; margin: 0; }
+  .placeholder {
+    display: grid;
+    place-items: center;
+    min-height: 13rem;
+    margin: 1.4rem 0 0;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    background: #edf0e6;
+    font: 600 clamp(3rem, 9vw, 5.5rem)/1 var(--font-display);
+  }
+</style>
