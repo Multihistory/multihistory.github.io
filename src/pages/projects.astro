@@ -1,0 +1,31 @@
+---
+import "../styles/catalogue.css";
+import Layout from "../layouts/Layout.astro";
+import projects from "../data/projects.json";
+import { link, person } from "../lib/multihistory";
+---
+
+<Layout title="Active projects">
+  <section class="wrap catalogue" aria-labelledby="projects-title">
+    <h1 id="projects-title">What the collaboration is working on</h1>
+    <div class="catalogue-grid catalogue-grid-wide">
+      {projects.map(({ title, status, people, html, links }) => (
+        <article class="cell catalogue-card" id={title === "Emergent Economy" ? "emergent-economy" : undefined}>
+          <p class="mono catalogue-meta">{status}</p>
+          <h2>{title}</h2>
+          <p class="catalogue-description" set:html={html} />
+          <p class="catalogue-people">
+            {people.map(person).filter((entry) => entry !== undefined).map((entry) => (
+              <span class="catalogue-credit"><span class="dot" style={`--c:${entry.color}`} aria-hidden="true"></span>{entry.name}</span>
+            ))}
+          </p>
+          {links.length > 0 && (
+            <p class="catalogue-links">
+              {links.map((item) => <a href={link(item.href)}>{item.label}</a>)}
+            </p>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+</Layout>

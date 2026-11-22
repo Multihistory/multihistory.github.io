@@ -1,0 +1,43 @@
+---
+import { href } from "../data/site";
+import Layout from "../layouts/Layout.astro";
+
+const principles = [
+  "Researcher-centered",
+  "Plural perspectives and narratives",
+  "Self-organization and decentralization",
+  "Transparency and open discussion",
+  "Open research and collaboration",
+  "Freedom of tools and technologies",
+  "Methodological flexibility",
+  "Initiative and intellectual independence",
+  "Scientific scrutiny and self-correction",
+  "Respectful disagreement",
+];
+---
+<Layout title="Founding principles" description="The founding principles of the Multi-History Science collaboration.">
+  <article class="wrap reading">
+    <a class="back" href={href("/#about")}>About the collaboration</a>
+    <p class="eyebrow muted">From the initial Hyperseminar meeting</p>
+    <h1>Founding principles</h1>
+
+    <ul class="principles">
+      {principles.map((principle) => <li>{principle}</li>)}
+    </ul>
+
+    <section>
+      <h2>Initial meeting</h2>
+      <a href="https://www.youtube.com/watch?v=ssW5TOolokQ">Watch Hyperseminar #2</a>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .reading { max-width: 760px; padding-block: clamp(2rem, 5vw, 3.5rem); }
+  .back { font-size: .95rem; font-weight: 600; }
+  .eyebrow { margin: 1.3rem 0 .35rem; font-size: .9rem; font-weight: 600; }
+  h1 { margin: 0 0 .65rem; }
+  h2 { margin: 1.6rem 0 .35rem; font-size: var(--step-1); }
+  .principles { padding-left: 1.25rem; }
+  .principles li + li { margin-top: .25rem; }
+</style>

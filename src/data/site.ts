@@ -8,19 +8,19 @@ export const site = {
   base: "",
   description:
     "An independent collaboration among researchers who have worked on rewrite systems, hypergraphs, causality, and emergent spacetime in connection with the Wolfram Physics Project. Its purpose is to document and preserve their contributions, support continued collaboration and networking, and coordinate possible future independent research in related directions.",
-  // GitHub organisation; set to null to show the buttons as "coming soon" instead.
+  // GitHub organisation. Set to null to hide its navigation link.
   github: "https://github.com/Multihistory" as string | null,
   // true keeps the site out of search engines (robots noindex, no canonical link).
   // Turn it off once the site is on its own domain and ready to be public.
   noindex: true,
+  disclaimer:
+    "The collaboration grew out of research connections made through the Wolfram Institute but is not affiliated with, or endorsed by, Wolfram Research, the Wolfram Foundation, the Wolfram Institute or Stephen Wolfram.",
   nav: [
-    { label: "Contributions", href: "/#contributions" },
     { label: "People", href: "/#people" },
-    { label: "Join us", href: "/#join" },
-    { label: "Projects", href: "/#projects" },
-    { label: "Timeline", href: "/timeline/" },
-    { label: "Resources", href: "/#resources" },
-    { label: "Statements", href: "/statements/" },
+    { label: "Timeline", href: "/#timeline" },
+    { label: "Hyperseminar", href: "/#hyperseminar" },
+    { label: "Research", href: "/#research" },
+    { label: "Resources", href: "/resources/", id: "resources" },
   ],
 };
 

@@ -1,0 +1,33 @@
+---
+import "../styles/catalogue.css";
+import Layout from "../layouts/Layout.astro";
+import { site } from "../data/site";
+import resources from "../data/resources.json";
+import { link, person } from "../lib/multihistory";
+---
+
+<Layout title="Code and tools">
+  <section class="wrap catalogue" aria-labelledby="resources-title">
+    <h1 id="resources-title">Code and tools</h1>
+    <p class="catalogue-intro">Software written by members of the collaboration for hypergraph rewriting, multiway systems and related mathematics.</p>
+    <div class="catalogue-grid">
+      {resources.map(({ name, kind, people, href, html }) => (
+        <article class="cell catalogue-card">
+          <p class="mono catalogue-meta">{kind}</p>
+          <h2><a href={link(href)}>{name}</a></h2>
+          <p class="catalogue-description" set:html={html} />
+          <p class="catalogue-people">
+            {people.map(person).filter((entry) => entry !== undefined).map((entry) => (
+              <span class="catalogue-credit"><span class="dot" style={`--c:${entry.color}`} aria-hidden="true"></span>{entry.name}</span>
+            ))}
+          </p>
+        </article>
+      ))}
+      <article class="cell catalogue-card">
+        <p class="mono catalogue-meta">Organisation</p>
+        <h2>{site.github ? <a href={site.github}>{site.name} on GitHub</a> : `${site.name} on GitHub`}</h2>
+        <p class="catalogue-description">{site.github ? "The collaboration's shared GitHub organisation, for its code, notebooks and data." : "A shared GitHub organisation will collect the collaboration's code, notebooks and data."}</p>
+      </article>
+    </div>
+  </section>
+</Layout>

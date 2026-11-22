@@ -1,0 +1,71 @@
+.catalogue {
+  padding-block: clamp(2.5rem, 5vw, 4.25rem);
+}
+
+.catalogue h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.4rem);
+}
+
+.catalogue-intro {
+  max-width: var(--measure);
+  margin: 0 0 1.6rem;
+  color: var(--muted);
+}
+
+.catalogue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 1rem;
+}
+
+.catalogue-grid-wide {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
+}
+
+.catalogue-card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1rem, 2.3vw, 1.4rem);
+  overflow-wrap: anywhere;
+  scroll-margin-top: 6rem;
+}
+
+.catalogue-card h2 {
+  margin: .2rem 0 .65rem;
+  font-size: 1.25rem;
+}
+
+.catalogue-meta {
+  margin: 0;
+  color: var(--muted);
+}
+
+.catalogue-description {
+  margin: 0 0 .75rem;
+  color: var(--muted);
+}
+
+.catalogue-people, .catalogue-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .2rem .85rem;
+  margin: 0 0 .75rem;
+  font-size: .875rem;
+}
+
+.catalogue-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+}
+
+.catalogue-links {
+  margin: auto 0 0;
+  padding-top: .75rem;
+  border-top: 1px solid var(--rule);
+}
+
+.catalogue-card > :last-child {
+  margin-bottom: 0;
+}

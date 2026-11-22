@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { href } from "../data/site";
+---
+
+<Layout title="Contact us">
+  <section class="wrap contact" aria-labelledby="contact-title">
+    <h1 id="contact-title">Contact us</h1>
+    <p>For questions or corrections about the website, use the <a href="https://github.com/Multihistory/multihistory.github.io/issues">public GitHub issue tracker</a>.</p>
+    <p>For research inquiries, see the profile links alongside the <a href={href("/statements/")}>personal statements</a>.</p>
+  </section>
+</Layout>
+
+<style>
+  .contact { max-width: 760px; padding-block: clamp(2rem, 5vw, 3.5rem); }
+</style>

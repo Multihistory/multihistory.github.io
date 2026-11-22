@@ -1,202 +1,291 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import MultiwayGraph from "../components/MultiwayGraph.astro";
-import Timeline from "../components/Timeline.astro";
 import { site, href } from "../data/site";
-import { people, person, photo, timeline, hasStatement, link } from "../lib/multihistory";
-import streams from "../data/streams.json";
-import projects from "../data/projects.json";
-import resources from "../data/resources.json";
+import { home } from "../data/home";
+import { researchAreas } from "../data/research";
+import { link, person, photo } from "../lib/multihistory";
 
-const key = timeline.filter((e) => e.key);
-const names = (slugs: string[]) => slugs.map((s) => person(s)).filter(Boolean);
+const featuredPeople = home.people.map(person).filter((member) => member !== undefined);
+const introduction = `${home.introduction} ${home.projectName}.`;
 ---
-<Layout>
-  <section class="hero wrap">
-    <div class="hero-text">
-      <p class="label">Research collaboration · prototype</p>
-      <h1>{site.name}</h1>
-      <p class="lead">An independent collaboration among researchers who have worked on rewrite systems, hypergraphs, causality, and emergent spacetime in connection with the Wolfram Physics Project. Its purpose is to document and preserve their contributions, support continued collaboration and networking, and coordinate possible future independent research in related directions.</p>
-      <p class="purpose">Not affiliated with or endorsed by Wolfram Foundation or Wolfram Research Inc. — it does not claim ownership of their names, projects, or materials.</p>
-      <div class="actions">
-        <a class="btn primary" href={href("/timeline/")}>Detailed timeline →</a>
-        <a class="btn" href={href("/statements/")}>Personal statements</a>
-        {site.github
-          ? <a class="btn" href={site.github}>GitHub organisation</a>
-          : <span class="btn" aria-disabled="true" title="The GitHub organisation does not exist yet">GitHub organisation <span class="soon">soon</span></span>}
+<Layout description={`${introduction} ${home.purpose}`}>
+  <div class="home wrap">
+    <section class="hero" aria-labelledby="home-title">
+      <div class="hero-copy">
+        <h1 id="home-title">{site.name}</h1>
+        <p>{home.introduction}{" "}<a href={home.projectUrl}>{home.projectName}</a>.</p>
+        <p class="hero-note">{home.purpose}</p>
+        <div class="hero-actions">
+          <a class="home-primary" href="#research">Explore the research <span aria-hidden="true">→</span></a>
+          <a class="home-link" href="#people">Personal statements <span aria-hidden="true">→</span></a>
+        </div>
       </div>
-    </div>
-    <figure class="hero-graph">
-      <MultiwayGraph rules={[["AB", "BBA"], ["A", "B"]]} init="AAB" steps={6} width={520} height={500} title="Multiway graph of the string rewriting rules AB → BBA and A → B starting from AAB: histories branch and then merge into a single final state" />
-      <figcaption class="mono muted">Multiway graph of {"{AB → BBA, A → B}"} from AAB: many histories, one outcome.</figcaption>
-    </figure>
-  </section>
+      <div class="hero-art" aria-hidden="true">
+        <img src={href("/multihistory-mark.svg")} alt="" width="218" height="232" />
+      </div>
+    </section>
 
-  <section class="block wrap" id="contributions">
-    <p class="label">Contributions</p>
-    <h2>Streams of ideas at a glance</h2>
-    <p class="intro-text">A high-level summary of contributions that can be traced to members of the collaboration, independently of the project's branding. Each is backed by the evidence in the <a href={href("/timeline/")}>detailed timeline</a>.</p>
-    <div class="streams">
-      {streams.map((s) => (
-        <article class="cell stream">
-          <p class="years mono">{s.years}</p>
-          <h3>{s.title}</h3>
-          <p class="who">
-            {names(s.people).map((p) => <span class="chip"><span class="dot" style={`--c:${p!.color}`} />{p!.name}</span>)}
-          </p>
-          <p class="text" set:html={s.html} />
-          {s.evidence.length > 0 && (
-            <p class="ev">{s.evidence.map((l) => <a href={link(l.href)}>{l.label}</a>)}</p>
-          )}
-        </article>
-      ))}
-    </div>
-  </section>
+    <section class="home-section" id="people" aria-labelledby="people-title">
+      <div class="section-heading">
+        <h2 id="people-title">People</h2>
+        <p>Personal statements</p>
+      </div>
+      <ul class="people-grid">
+        {featuredPeople.map((member) => {
+          const portrait = photo(member.photo);
+          const initials = member.name.split(" ").slice(0, 2).map((name) => name[0]).join("");
+          return (
+            <li>
+              <a class="person" href={href(`/statements/#${member.slug}`)} aria-label={`Personal statement of ${member.name}`}>
+                <span class="avatar" style={`--person-color:${member.color}`} aria-hidden="true">
+                  {portrait ? <Image src={portrait} width={144} height={144} alt="" /> : <span class="initials">{initials}</span>}
+                </span>
+                <span class="person-name">{member.name}</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
 
-  <section class="block wrap" id="people">
-    <p class="label">People</p>
-    <h2>The collaboration</h2>
-    <p class="intro-text">Current members, with others who worked on the foundations of the project expected to join.</p>
-    <ul class="people">
-      {people.map((p) => {
-        const img = photo(p.photo);
-        return (
-          <li class="cell person" style={`--c:${p.color}`}>
-            {img
-              ? <Image src={img} alt="" width={160} height={160} class="avatar" />
-              : <span class="avatar initials" aria-hidden="true">{p.name.split(" ").map((w) => w[0]).slice(0, 2).join("")}</span>}
-            <div>
-              <h3>{p.href ? <a href={p.href}>{p.name}</a> : p.name}</h3>
-              {p.focus && <p class="focus">{p.focus}</p>}
-              <p class="links mono">
-                <a href={`${href("/timeline/")}?person=${p.slug}`}>Timeline</a>
-                {hasStatement(p.slug) ? <a href={href(`/statements/#${p.slug}`)}>Statement</a> : <span class="muted">Statement forthcoming</span>}
-              </p>
-            </div>
+    <section class="home-section" id="timeline" aria-labelledby="timeline-title">
+      <div class="section-heading">
+        <h2 id="timeline-title">Timeline</h2>
+        <a class="home-link" href={href("/timeline/")}>Full timeline <span aria-hidden="true">→</span></a>
+      </div>
+      <ol class="milestones">
+        {home.milestones.map((milestone) => (
+          <li>
+            <a href={link(milestone.href)}>
+              <time datetime={milestone.date}>{milestone.date.slice(0, 4)}</time>
+              <strong>{milestone.label}</strong>
+            </a>
           </li>
-        );
-      })}
-    </ul>
-  </section>
+        ))}
+      </ol>
+    </section>
 
-  <section class="block wrap" id="projects">
-    <p class="label">Active projects</p>
-    <h2>What the collaboration is working on</h2>
-    <div class="projects">
-      {projects.map((p) => (
-        <article class="cell project">
-          <p class="status mono">{p.status}</p>
-          <h3>{p.title}</h3>
-          <p set:html={p.html} />
-          <p class="who">{names(p.people).map((x) => <span class="chip"><span class="dot" style={`--c:${x!.color}`} />{x!.name}</span>)}</p>
-          {p.links.length > 0 && <p class="ev">{p.links.map((l) => <a href={link(l.href)}>{l.label}</a>)}</p>}
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="block wrap" id="join">
-    <p class="label">Join us</p>
-    <h2>Interested in contributing?</h2>
-    <div class="cell invitation">
-      <p>Are you interested in rewrite systems, hypergraphs, causality, emergent spacetime, or related topics? Would you like to contribute, discuss an idea with one of the researchers, or develop a project toward completion under this umbrella?</p>
-      <p>Let us know. We welcome conversations about possible mentorship and independent collaboration; arrangements depend on the people and project involved.</p>
-      <p class="invitation-links">
-        <a class="btn primary" href="https://www.youtube.com/@MultiHistoryScience">Hyperseminar livestream →</a>
-      </p>
-    </div>
-  </section>
-
-  <section class="block wrap" id="timeline">
-    <p class="label">Timeline</p>
-    <h2>Summary</h2>
-    <p class="intro-text">Main milestones. The <a href={href("/timeline/")}>detailed timeline</a> lists every entry with its evidence and can be filtered by person.</p>
-    <div class="cell tl-cell">
-      <Timeline entries={key} />
-      <a class="btn primary" href={href("/timeline/")}>Open the detailed timeline →</a>
-    </div>
-  </section>
-
-  <section class="block wrap" id="resources">
-    <p class="label">Computational resources</p>
-    <h2>Code and tools</h2>
-    <p class="intro-text">Software written by members of the collaboration for hypergraph rewriting, multiway systems and related mathematics.</p>
-    <div class="resources">
-      {resources.map((r) => (
-        <a class="cell resource" href={link(r.href)}>
-          <p class="kind mono">{r.kind}</p>
-          <h3>{r.name}</h3>
-          <p set:html={r.html} />
-          <p class="who">{names(r.people).map((x) => <span class="chip"><span class="dot" style={`--c:${x!.color}`} />{x!.name}</span>)}</p>
-        </a>
-      ))}
-      <div class:list={["cell resource org", { pending: !site.github }]}>
-        <p class="kind mono">Organisation</p>
-        <h3>{site.name} on GitHub</h3>
-        <p>{site.github ? "The collaboration's shared GitHub organisation, for its code, notebooks and data." : "A shared GitHub organisation will collect the collaboration's code, notebooks and data."}</p>
-        {site.github
-          ? <a class="btn" href={site.github}>Open on GitHub →</a>
-          : <span class="btn" aria-disabled="true">Coming soon</span>}
+    <section class="home-section" id="hyperseminar" aria-labelledby="seminar-title">
+      <div class="section-heading">
+        <h2 id="seminar-title">Hyperseminar</h2>
+        <a class="home-link" href={home.youtube}>YouTube channel <span aria-hidden="true">↗</span></a>
       </div>
-    </div>
-  </section>
+      <div class="video-grid" id="recordings">
+        {home.seminars.map((seminar) => (
+          <a class="video-card" href={`https://www.youtube.com/watch?v=${seminar.videoId}`}>
+            <div class="video-cover">
+              <Image src={seminar.cover} width={720} widths={[360, 720]} sizes="(max-width: 610px) 82vw, 360px" alt="" />
+              <span class="play" aria-hidden="true"></span>
+            </div>
+            <div class="video-info">
+              <p>{seminar.label}</p>
+              <h3>{seminar.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="carousel-controls" id="recording-controls" hidden>
+        <button type="button" aria-controls="recordings" aria-label="Previous recording">←</button>
+        <button type="button" aria-controls="recordings" aria-label="Next recording">→</button>
+      </div>
+    </section>
+
+    <section class="home-section" id="research" aria-labelledby="research-title">
+      <div class="section-heading">
+        <h2 id="research-title">Main research areas</h2>
+        <a class="home-link" id="contributions" href={href("/topics/")}>Browse research topics <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="research-grid">
+        {researchAreas.map((area) => {
+          const cover = home.guideCovers[area.slug];
+          return (
+            <article class="guide-card">
+              {cover
+                ? <Image class="guide-cover" src={cover} width={720} widths={[360, 720]} sizes="(max-width: 610px) 100vw, 360px" alt="" />
+                : <div class="guide-cover guide-placeholder" aria-hidden="true">TBD</div>}
+              <div class="guide-copy">
+                <ul class="tags" aria-label="Topics">
+                  {area.tags.map((tag) => <li>{tag}</li>)}
+                </ul>
+                <h3>{area.title}</h3>
+                <p>{area.question}</p>
+                <span class="guide-status">Guide TBD</span>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+
+    <section class="home-section" id="other-research" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <h2 id="projects-title">Other projects</h2>
+        <a class="home-link" id="projects" href={href("/projects/")}>More projects <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="research-grid">
+        {home.otherProjects.map((project) => (
+          <a class="project-card" href={link(project.href)}>
+            <div>
+              <h3>{project.title}</h3>
+              <ul class="tags" aria-label="Topics">
+                {project.tags.map((tag) => <li>{tag}</li>)}
+              </ul>
+            </div>
+            <span class="home-link" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </section>
+    <p class="inspiration">This concept was inspired by <a href={home.arityUrl}>Arity Science</a>.</p>
+  </div>
 </Layout>
 
-<style>
-  .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; padding-block: clamp(3rem, 8vw, 6rem) clamp(2.5rem, 6vw, 4.5rem); }
-  h1 { font-size: clamp(2.6rem, 1.6rem + 4.4vw, 4.6rem); line-height: 1; margin: 0 0 1.2rem; letter-spacing: -0.025em; }
-  .lead { font-size: clamp(1.12rem, 1rem + .5vw, 1.32rem); line-height: 1.5; margin: 0 0 1rem; }
-  .purpose { color: var(--muted); max-width: 60ch; margin: 0 0 1.8rem; }
-  .actions { display: flex; flex-wrap: wrap; gap: .6rem; }
-  .hero-graph { margin: 0; }
-  .hero-graph figcaption { text-align: center; font-size: .76rem; margin-top: .6rem; }
+<script>
+  const recordings = document.querySelector<HTMLElement>("#recordings");
+  const controls = document.querySelector<HTMLElement>("#recording-controls");
 
-  .chip { display: inline-flex; align-items: center; gap: .35rem; margin-right: .8rem; white-space: nowrap; }
-  .who { font-size: .9rem; color: var(--ink); margin: 0 0 .7rem; display: flex; flex-wrap: wrap; row-gap: .15rem; }
-  .ev { display: flex; flex-wrap: wrap; gap: .2rem .9rem; font-size: .88rem; margin: auto 0 0; padding-top: .8rem; border-top: 1px dashed var(--rule); }
+  const first = recordings?.children[0];
+  const second = recordings?.children[1];
 
-  .streams { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 1rem; }
-  .stream { display: flex; flex-direction: column; padding: 1.4rem 1.4rem 1.1rem; }
-  .stream h3 { margin: .2rem 0 .7rem; font-size: 1.3rem; }
-  .years, .status, .kind { margin: 0; color: var(--causal); font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; }
-  .stream .text { color: var(--muted); font-size: .97rem; margin: 0 0 .9rem; }
+  if (recordings && controls && first && second) {
+    const [previous, next] = controls.querySelectorAll("button");
+    const update = () => {
+      const remaining = recordings.scrollWidth - recordings.clientWidth;
+      controls.hidden = remaining <= 1;
+      previous.disabled = recordings.scrollLeft <= 1;
+      next.disabled = recordings.scrollLeft >= remaining - 1;
+    };
+    const scroll = (direction: number) => {
+      const distance = second.getBoundingClientRect().left - first.getBoundingClientRect().left;
+      const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+      recordings.scrollBy({ left: direction * distance, behavior });
+    };
 
-  .people { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 1rem; }
-  .person { display: grid; grid-template-columns: 84px 1fr; gap: 1rem; align-items: center; padding: 1rem 1.1rem; border-left: 4px solid var(--c); }
-  .avatar { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 1px solid var(--rule); }
-  .initials { display: grid; place-items: center; background: var(--state); color: #7a5b06; font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; border-color: var(--state-edge); }
-  .person h3 { margin: 0 0 .2rem; font-size: 1.15rem; }
-  .person h3 a { color: var(--ink); text-decoration: none; }
-  .person h3 a:hover { color: var(--causal); }
-  .focus { margin: 0 0 .35rem; color: var(--muted); font-size: .92rem; line-height: 1.45; }
-  .links { display: flex; flex-wrap: wrap; gap: .1rem 1rem; margin: 0; font-size: .76rem; }
-
-  .projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); gap: 1rem; }
-  .project { display: flex; flex-direction: column; padding: 1.5rem; }
-  .project h3 { margin: .2rem 0 .6rem; font-size: 1.3rem; }
-  .project > p:not(.status):not(.who):not(.ev) { color: var(--muted); font-size: .97rem; }
-
-  .invitation { max-width: 62rem; padding: clamp(1.3rem, 3vw, 2rem); }
-  .invitation p { max-width: 60ch; color: var(--muted); }
-  .invitation p:first-child { margin-top: 0; }
-  .invitation-links { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 0; }
-
-  .tl-cell { padding: clamp(1.2rem, 3vw, 2.2rem); }
-  .tl-cell .btn { margin-top: .5rem; }
-
-  .resources { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 1rem; }
-  .resource { display: flex; flex-direction: column; padding: 1.3rem 1.4rem; color: var(--ink); text-decoration: none; transition: border-color .15s, transform .15s; }
-  a.resource:hover { border-color: var(--causal); transform: translateY(-2px); color: var(--ink); }
-  .resource h3 { margin: .2rem 0 .5rem; font-size: 1.2rem; font-family: var(--font-mono); font-weight: 600; letter-spacing: -.01em; }
-  .resource > p:not(.kind):not(.who) { color: var(--muted); font-size: .95rem; }
-  .resource .who { margin-top: auto; }
-  .org.pending { background: transparent; border-style: dashed; }
-  .org .btn { align-self: flex-start; margin-top: auto; }
-
-  @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-graph { max-width: 460px; margin-inline: auto; width: 100%; }
+    previous.addEventListener("click", () => scroll(-1));
+    next.addEventListener("click", () => scroll(1));
+    recordings.addEventListener("scroll", update, { passive: true });
+    new ResizeObserver(update).observe(recordings);
+    update();
   }
-  @media (max-width: 420px) { .person { grid-template-columns: 64px 1fr; } .avatar { width: 64px; height: 64px; } }
+</script>
+
+<style>
+  .home { --wide: 1120px; --home-green: #284b43; padding-top: 2.125rem; }
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+    overflow: hidden;
+    border: 1px solid #d8decf;
+    border-radius: 14px;
+    background: linear-gradient(102deg, #f3f4ec 25%, #e9eee3);
+  }
+  .hero-copy { padding: clamp(1.6rem, 4.5vw, 3.5rem) 0 clamp(1.75rem, 4.5vw, 3.3rem) clamp(1.5rem, 4.5vw, 3.5rem); z-index: 1; }
+  .hero h1 { font-size: clamp(2.4rem, 5.65vw, 4.75rem); letter-spacing: -.06em; line-height: 1; margin: 0 0 1.2rem; }
+  .hero p { color: var(--ink); font-size: clamp(1.06rem, 1.64vw, 1.32rem); line-height: 1.4; max-width: 46ch; text-wrap: balance; margin: 0; }
+  .hero p a { color: var(--home-green); }
+  .hero .hero-note { color: var(--muted); margin-top: .6rem; max-width: 53ch; font-size: 1rem; }
+  .hero-actions { display: flex; align-items: center; gap: .65rem 1.35rem; flex-wrap: wrap; margin-top: 1.45rem; }
+  .home-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    min-height: 44px;
+    padding: .45rem .95rem;
+    border-radius: 6px;
+    background: var(--home-green);
+    color: white;
+    text-decoration: none;
+    font-weight: 650;
+  }
+  .home-primary:hover { background: #1a3932; color: white; }
+  .home-link { color: var(--home-green); font-size: .94rem; text-decoration: none; font-weight: 650; }
+  .home-link:hover { color: var(--home-green); text-decoration: underline; }
+  .hero-art {
+    display: grid;
+    place-items: center;
+    background-image: radial-gradient(#49645938 .9px, transparent .9px);
+    background-size: 16px 16px;
+    mask-image: linear-gradient(90deg, transparent, black 26%);
+  }
+  .hero-art img { width: min(57%, 218px); }
+  .home-section { margin-top: 2.125rem; border-top: 1px solid var(--rule); padding-top: 1.35rem; scroll-margin-top: 1rem; }
+  .section-heading { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: baseline; gap: .4rem 1.2rem; margin-bottom: .95rem; }
+  .section-heading h2 { font-size: clamp(1.7rem, 2.75vw, 2.3rem); letter-spacing: -.04em; margin: 0; }
+  .section-heading p { color: var(--muted); font-size: .94rem; margin: 0; }
+  .people-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; gap: .5rem; }
+  .person { display: flex; flex-direction: column; align-items: center; gap: .5rem; text-align: center; text-decoration: none; padding: .25rem; border-radius: 9px; color: var(--ink); font-weight: 650; font-size: .94rem; line-height: 1.15; }
+  .person:hover { color: var(--home-green); }
+  .person:hover .person-name { text-decoration: underline; }
+  .avatar { width: 70px; aspect-ratio: 1; border-radius: 50%; border: 1px solid var(--person-color); padding: 3px; display: grid; place-items: center; flex-shrink: 0; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .initials { width: 100%; height: 100%; border-radius: 50%; display: grid; place-items: center; background: color-mix(in srgb, var(--person-color) 13%, white); font: 600 1.375rem/1 var(--font-display); }
+  .person-name { max-width: 16ch; }
+  .milestones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); list-style: none; padding: 0; border-top: 1px solid #c9bdab; margin: 1.4rem 0 0; }
+  .milestones li { position: relative; padding-top: .65rem; padding-right: 1rem; }
+  .milestones li::before { content: ""; position: absolute; width: 9px; height: 9px; border-radius: 50%; top: -5px; box-shadow: 0 0 0 3px var(--paper); background: #aa6a25; }
+  .milestones a { color: var(--ink); text-decoration: none; display: inline-grid; gap: .15rem; }
+  .milestones a:hover { color: var(--home-green); text-decoration: underline; }
+  .milestones time { color: #915317; font-weight: 700; font-size: .875rem; }
+  .milestones strong { font-size: .94rem; line-height: 1.28; font-weight: 650; }
+  .video-grid { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 2rem) / 3); gap: 1rem; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
+  .video-grid::-webkit-scrollbar { display: none; }
+  .video-card, .guide-card, .project-card { border: 1px solid var(--rule); border-radius: 9px; background: var(--panel); color: var(--ink); text-decoration: none; }
+  .video-card:hover, .project-card:hover { border-color: #9daea4; box-shadow: 0 2px 9px #25382d10; color: var(--ink); }
+  .video-card { display: flex; flex-direction: column; overflow: hidden; scroll-snap-align: start; }
+  .video-card:focus-visible { outline-offset: -3px; }
+  .video-cover { position: relative; aspect-ratio: 16 / 9; background: #111525; }
+  .video-cover img { width: 100%; height: 100%; object-fit: cover; }
+  .play { position: absolute; right: 10px; bottom: 10px; width: 35px; height: 35px; display: grid; place-items: center; color: white; background: #141b26e0; border: 1px solid #ffffff99; border-radius: 50%; }
+  .play::before { content: ""; border-left: 9px solid currentColor; border-top: 5px solid transparent; border-bottom: 5px solid transparent; margin-left: 2px; }
+  .video-info { padding: .6rem .8rem .75rem; }
+  .video-info p { color: var(--muted); font-size: .82rem; font-weight: 650; margin: 0 0 .15rem; }
+  .video-info h3 { font: 650 1rem/1.25 var(--font-body); letter-spacing: 0; margin: 0; }
+  .carousel-controls:not([hidden]) { display: flex; justify-content: flex-end; gap: .5rem; margin-top: .55rem; }
+  .carousel-controls button { width: 44px; height: 44px; border: 1px solid var(--rule); background: var(--panel); border-radius: 50%; color: var(--ink); font: inherit; cursor: pointer; }
+  .carousel-controls button:disabled { opacity: .4; cursor: default; }
+  .research-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .guide-card { display: grid; grid-template-rows: auto 1fr; overflow: hidden; min-width: 0; }
+  .guide-cover { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: #eae6dd; }
+  .guide-placeholder { display: grid; place-items: center; background: #edf0e6; color: var(--muted); font-weight: 650; letter-spacing: .08em; }
+  .guide-copy { display: flex; flex-direction: column; padding: 1.05rem 1.15rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: .25rem .375rem; margin: 0 0 .55rem; padding: 0; list-style: none; }
+  .tags li { background: #edf0e9; color: #344c42; font-size: .8rem; font-weight: 650; border: 1px solid #e4e9df; padding: 0 .5rem; border-radius: 20px; line-height: 1.65; }
+  .guide-card h3 { font-size: clamp(1.4rem, 2.25vw, 1.85rem); letter-spacing: -.025em; margin: 0 0 .3rem; }
+  .guide-card p { color: var(--muted); margin: 0 0 .9rem; line-height: 1.35; }
+  .guide-status { margin-top: auto; padding-top: .7rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .875rem; }
+  .project-card { display: flex; justify-content: space-between; align-items: center; gap: .875rem; padding: .875rem 1rem; }
+  .project-card h3 { font-size: 1.375rem; margin: 0 0 .45rem; }
+  .project-card .tags { margin: 0; }
+  .inspiration { margin: .75rem 0 0; color: var(--muted); font-size: .9rem; }
+  .inspiration a { color: var(--home-green); }
+
+  @media (max-width: 840px) {
+    .hero { grid-template-columns: minmax(0, 2fr) minmax(0, .8fr); }
+    .hero-art img { width: 72%; }
+    .person { font-size: .875rem; }
+    .avatar { width: 58px; }
+    .guide-copy { padding: .9rem; }
+  }
+
+  @media (max-width: 610px) {
+    .home { padding-top: 1.05rem; }
+    .hero { position: relative; display: block; }
+    .hero-copy { position: relative; padding: 1.4rem 1.125rem; }
+    .hero h1 { font-size: clamp(2.2rem, 9vw, 3.3rem); margin-bottom: .75rem; }
+    .hero p { max-width: 34ch; }
+    .hero .hero-note { max-width: 33ch; }
+    .hero-art { position: absolute; inset: 0 0 0 48%; opacity: .19; }
+    .hero-art img { display: none; }
+    .hero-actions { gap: .65rem; margin-top: 1rem; font-size: .9rem; }
+    .home-primary { padding-inline: .6rem; gap: .35rem; }
+    .home-section { margin-top: 1.5rem; padding-top: .95rem; }
+    .section-heading { margin-bottom: .75rem; }
+    .section-heading .home-link, .section-heading p { font-size: .875rem; }
+    .people-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem .15rem; }
+    .milestones { grid-template-columns: 1fr 1fr; border: 0; gap: .9rem .5rem; margin-top: 1.1rem; }
+    .milestones li { border-top: 1px solid #c9bdab; padding-right: .5rem; }
+    .video-grid { grid-auto-columns: 82%; gap: .625rem; }
+    .research-grid { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+  }
 </style>

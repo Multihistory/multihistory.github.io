@@ -6,6 +6,7 @@ import { people, photo, statements, hasStatement } from "../lib/multihistory";
 
 const fmt = (d: string) => new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 const pending = people.filter((p) => !hasStatement(p.slug));
+const timelineHref = (slug: string) => `${href("/timeline/")}?person=${slug}`;
 ---
 <Layout title="Personal statements" description="Personal statements by members of the Multi-History Science collaboration about their involvement in, and idea contributions to, the Wolfram Physics Project.">
   <section class="wrap head">
@@ -18,12 +19,16 @@ const pending = people.filter((p) => !hasStatement(p.slug));
       const p = people.find((x) => x.slug === slug)!;
       const img = photo(p.photo);
       return (
-        <article class="cell statement" id={slug} style={`--c:${p.color}`}>
+        <article class="cell statement" id={slug} tabindex="-1" aria-labelledby={`${slug}-name`} style={`--c:${p.color}`}>
           <header>
             {img && <Image src={img} alt="" width={120} height={120} class="avatar" />}
             <div>
-              <h2>{p.name}</h2>
-              <p class="mono muted">Statement received {fmt(received)} · <a href={`${href("/timeline/")}?person=${slug}`}>timeline entries</a>{note && <> · {note}</>}</p>
+              <h2 id={`${slug}-name`}>{p.name}</h2>
+              <p class="mono muted">
+                Statement received {fmt(received)}{note && <> · {note}</>} ·
+                <a href={timelineHref(slug)} aria-label={`Timeline entries for ${p.name}`}>timeline entries</a>
+                {p.href && <> · <a href={p.href} aria-label={`Profile for ${p.name}`}>profile</a></>}
+              </p>
             </div>
           </header>
           <div class="statement-body">
@@ -37,7 +42,26 @@ const pending = people.filter((p) => !hasStatement(p.slug));
       );
     })}
     {pending.length > 0 && (
-      <p class="pending muted">Statements forthcoming from {pending.map((p) => p.name).join(", ").replace(/, ([^,]*)$/, " and $1")}.</p>
+      <div class="pending-grid">
+        {pending.map((p) => {
+          const img = photo(p.photo);
+          return (
+            <article class="cell statement pending" id={p.slug} tabindex="-1" aria-labelledby={`${p.slug}-name`} style={`--c:${p.color}`}>
+              <header>
+                {img && <Image src={img} alt="" width={96} height={96} class="avatar" />}
+                <div>
+                  <h2 id={`${p.slug}-name`}>{p.name}</h2>
+                  <p class="muted">Statement forthcoming.</p>
+                </div>
+              </header>
+              <p class="mono links">
+                <a href={timelineHref(p.slug)} aria-label={`Timeline entries for ${p.name}`}>Timeline entries</a>
+                {p.href && <> · <a href={p.href} aria-label={`Profile for ${p.name}`}>Profile</a></>}
+              </p>
+            </article>
+          );
+        })}
+      </div>
     )}
   </section>
 </Layout>
@@ -50,7 +74,7 @@ const pending = people.filter((p) => !hasStatement(p.slug));
   .list { display: grid; gap: 1.25rem; padding-bottom: clamp(3rem, 7vw, 5rem); }
   .statement { padding: clamp(1.3rem, 4vw, 2.6rem); border-top: 4px solid var(--c); scroll-margin-top: 80px; }
   .statement header { display: flex; align-items: center; gap: 1.1rem; margin-bottom: 1.4rem; }
-  .avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 1px solid var(--rule); }
+  .avatar { flex: none; width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 1px solid var(--rule); }
   .statement h2 { margin: 0 0 .15rem; font-size: 1.6rem; }
   .statement header p { margin: 0; font-size: .78rem; }
   .statement-body { max-width: var(--measure); }
@@ -70,5 +94,11 @@ const pending = people.filter((p) => !hasStatement(p.slug));
   .text :global(ul) { padding-left: 1.2em; margin: 0 0 1.1em; }
   .text :global(li) { margin-bottom: .7em; }
   .text :global(strong) { font-weight: 600; }
-  .pending { font-size: .95rem; }
+  .pending-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr)); gap: 1.25rem; }
+  .pending { padding: 1.15rem; }
+  .pending header { gap: .8rem; margin-bottom: .7rem; }
+  .pending .avatar { width: 48px; height: 48px; }
+  .pending h2 { font-size: 1.25rem; }
+  .pending header p { font-size: .95rem; }
+  .pending .links { margin: 0; }
 </style>

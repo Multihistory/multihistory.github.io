@@ -1,0 +1,33 @@
+---
+import "../styles/catalogue.css";
+import Layout from "../layouts/Layout.astro";
+import { href } from "../data/site";
+import streams from "../data/streams.json";
+import { link, person } from "../lib/multihistory";
+---
+
+<Layout title="Streams of ideas">
+  <section class="wrap catalogue" aria-labelledby="topics-title">
+    <h1 id="topics-title">Streams of ideas at a glance</h1>
+    <p class="catalogue-intro">A high-level summary of contributions that can be traced to members of the collaboration, independently of the project's branding. Each is backed by the evidence in the <a href={href("/timeline/")}>detailed timeline</a>.</p>
+    <div class="catalogue-grid">
+      {streams.map(({ title, years, people, html, evidence }) => (
+        <article class="cell catalogue-card">
+          <p class="mono catalogue-meta">{years}</p>
+          <h2>{title}</h2>
+          <p class="catalogue-people">
+            {people.map(person).filter((entry) => entry !== undefined).map((entry) => (
+              <span class="catalogue-credit"><span class="dot" style={`--c:${entry.color}`} aria-hidden="true"></span>{entry.name}</span>
+            ))}
+          </p>
+          <p class="catalogue-description" set:html={html} />
+          {evidence.length > 0 && (
+            <p class="catalogue-links">
+              {evidence.map((item) => <a href={link(item.href)}>{item.label}</a>)}
+            </p>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+</Layout>
