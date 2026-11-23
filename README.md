@@ -2,7 +2,7 @@
 
 An independent research collaboration on rewrite systems, hypergraphs, causality and emergent spacetime.
 
-Website: https://multihistory.github.io/
+Website: https://multihistory.org/
 
 ## Development
 
