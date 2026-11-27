@@ -4,7 +4,7 @@ Read this whole file before changing anything. It is written for any AI agent or
 
 ## 1. What this site is
 
-**Multi-History Science** is an independent record of a research collaboration. Its members worked on the foundational, technical and mathematical aspects of the Wolfram Physics Project (WPP). The site documents who originated which streams of ideas, using public evidence (code, papers, bulletins, recordings, credits) and the members' own personal statements.
+**Multihistory Science** is an independent record of a research collaboration. Its members worked on the foundational, technical and mathematical aspects of the Wolfram Physics Project (WPP). The site documents who originated which streams of ideas, using public evidence (code, papers, bulletins, recordings, credits) and the members' own personal statements.
 
 The owner's stated purpose, to keep in mind on every edit: *the goal is not to appropriate anything from the Wolfram Physics Project. It is to identify who originated particular streams of ideas, reflect it, and keep that record in a place that is independent of the Wolfram Physics Project.*
 
@@ -126,7 +126,7 @@ The style is a "computational notebook" look, light with a dark counterpart, ins
 
 ## 7. Decisions already made with the owner (do not undo without asking)
 
-- **Name:** the site is "Multi-History Science", with a hyphen.
+- **Name:** the site is "Multihistory Science".
 - **Search engines:** it is `noindex` while it is a prototype (`site.noindex`); with `noindex` on, there is no sitemap and no canonical link. Turn it off only when the owner says the site is public on its own domain.
 - **Carlos's statement:**
   - transcription errors in names and terms were corrected; otherwise it is his wording;

@@ -1,5 +1,5 @@
 // Builds the multiway graph of a string rewriting system and lays it out in layers,
-// for the Multi-History Science illustrations. Everything runs at build time.
+// for the Multihistory Science illustrations. Everything runs at build time.
 
 export type Rule = [string, string];
 export interface MwNode { id: string; layer: number; x: number; y: number }

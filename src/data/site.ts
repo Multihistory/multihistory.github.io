@@ -1,8 +1,8 @@
-// Site settings for Multi-History Science. Internal links are built with `href()`, so the site
+// Site settings for Multihistory Science. Internal links are built with `href()`, so the site
 // can be served from a domain root (base "") or from a sub-path (e.g. base "/multihistory",
 // as on arity.science). If you change `base`, set the same value as `base` in astro.config.mjs.
 export const site = {
-  name: "Multi-History Science",
+  name: "Multihistory Science",
   // Public address of the site, used for canonical links and the sitemap. Change it with the domain.
   url: "https://multihistory.org",
   base: "",

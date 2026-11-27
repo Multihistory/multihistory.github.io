@@ -8,9 +8,9 @@ const fmt = (d: string) => new Date(d).toLocaleDateString("en-GB", { day: "numer
 const pending = people.filter((p) => !hasStatement(p.slug));
 const timelineHref = (slug: string) => `${href("/timeline/")}?person=${slug}`;
 ---
-<Layout title="Personal statements" description="Personal statements by members of the Multi-History Science collaboration about their involvement in, and idea contributions to, the Wolfram Physics Project.">
+<Layout title="Personal statements" description="Personal statements by members of the Multihistory Science collaboration about their involvement in, and idea contributions to, the Wolfram Physics Project.">
   <section class="wrap head">
-    <p class="label"><a href={href("/")}>Multi-History Science</a> / Statements</p>
+    <p class="label"><a href={href("/")}>Multihistory Science</a> / Statements</p>
     <h1>Personal statements</h1>
     <p class="intro">Each member's own account of their involvement and of the ideas they contributed, in their own words. Statements are combined with public evidence in the <a href={href("/timeline/")}>detailed timeline</a>.</p>
   </section>

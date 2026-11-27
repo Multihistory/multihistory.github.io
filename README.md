@@ -1,4 +1,4 @@
-# Multi-History Science
+# Multihistory Science
 
 An independent research collaboration on rewrite systems, hypergraphs, causality and emergent spacetime.
 
