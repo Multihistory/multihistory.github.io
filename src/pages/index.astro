@@ -8,6 +8,7 @@ import { link, person, photo } from "../lib/multihistory";
 
 const featuredPeople = home.people.map(person).filter((member) => member !== undefined);
 const introduction = `${home.introduction} ${home.projectName}.`;
+const seminarsWithResources = home.seminars.filter((seminar) => "resources" in seminar);
 ---
 <Layout description={`${introduction} ${home.purpose}`}>
   <div class="home wrap">
@@ -91,6 +92,23 @@ const introduction = `${home.introduction} ${home.projectName}.`;
         <button type="button" aria-controls="recordings" aria-label="Previous recording">←</button>
         <button type="button" aria-controls="recordings" aria-label="Next recording">→</button>
       </div>
+      {seminarsWithResources.length > 0 && (
+        <div class="seminar-resources" id="hyperseminar-resources">
+          <h3>Resources</h3>
+          <ul>
+            {seminarsWithResources.map((seminar) => (
+              <li>
+                <strong>Hyperseminar #{seminar.number} · {seminar.title}</strong>
+                <ul>
+                  {seminar.resources.map((resource) => (
+                    <li><a href={href(resource.href)} download={"download" in resource}>{resource.label}</a></li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
 
     <section class="home-section" id="research" aria-labelledby="research-title">
@@ -196,6 +214,11 @@ const introduction = `${home.introduction} ${home.projectName}.`;
   .hero-art img { width: min(57%, 218px); }
   .home-section { margin-top: 2.125rem; border-top: 1px solid var(--rule); padding-top: 1.35rem; scroll-margin-top: 1rem; }
   .section-heading { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: baseline; gap: .4rem 1.2rem; margin-bottom: .95rem; }
+  .seminar-resources { margin-top: 1.25rem; }
+  .seminar-resources h3 { margin: 0 0 .35rem; font-size: var(--step-0); }
+  .seminar-resources ul { margin: 0; padding: 0; list-style: none; }
+  .seminar-resources > ul { display: grid; gap: .65rem; }
+  .seminar-resources li ul { display: flex; flex-wrap: wrap; column-gap: 1.1rem; }
   .section-heading h2 { font-size: clamp(1.7rem, 2.75vw, 2.3rem); letter-spacing: -.04em; margin: 0; }
   .section-heading p { color: var(--muted); font-size: .94rem; margin: 0; }
   .people-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; gap: .5rem; }
