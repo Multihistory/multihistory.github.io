@@ -44,7 +44,7 @@ The owner's stated purpose, to keep in mind on every edit: *the goal is not to a
 - Pushes to `main` deploy `dist/` through GitHub Actions to GitHub Pages at https://multihistory.org/. The custom domain is set in the repository's Settings → Pages; no `CNAME` file is needed with an Actions deploy. GitHub redirects https://multihistory.github.io/ to it. `public/_headers` is inherited from the original host and is not applied by GitHub Pages.
 - **Before publishing:**
   - `npm run build` must succeed.
-  - Check every changed page at 1280px and 390px wide. There must be no horizontal scroll at 390px.
+  - Check every changed page at 1280px and 390px wide, in both the light and the dark scheme. There must be no horizontal scroll at 390px.
 
 ## 4. File map
 
@@ -107,15 +107,19 @@ public/favicon.svg, public/_headers
 
 ## 6. Visual design
 
-The style is a light "computational notebook" look inspired by the general graphic language of multiway and causal graph diagrams. It is deliberately different from Arity Science, and it carries no Wolfram branding.
+The style is a "computational notebook" look, light with a dark counterpart, inspired by the general graphic language of multiway and causal graph diagrams. It is deliberately different from Arity Science, and it carries no Wolfram branding.
 
-- **Tokens** (in `global.css`):
-  - paper `#fcfbf7`, panel `#ffffff`, ink `#1f2430`, muted `#5f6774`, rule `#e4e0d4`
-  - state boxes: pale yellow `#fff3cc` with border `#d4a72c`
-  - multiway arrows: grey-blue `#7a879f`
-  - accent / causal orange `#d4651c`, branch green `#4c8a58`, links `#24589a`
-- The site is light only.
-- "Cells" (`.cell`) are white cards with a thin warm border. Section labels (`.label`) are orange monospace with a dot.
+- **Tokens** (in `global.css`; the light value, then the dark one):
+  - paper `#fcfbf7` / `#14171c`, panel `#ffffff` / `#1b1f26`, ink `#1f2430` / `#e9e6dd`, muted `#5f6774` / `#a3aab6`, rule `#e4e0d4` / `#2a2f39`
+  - state boxes: pale yellow `#fff3cc` / dark amber `#3a3216`, with border `#d4a72c` in both
+  - multiway arrows: grey-blue `#7a879f` / `#8793ab`
+  - accent / causal orange `#d4651c` / `#ee8b45`, branch green `#4c8a58` / `#7fbd8c`, links `#24589a` / `#88b6f0`
+- **Light and dark:** the site follows the visitor's setting (`prefers-color-scheme`); there is no switch.
+  - Every colour that differs between the two schemes is a token in `global.css`, with its dark value in the `@media (prefers-color-scheme: dark)` block there.
+  - Page styles use the tokens. A new colour goes into `global.css` with both values, not into a page.
+  - Colours drawn over photos and video covers (the play button, for example) are the same in both schemes and stay where they are used.
+  - The dark scheme is slate with warm off-white text. Keep it distinct from the dark theme of Arity Science, which is a near-black purple.
+- "Cells" (`.cell`) are cards on the panel colour (white, or slate in the dark scheme) with a thin warm border. Section labels (`.label`) are orange monospace with a dot.
 - **Hero:** the multiway graph of the string rewriting rules `{AB → BBA, A → B}` from `AAB`, which branches and then merges into a single final state ("many histories, one outcome"). It is computed at build time in `src/lib/multiway.ts`, and its layers fade in with CSS only.
 - **Logo** (header and favicon): four state boxes forming a branch-and-merge diamond, with a dashed orange line between the two middle boxes.
 - **Motion:** keep it subtle and CSS-only, and respect `prefers-reduced-motion` (handled globally). The only client script is the person filter on the timeline page.
@@ -164,7 +168,7 @@ The style is a light "computational notebook" look inspired by the general graph
 1. Change data files rather than page markup wherever possible.
 2. Back every new claim with `sources` or `statement`; check that each URL opens and says what you claim.
 3. Keep statements verbatim and keep the wording neutral (sections 2 and 7).
-4. `npm run build`, then look at the changed pages at 1280px and 390px.
+4. `npm run build`, then look at the changed pages at 1280px and 390px, in both the light and the dark scheme.
 5. If a URL changes or disappears, add a redirect for it on the host (e.g. a line in `public/_redirects` on Cloudflare Pages or Netlify).
 
 ## Administration update — 7 November 2026
