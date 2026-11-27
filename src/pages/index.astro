@@ -8,7 +8,6 @@ import { link, person, photo } from "../lib/multihistory";
 
 const featuredPeople = home.people.map(person).filter((member) => member !== undefined);
 const introduction = `${home.introduction} ${home.projectName}.`;
-const seminarsWithResources = home.seminars.filter((seminar) => "resources" in seminar);
 ---
 <Layout description={`${introduction} ${home.purpose}`}>
   <div class="home wrap">
@@ -92,11 +91,11 @@ const seminarsWithResources = home.seminars.filter((seminar) => "resources" in s
         <button type="button" aria-controls="recordings" aria-label="Previous recording">←</button>
         <button type="button" aria-controls="recordings" aria-label="Next recording">→</button>
       </div>
-      {seminarsWithResources.length > 0 && (
+      {home.seminarResources.length > 0 && (
         <div class="seminar-resources" id="hyperseminar-resources">
           <h3>Resources</h3>
           <ul>
-            {seminarsWithResources.map((seminar) => (
+            {home.seminarResources.map((seminar) => (
               <li>
                 <strong>Hyperseminar #{seminar.number} · {seminar.title}</strong>
                 <ul>

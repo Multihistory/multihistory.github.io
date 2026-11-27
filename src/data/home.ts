@@ -43,6 +43,16 @@ export const home = {
     { date: "2026-11-02", label: "Multihistory Science begins", href: "~/timeline/" },
   ],
   seminars: [...initialSeminars].reverse(),
+  seminarResources: [
+    {
+      number: 3,
+      title: "Communicating Computational Research in AI Era",
+      resources: [
+        { label: "Presentation (PDF)", href: "/hyperseminar/03/multihistory-hyperseminar-2026-11-27.pdf" },
+      ],
+    },
+    ...initialSeminars.filter((seminar) => "resources" in seminar).reverse(),
+  ],
   guideCovers: {
     spacetime: spacetimeCover,
     geometry: geometryCover,
