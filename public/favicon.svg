@@ -1,1 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><style>@media (prefers-color-scheme: dark) { .paper { fill: #14171c } }</style><rect class="paper" width="40" height="40" rx="8" fill="#fcfbf7"/><g fill="none" stroke="#7a879f" stroke-width="2"><path d="M20 9 C20 14 10 14 10 20"/><path d="M20 9 C20 14 30 14 30 20"/><path d="M10 20 C10 26 20 26 20 31"/><path d="M30 20 C30 26 20 26 20 31"/></g><g fill="#fff3cc" stroke="#d4a72c" stroke-width="1.6"><rect x="15" y="4" width="10" height="7" rx="2"/><rect x="5" y="16.5" width="10" height="7" rx="2"/><rect x="25" y="16.5" width="10" height="7" rx="2"/><rect x="15" y="29" width="10" height="7" rx="2"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Multihistory Science favicon</title>
+  <desc id="desc">Out[] = Graph[… one input token branches to two alternative events, both pointing to the same output token …]</desc>
+  <style>
+    .edge { stroke: #aa5053; }
+    .arrow { fill: #aa5053; }
+    .token { fill: #edf0ff; stroke: #5369a4; }
+    .event { fill: #f7a300; stroke: #9a5c12; }
+    @media (prefers-color-scheme: dark) {
+      .edge { stroke: #ed8e87; }
+      .arrow { fill: #ed8e87; }
+      .token { fill: #b9c9fb; stroke: #d2dcff; }
+      .event { fill: #ffb638; stroke: #ffcc72; }
+    }
+  </style>
+  <path class="edge" d="M64 18 30 52 M64 18l34 34 M18 64l34 34 M110 64l-34 34"
+    fill="none" stroke="#aa5053" stroke-width="5" stroke-linecap="round"/>
+  <path class="arrow" d="M30 52l5-15 10 10z M98 52l-5-15-10 10z M52 98l-15-5 10-10z M76 98l15-5-10-10z" fill="#aa5053"/>
+  <g class="token" fill="#edf0ff" stroke="#5369a4" stroke-width="3.3">
+    <circle cx="64" cy="18" r="10.75"/><circle cx="64" cy="110" r="10.75"/>
+  </g>
+  <g class="event" fill="#f7a300" stroke="#9a5c12" stroke-width="3.3">
+    <circle cx="18" cy="64" r="11.4"/><circle cx="110" cy="64" r="11.4"/>
+  </g>
+</svg>

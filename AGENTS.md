@@ -120,8 +120,7 @@ The style is a "computational notebook" look, light with a dark counterpart, ins
   - Colours drawn over photos and video covers (the play button, for example) are the same in both schemes and stay where they are used.
   - The dark scheme is slate with warm off-white text. Keep it distinct from the dark theme of Arity Science, which is a near-black purple.
 - "Cells" (`.cell`) are cards on the panel colour (white, or slate in the dark scheme) with a thin warm border. Section labels (`.label`) are orange monospace with a dot.
-- **Hero:** the multiway graph of the string rewriting rules `{AB → BBA, A → B}` from `AAB`, which branches and then merges into a single final state ("many histories, one outcome"). It is computed at build time in `src/lib/multiway.ts`, and its layers fade in with CSS only.
-- **Logo** (header and favicon): four state boxes forming a branch-and-merge diamond, with a dashed orange line between the two middle boxes.
+- **Hero and logo:** the token–event diamond has a blue input token, two amber events and a shared blue output token. The home page describes the directed graph in SetReplace's `Out[] = Graph[...]` format and links the Wolfram Language source in `public/brand/token-event-graph.wl`. The same mark is used in the header and social card. The favicon uses heavier strokes for small sizes.
 - **Motion:** keep it subtle and CSS-only, and respect `prefers-reduced-motion` (handled globally). The only client script is the person filter on the timeline page.
 
 ## 7. Decisions already made with the owner (do not undo without asking)
