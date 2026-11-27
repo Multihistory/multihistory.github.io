@@ -7,18 +7,7 @@ import spacetimeCover from "../assets/home/emergent-spacetime.jpg";
 export const initialSeminars = [
   { number: 0, title: "Opening session", label: "Hyperseminar #0", videoId: "7yZdt7J2mkc", cover: openingCover },
   { number: 1, title: "Arity Science Findings", label: "Hyperseminar #1 · Carlos Zapata-Carratalá", videoId: "7u6_pvzH_qA", cover: arityCover },
-  {
-    number: 2,
-    title: "Kick-Starting Multihistory Science",
-    label: "Hyperseminar #2 · Pavel Hájek",
-    videoId: "ssW5TOolokQ",
-    cover: kickoffCover,
-    resources: [
-      { label: "Presentation (PDF)", href: "/hyperseminar/02/multihistory-initial-meeting.pdf" },
-      { label: "Whiteboard (PNG)", href: "/hyperseminar/02/whiteboard.png" },
-      { label: "Editable whiteboard (Excalidraw)", href: "/hyperseminar/02/whiteboard.excalidraw", download: true },
-    ],
-  },
+  { number: 2, title: "Kick-Starting Multihistory Science", label: "Hyperseminar #2 · Pavel Hájek", videoId: "ssW5TOolokQ", cover: kickoffCover },
 ] as const;
 
 export const home = {
