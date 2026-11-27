@@ -43,5 +43,5 @@ export function shortDate(d: string) {
   return day ? `${+day} ${MONTHS[+m - 1]}` : MONTHS[+m - 1];
 }
 
-/** Data files write links within Multi-History Science as "~/path"; they resolve against the current base. */
+/** Data files write links within Multihistory Science as "~/path"; they resolve against the current base. */
 export const link = (url: string) => (url.startsWith("~/") ? href(url.slice(1)) : url);

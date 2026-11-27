@@ -7,7 +7,7 @@ import spacetimeCover from "../assets/home/emergent-spacetime.jpg";
 export const initialSeminars = [
   { number: 0, title: "Opening session", label: "Hyperseminar #0", videoId: "7yZdt7J2mkc", cover: openingCover },
   { number: 1, title: "Arity Science Findings", label: "Hyperseminar #1 · Carlos Zapata-Carratalá", videoId: "7u6_pvzH_qA", cover: arityCover },
-  { number: 2, title: "Kick-Starting Multi-History Science", label: "Hyperseminar #2 · Pavel Hájek", videoId: "ssW5TOolokQ", cover: kickoffCover },
+  { number: 2, title: "Kick-Starting Multihistory Science", label: "Hyperseminar #2 · Pavel Hájek", videoId: "ssW5TOolokQ", cover: kickoffCover },
 ] as const;
 
 export const home = {
@@ -29,7 +29,7 @@ export const home = {
     { date: "2018-10-07", label: "First SetReplace commit", href: "https://github.com/maxitg/SetReplace/commit/29778d8dda29b69e33a00e9c9cf7ed062699ae0b" },
     { date: "2023-09-12", label: "Infrageometry live sessions", href: "https://www.youtube.com/watch?v=CY9ZwYiftxA" },
     { date: "2025-06-04", label: "Causality, Observers and Computation grant", href: "https://www.templeton.org/grant/causality-observers-and-computation-a-new-approach-to-fundamental-physics-and-metamathematics" },
-    { date: "2026-11-02", label: "Multi-History Science begins", href: "~/timeline/" },
+    { date: "2026-11-02", label: "Multihistory Science begins", href: "~/timeline/" },
   ],
   seminars: [...initialSeminars].reverse(),
   guideCovers: {
