@@ -17,7 +17,8 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     {site.noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta name="theme-color" content="#fcfbf7" />
+    <meta name="theme-color" content="#fcfbf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#14171c" media="(prefers-color-scheme: dark)" />
     <link rel="icon" href={href("/favicon.svg")} type="image/svg+xml" />
   </head>
   <body>
@@ -58,12 +59,12 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
   nav { display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: .25rem 1.35rem; font-weight: 650; font-size: .94rem; }
   nav a, .github { color: var(--ink); padding-block: .35rem; text-decoration: none; white-space: nowrap; }
   .github { font-weight: 650; font-size: .94rem; }
-  nav a:hover, .github:hover, .footer-links a:hover { color: #284b43; text-decoration: underline; }
-  .mh-footer { margin-top: 2.2rem; padding-block: 1.25rem; border-top: 1px solid var(--rule); background: #f5f3eb; }
+  nav a:hover, .github:hover, .footer-links a:hover { color: var(--green); text-decoration: underline; }
+  .mh-footer { margin-top: 2.2rem; padding-block: 1.25rem; border-top: 1px solid var(--rule); background: var(--footer); }
   .foot { display: flex; justify-content: space-between; align-items: baseline; gap: .75rem 1.75rem; flex-wrap: wrap; }
   .foot p { margin: 0; max-width: 82ch; font-size: .875rem; color: var(--muted); }
   .footer-links { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; }
-  .footer-links a { font-weight: 650; font-size: .875rem; white-space: nowrap; color: #284b43; text-decoration: none; }
+  .footer-links a { font-weight: 650; font-size: .875rem; white-space: nowrap; color: var(--green); text-decoration: none; }
   @media (max-width: 640px) {
     .bar { grid-template-columns: 1fr auto; gap: .25rem .75rem; padding-block: .65rem .35rem; }
     .brand { font-size: 1.125rem; gap: .45rem; }

@@ -1,6 +1,7 @@
 /* Multi-History Science site styles.
-   Light "computational notebook" style: warm white paper, pale yellow state boxes,
-   grey-blue multiway arrows and orange causal edges. */
+   "Computational notebook" style: warm white paper, pale yellow state boxes, grey-blue multiway
+   arrows and orange causal edges. The dark scheme is the same notebook on slate: the paper
+   becomes the text colour and the state boxes turn amber. */
 @import "@fontsource-variable/source-sans-3";
 @import "@fontsource-variable/source-serif-4";
 @import "@fontsource-variable/source-code-pro";
@@ -14,21 +15,86 @@
   --wide: 1160px;
   --measure: 70ch;
 
+  /* Every colour that differs between the two schemes is a token here, with its dark value further
+     down. Page styles use these tokens; only colours drawn over photos and video covers, which are
+     the same in both schemes, are written where they are used. */
   --paper: #fcfbf7;
   --panel: #ffffff;
   --ink: #1f2430;
   --muted: #5f6774;
   --rule: #e4e0d4;
   --rule-strong: #cfc9b8;
+  --shadow: rgba(31, 36, 48, .04);
   --state: #fff3cc;
   --state-edge: #d4a72c;
+  --state-ink: #7a5b06;
   --edge: #7a879f;
   --causal: #d4651c;
+  --on-causal: #fff;
   --branch: #4c8a58;
   --link: #24589a;
+  /* Green of the home page, header and footer: as text, and as the fill of the main button. */
+  --green: #284b43;
+  --green-fill: #284b43;
+  --green-fill-hover: #1a3932;
+  --footer: #f5f3eb;
+  /* Home page. */
+  --hero-from: #f3f4ec;
+  --hero-to: #e9eee3;
+  --hero-edge: #d8decf;
+  --hero-dots: #49645938;
+  --milestone-rule: #c9bdab;
+  --milestone-dot: #aa6a25;
+  --milestone-year: #915317;
+  --card-hover-edge: #9daea4;
+  --card-hover-shadow: #25382d10;
+  --cover: #eae6dd;
+  --placeholder: #edf0e6;
+  --tag: #edf0e9;
+  --tag-ink: #344c42;
+  --tag-edge: #e4e9df;
   /* Names the shared reset expects. */
   --bg: var(--paper); --text: var(--ink); --accent: var(--link); --border: var(--rule);
-  color-scheme: light;
+  /* The site follows the visitor's setting; there is no switch. */
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #14171c;
+    --panel: #1b1f26;
+    --ink: #e9e6dd;
+    --muted: #a3aab6;
+    --rule: #2a2f39;
+    --rule-strong: #3d4350;
+    --shadow: rgba(0, 0, 0, .2);
+    --state: #3a3216;
+    --state-edge: #d4a72c;
+    --state-ink: #f1d27a;
+    --edge: #8793ab;
+    --causal: #ee8b45;
+    --on-causal: #14171c;
+    --branch: #7fbd8c;
+    --link: #88b6f0;
+    --green: #8ecbb9;
+    --green-fill: #2d5f52;
+    --green-fill-hover: #3a7767;
+    --footer: #101317;
+    --hero-from: #1b2120;
+    --hero-to: #1e2925;
+    --hero-edge: #2c3532;
+    --hero-dots: #a9c7bb30;
+    --milestone-rule: #4b4439;
+    --milestone-dot: #dd9d55;
+    --milestone-year: #e3a868;
+    --card-hover-edge: #5a6a62;
+    --card-hover-shadow: #00000050;
+    --cover: #22252c;
+    --placeholder: #212724;
+    --tag: #222a27;
+    --tag-ink: #b4cfc3;
+    --tag-edge: #2f3935;
+  }
 }
 
 body { background: var(--paper); color: var(--ink); font-family: var(--font-body); overflow-x: clip; }
@@ -48,15 +114,15 @@ a:hover { color: var(--causal); }
 .intro-text { max-width: var(--measure); color: var(--muted); font-size: 1.06rem; margin: -0.4rem 0 2rem; }
 
 /* A "cell": the notebook-like card used across the pages. */
-.cell { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; box-shadow: 0 1px 0 rgba(31, 36, 48, .04); }
+.cell { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; box-shadow: 0 1px 0 var(--shadow); }
 
 .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .6rem 1.05rem; border-radius: 6px; border: 1px solid var(--ink); color: var(--ink); background: var(--panel); text-decoration: none; font-size: .95rem; font-weight: 500; transition: background-color .15s, color .15s; }
 .btn:hover { background: var(--ink); color: var(--paper); }
 .btn.primary { background: var(--ink); color: var(--paper); }
-.btn.primary:hover { background: var(--causal); border-color: var(--causal); color: #fff; }
+.btn.primary:hover { background: var(--causal); border-color: var(--causal); color: var(--on-causal); }
 .btn[aria-disabled="true"] { border-style: dashed; border-color: var(--rule-strong); color: var(--muted); background: transparent; cursor: not-allowed; }
 .btn[aria-disabled="true"]:hover { background: transparent; color: var(--muted); }
-.soon { font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; padding: .1rem .4rem; border-radius: 3px; background: var(--state); color: #7a5b06; }
+.soon { font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; padding: .1rem .4rem; border-radius: 3px; background: var(--state); color: var(--state-ink); }
 
 /* Person colour dots (timeline and people). */
 .dot { display: inline-block; width: .7em; height: .7em; border-radius: 50%; background: var(--c, var(--edge)); flex: none; }
