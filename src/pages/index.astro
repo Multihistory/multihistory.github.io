@@ -21,11 +21,10 @@ const introduction = `${home.introduction} ${home.projectName}.`;
           <a class="home-link" href={href("/statements/")}>Personal statements <span aria-hidden="true">→</span></a>
         </div>
       </div>
-      <figure class="hero-art">
+      <div class="hero-art">
         <img src={href("/multihistory-mark.svg")} width="208" height="208"
-          alt="Out[] = Graph[... one input token branches to two alternative events, both pointing to the same output token ...]" />
-        <figcaption><a href={href("/brand/token-event-graph.wl")} download>Wolfram Language source</a></figcaption>
-      </figure>
+          alt='Graph[{DirectedEdge["Input", "Event 1"], DirectedEdge["Input", "Event 2"], DirectedEdge["Event 1", "Output"], DirectedEdge["Event 2", "Output"]}]' />
+      </div>
     </section>
 
     <p class="inspiration">This concept was inspired by <a href={home.arityUrl}>Arity Science</a>.</p>
@@ -194,8 +193,6 @@ const introduction = `${home.introduction} ${home.projectName}.`;
     display: grid;
     place-items: center;
     align-content: center;
-    gap: .45rem;
-    margin: 0;
     padding: 1rem;
   }
   .hero-art::before {
@@ -208,8 +205,6 @@ const introduction = `${home.introduction} ${home.projectName}.`;
     mask-image: linear-gradient(90deg, transparent, black 26%);
   }
   .hero-art img { width: min(65%, 208px); height: auto; }
-  .hero-art figcaption { font-size: .875rem; text-align: center; }
-  .hero-art a { color: var(--home-green); }
   .home-section { margin-top: 2.125rem; border-top: 1px solid var(--rule); padding-top: 1.35rem; scroll-margin-top: 1rem; }
   .section-heading { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: baseline; gap: .4rem 1.2rem; margin-bottom: .95rem; }
   .section-heading h2 { font-size: clamp(1.7rem, 2.75vw, 2.3rem); letter-spacing: -.04em; margin: 0; }
@@ -275,7 +270,7 @@ const introduction = `${home.introduction} ${home.projectName}.`;
     .hero h1 { font-size: clamp(2.2rem, 9vw, 3.3rem); margin-bottom: .75rem; }
     .hero p { max-width: 34ch; }
     .hero .hero-note { max-width: 33ch; }
-    .hero-art { display: flex; gap: .7rem; padding: .45rem 1.125rem; border-top: 1px solid var(--hero-edge); }
+    .hero-art { display: flex; padding: .45rem 1.125rem; border-top: 1px solid var(--hero-edge); }
     .hero-art img { width: 62px; }
     .hero-actions { gap: .65rem; margin-top: 1rem; font-size: .9rem; }
     .home-primary { padding-inline: .6rem; gap: .35rem; }

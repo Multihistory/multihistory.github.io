@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
   <title id="title">Multihistory Science mark</title>
-  <desc id="desc">Out[] = Graph[… one input token branches to two alternative events, both pointing to the same output token …]</desc>
+  <desc id="desc">Graph[{DirectedEdge["Input", "Event 1"], DirectedEdge["Input", "Event 2"], DirectedEdge["Event 1", "Output"], DirectedEdge["Event 2", "Output"]}]</desc>
   <style>
     .edge { stroke: #aa5053; }
     .arrow { fill: #aa5053; }
