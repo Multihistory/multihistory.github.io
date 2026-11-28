@@ -12,18 +12,18 @@ const introduction = `${home.introduction} ${home.projectName}.`;
 <Layout description={`${introduction} ${home.purpose}`}>
   <div class="home wrap">
     <section class="hero" aria-labelledby="home-title">
+      <h1 id="home-title">{site.name}</h1>
+      <div class="hero-art">
+        <img src={href("/multihistory-mark.svg")} width="208" height="208"
+          alt='ImageRotate[GraphPlot@ WolframModel[{{{1}} -> {{1, 2}}, {{1}} -> {{1, 3}}}, {{1}}, \[Infinity], "EventSelectionFunction" -> "MultiwaySpacelike"]["DeduplicatedExpressionsEventsGraph", ImageSize -> 100, VertexSize -> Medium]]' />
+      </div>
       <div class="hero-copy">
-        <h1 id="home-title">{site.name}</h1>
         <p>{home.introduction}{" "}<a href={home.projectUrl}>{home.projectName}</a>.</p>
         <p class="hero-note">{home.purpose}</p>
         <div class="hero-actions">
           <a class="home-primary" href="#research">Explore the research <span aria-hidden="true">→</span></a>
           <a class="home-link" href={href("/statements/")}>Personal statements <span aria-hidden="true">→</span></a>
         </div>
-      </div>
-      <div class="hero-art">
-        <img src={href("/multihistory-mark.svg")} width="208" height="208"
-          alt='ImageRotate[GraphPlot@ WolframModel[{{{1}} -> {{1, 2}}, {{1}} -> {{1, 3}}}, {{1}}, \[Infinity], "EventSelectionFunction" -> "MultiwaySpacelike"]["DeduplicatedExpressionsEventsGraph", ImageSize -> 100, VertexSize -> Medium]]' />
       </div>
     </section>
 
@@ -159,15 +159,18 @@ const introduction = `${home.introduction} ${home.projectName}.`;
 <style>
   .home { --wide: 1120px; --home-green: var(--green); padding-top: 2.125rem; }
   .hero {
+    --hero-inset: clamp(1.5rem, 4.5vw, 3.5rem);
     display: grid;
     grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
     overflow: hidden;
     border: 1px solid var(--hero-edge);
     border-radius: 14px;
     background: linear-gradient(102deg, var(--hero-from) 25%, var(--hero-to));
   }
-  .hero-copy { padding: clamp(1.6rem, 4.5vw, 3.5rem) 0 clamp(1.75rem, 4.5vw, 3.3rem) clamp(1.5rem, 4.5vw, 3.5rem); z-index: 1; }
-  .hero h1 { font-size: clamp(2.4rem, 5.65vw, 4.75rem); letter-spacing: -.06em; line-height: 1; margin: 0 0 1.2rem; }
+  .hero h1, .hero-copy { grid-column: 1; padding-inline-start: var(--hero-inset); }
+  .hero-copy { padding-bottom: clamp(1.75rem, 4.5vw, 3.3rem); }
+  .hero h1 { padding-top: clamp(1.6rem, 4.5vw, 3.5rem); font-size: clamp(2.4rem, 5.65vw, 4.75rem); letter-spacing: -.06em; line-height: 1; margin: 0 0 1.2rem; }
   .hero p { color: var(--ink); font-size: clamp(1.06rem, 1.64vw, 1.32rem); line-height: 1.4; max-width: 46ch; text-wrap: balance; margin: 0; }
   .hero p a { color: var(--home-green); }
   .hero .hero-note { color: var(--muted); margin-top: .6rem; max-width: 53ch; font-size: 1rem; }
@@ -188,6 +191,8 @@ const introduction = `${home.introduction} ${home.projectName}.`;
   .home-link { color: var(--home-green); font-size: .94rem; text-decoration: none; font-weight: 650; }
   .home-link:hover { color: var(--home-green); text-decoration: underline; }
   .hero-art {
+    grid-column: 2;
+    grid-row: 1 / -1;
     position: relative;
     isolation: isolate;
     display: grid;
@@ -265,9 +270,10 @@ const introduction = `${home.introduction} ${home.projectName}.`;
 
   @media (max-width: 610px) {
     .home { padding-top: 1.05rem; }
-    .hero { position: relative; display: block; }
-    .hero-copy { position: relative; padding: 1.4rem 1.125rem 0; }
-    .hero h1 { font-size: clamp(2.2rem, 9vw, 3.3rem); margin-bottom: .75rem; }
+    .hero { --hero-inset: 1.125rem; display: block; }
+    .hero h1, .hero-copy { padding-inline: var(--hero-inset); }
+    .hero-copy { padding-bottom: 1.4rem; }
+    .hero h1 { padding-top: 1.4rem; font-size: clamp(2.2rem, 9vw, 3.3rem); margin-bottom: 0; }
     .hero p { max-width: 34ch; }
     .hero .hero-note { max-width: 33ch; }
     .hero-art { padding: .75rem 1.125rem 1rem; }
