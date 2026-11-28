@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
   <title id="title">Multihistory Science favicon</title>
-  <desc id="desc">Out[] = Graph[… one input token branches to two alternative events, both pointing to the same output token …]</desc>
+  <desc id="desc">ImageRotate[GraphPlot@ WolframModel[{{{1}} -&gt; {{1, 2}}, {{1}} -&gt; {{1, 3}}}, {{1}}, \[Infinity], "EventSelectionFunction" -&gt; "MultiwaySpacelike"]["DeduplicatedExpressionsEventsGraph", ImageSize -&gt; 100, VertexSize -&gt; Medium]]</desc>
   <style>
     .edge { stroke: #aa5053; }
     .arrow { fill: #aa5053; }

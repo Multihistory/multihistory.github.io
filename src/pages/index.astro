@@ -7,97 +7,25 @@ import { researchAreas } from "../data/research";
 import { link, person, photo } from "../lib/multihistory";
 
 const featuredPeople = home.people.map(person).filter((member) => member !== undefined);
-const introduction = `${home.introduction} ${home.projectName}.`;
 ---
-<Layout description={`${introduction} ${home.purpose}`}>
+<Layout description={`${home.introduction} ${home.purpose}`}>
+  <Fragment slot="footer-credit">This website was inspired by <a href={home.arityUrl}>Arity Science</a>.</Fragment>
   <div class="home wrap">
     <section class="hero" aria-labelledby="home-title">
-      <div class="hero-copy">
-        <h1 id="home-title">{site.name}</h1>
-        <p>{home.introduction}{" "}<a href={home.projectUrl}>{home.projectName}</a>.</p>
-        <p class="hero-note">{home.purpose}</p>
-        <div class="hero-actions">
-          <a class="home-primary" href="#research">Explore the research <span aria-hidden="true">→</span></a>
-          <a class="home-link" href={href("/statements/")}>Personal statements <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-      <figure class="hero-art">
+      <h1 id="home-title">{site.name}</h1>
+      <div class="hero-art">
         <img src={href("/multihistory-mark.svg")} width="208" height="208"
-          alt="Out[] = Graph[... one input token branches to two alternative events, both pointing to the same output token ...]" />
-        <figcaption><a href={href("/brand/token-event-graph.wl")} download>Wolfram Language source</a></figcaption>
-      </figure>
-    </section>
-
-    <p class="inspiration">This concept was inspired by <a href={home.arityUrl}>Arity Science</a>.</p>
-
-    <section class="home-section" id="people" aria-labelledby="people-title">
-      <div class="section-heading">
-        <h2 id="people-title">People</h2>
-        <p>Personal statements</p>
+          alt='ImageRotate[GraphPlot@ WolframModel[{{{1}} -> {{1, 2}}, {{1}} -> {{1, 3}}}, {{1}}, \[Infinity], "EventSelectionFunction" -> "MultiwaySpacelike"]["DeduplicatedExpressionsEventsGraph", ImageSize -> 100, VertexSize -> Medium]]' />
       </div>
-      <ul class="people-grid">
-        {featuredPeople.map((member) => {
-          const portrait = photo(member.photo);
-          const initials = member.name.split(" ").slice(0, 2).map((name) => name[0]).join("");
-          return (
-            <li>
-              <a class="person" href={href(`/statements/#${member.slug}`)} aria-label={`Personal statement of ${member.name}`}>
-                <span class="avatar" style={`--person-color:${member.color}`} aria-hidden="true">
-                  {portrait ? <Image src={portrait} width={144} height={144} alt="" /> : <span class="initials">{initials}</span>}
-                </span>
-                <span class="person-name">{member.name}</span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
-
-    <section class="home-section" id="timeline" aria-labelledby="timeline-title">
-      <div class="section-heading">
-        <h2 id="timeline-title">Timeline</h2>
-        <a class="home-link" href={href("/timeline/")}>Full timeline <span aria-hidden="true">→</span></a>
-      </div>
-      <ol class="milestones">
-        {home.milestones.map((milestone) => (
-          <li>
-            <a href={link(milestone.href)}>
-              <time datetime={milestone.date}>{milestone.date.slice(0, 4)}</time>
-              <strong>{milestone.label}</strong>
-            </a>
-          </li>
-        ))}
-      </ol>
-    </section>
-
-    <section class="home-section" id="hyperseminar" aria-labelledby="seminar-title">
-      <div class="section-heading">
-        <h2 id="seminar-title">Hyperseminar</h2>
-        <a class="home-link" href={home.youtube}>YouTube channel <span aria-hidden="true">↗</span></a>
-      </div>
-      <div class="video-grid" id="recordings">
-        {home.seminars.map((seminar) => (
-          <a class="video-card" href={`https://www.youtube.com/watch?v=${seminar.videoId}`}>
-            <div class="video-cover">
-              <Image src={seminar.cover} width={720} widths={[360, 720]} sizes="(max-width: 610px) 82vw, 360px" alt="" />
-              <span class="play" aria-hidden="true"></span>
-            </div>
-            <div class="video-info">
-              <p>{seminar.label}</p>
-              <h3>{seminar.title}</h3>
-            </div>
-          </a>
-        ))}
-      </div>
-      <div class="carousel-controls" id="recording-controls" hidden>
-        <button type="button" aria-controls="recordings" aria-label="Previous recording">←</button>
-        <button type="button" aria-controls="recordings" aria-label="Next recording">→</button>
+      <div class="hero-copy">
+        <p>{home.introduction}</p>
+        <p class="hero-note">{home.purpose}</p>
       </div>
     </section>
 
     <section class="home-section" id="research" aria-labelledby="research-title">
       <div class="section-heading">
-        <h2 id="research-title">Main research areas</h2>
+        <h2 id="research-title">Research Area Guides</h2>
         <a class="home-link" id="contributions" href={href("/topics/")}>Browse research topics <span aria-hidden="true">→</span></a>
       </div>
       <div class="research-grid">
@@ -125,6 +53,71 @@ const introduction = `${home.introduction} ${home.projectName}.`;
     <p class="more-projects" id="other-research">
       <a class="home-link" id="projects" href={href("/projects/")}>More projects <span aria-hidden="true">→</span></a>
     </p>
+
+    <section class="home-section" id="timeline" aria-labelledby="timeline-title">
+      <div class="section-heading">
+        <h2 id="timeline-title">Timeline</h2>
+        <a class="home-link" href={href("/timeline/")}>Full timeline <span aria-hidden="true">→</span></a>
+      </div>
+      <ol class="milestones">
+        {home.milestones.map((milestone) => (
+          <li>
+            <a href={link(milestone.href)}>
+              <time datetime={milestone.date}>{milestone.date.slice(0, 4)}</time>
+              <strong>{milestone.label}</strong>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="home-section" id="people" aria-labelledby="people-title">
+      <div class="section-heading">
+        <h2 id="people-title">People</h2>
+        <p>Personal statements</p>
+      </div>
+      <ul class="people-grid">
+        {featuredPeople.map((member) => {
+          const portrait = photo(member.photo);
+          const initials = member.name.split(" ").slice(0, 2).map((name) => name[0]).join("");
+          return (
+            <li>
+              <a class="person" href={href(`/statements/#${member.slug}`)} aria-label={`Personal statement of ${member.name}`}>
+                <span class="avatar" style={`--person-color:${member.color}`} aria-hidden="true">
+                  {portrait ? <Image src={portrait} width={144} height={144} alt="" /> : <span class="initials">{initials}</span>}
+                </span>
+                <span class="person-name">{member.name}</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+
+    <section class="home-section" id="hyperseminar" aria-labelledby="seminar-title">
+      <div class="section-heading">
+        <h2 id="seminar-title">Hyperseminar</h2>
+        <a class="home-link" href={home.youtube}>YouTube channel <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="video-grid" id="recordings">
+        {home.seminars.map((seminar) => (
+          <a class="video-card" href={`https://www.youtube.com/watch?v=${seminar.videoId}`}>
+            <div class="video-cover">
+              <Image src={seminar.cover} width={720} widths={[360, 720]} sizes="(max-width: 610px) 82vw, 360px" alt="" />
+              <span class="play" aria-hidden="true"></span>
+            </div>
+            <div class="video-info">
+              <p>{seminar.label}</p>
+              <h3>{seminar.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="carousel-controls" id="recording-controls" hidden>
+        <button type="button" aria-controls="recordings" aria-label="Previous recording">←</button>
+        <button type="button" aria-controls="recordings" aria-label="Next recording">→</button>
+      </div>
+    </section>
   </div>
 </Layout>
 
@@ -160,42 +153,30 @@ const introduction = `${home.introduction} ${home.projectName}.`;
 <style>
   .home { --wide: 1120px; --home-green: var(--green); padding-top: 2.125rem; }
   .hero {
+    --hero-inset: clamp(1.5rem, 4.5vw, 3.5rem);
     display: grid;
     grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
     overflow: hidden;
     border: 1px solid var(--hero-edge);
     border-radius: 14px;
     background: linear-gradient(102deg, var(--hero-from) 25%, var(--hero-to));
   }
-  .hero-copy { padding: clamp(1.6rem, 4.5vw, 3.5rem) 0 clamp(1.75rem, 4.5vw, 3.3rem) clamp(1.5rem, 4.5vw, 3.5rem); z-index: 1; }
-  .hero h1 { font-size: clamp(2.4rem, 5.65vw, 4.75rem); letter-spacing: -.06em; line-height: 1; margin: 0 0 1.2rem; }
+  .hero h1, .hero-copy { grid-column: 1; padding-inline-start: var(--hero-inset); }
+  .hero-copy { padding-bottom: clamp(1.75rem, 4.5vw, 3.3rem); }
+  .hero h1 { padding-top: clamp(1.6rem, 4.5vw, 3.5rem); font-size: clamp(2.4rem, 5.65vw, 4.75rem); letter-spacing: -.06em; line-height: 1; margin: 0 0 1.2rem; }
   .hero p { color: var(--ink); font-size: clamp(1.06rem, 1.64vw, 1.32rem); line-height: 1.4; max-width: 46ch; text-wrap: balance; margin: 0; }
-  .hero p a { color: var(--home-green); }
   .hero .hero-note { color: var(--muted); margin-top: .6rem; max-width: 53ch; font-size: 1rem; }
-  .hero-actions { display: flex; align-items: center; gap: .65rem 1.35rem; flex-wrap: wrap; margin-top: 1.45rem; }
-  .home-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: .65rem;
-    min-height: 44px;
-    padding: .45rem .95rem;
-    border-radius: 6px;
-    background: var(--green-fill);
-    color: white;
-    text-decoration: none;
-    font-weight: 650;
-  }
-  .home-primary:hover { background: var(--green-fill-hover); color: white; }
   .home-link { color: var(--home-green); font-size: .94rem; text-decoration: none; font-weight: 650; }
   .home-link:hover { color: var(--home-green); text-decoration: underline; }
   .hero-art {
+    grid-column: 2;
+    grid-row: 1 / -1;
     position: relative;
     isolation: isolate;
     display: grid;
     place-items: center;
     align-content: center;
-    gap: .45rem;
-    margin: 0;
     padding: 1rem;
   }
   .hero-art::before {
@@ -208,8 +189,6 @@ const introduction = `${home.introduction} ${home.projectName}.`;
     mask-image: linear-gradient(90deg, transparent, black 26%);
   }
   .hero-art img { width: min(65%, 208px); height: auto; }
-  .hero-art figcaption { font-size: .875rem; text-align: center; }
-  .hero-art a { color: var(--home-green); }
   .home-section { margin-top: 2.125rem; border-top: 1px solid var(--rule); padding-top: 1.35rem; scroll-margin-top: 1rem; }
   .section-heading { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: baseline; gap: .4rem 1.2rem; margin-bottom: .95rem; }
   .section-heading h2 { font-size: clamp(1.7rem, 2.75vw, 2.3rem); letter-spacing: -.04em; margin: 0; }
@@ -257,8 +236,6 @@ const introduction = `${home.introduction} ${home.projectName}.`;
   .guide-action { margin-top: auto; padding-top: .7rem; border-top: 1px solid var(--rule); text-align: right; }
   .guide-card:hover .guide-action { text-decoration: underline; }
   .more-projects { margin: 1rem 0 0; }
-  .inspiration { margin: .75rem 0 0; color: var(--muted); font-size: .9rem; }
-  .inspiration a { color: var(--home-green); }
 
   @media (max-width: 840px) {
     .hero { grid-template-columns: minmax(0, 2fr) minmax(0, .8fr); }
@@ -270,15 +247,15 @@ const introduction = `${home.introduction} ${home.projectName}.`;
 
   @media (max-width: 610px) {
     .home { padding-top: 1.05rem; }
-    .hero { position: relative; display: block; }
-    .hero-copy { position: relative; padding: 1.4rem 1.125rem; }
-    .hero h1 { font-size: clamp(2.2rem, 9vw, 3.3rem); margin-bottom: .75rem; }
+    .hero { --hero-inset: 1.125rem; display: block; }
+    .hero h1, .hero-copy { padding-inline: var(--hero-inset); }
+    .hero-copy { padding-bottom: 1.4rem; }
+    .hero h1 { padding-top: 1.4rem; font-size: clamp(2.2rem, 9vw, 3.3rem); margin-bottom: 0; }
     .hero p { max-width: 34ch; }
     .hero .hero-note { max-width: 33ch; }
-    .hero-art { display: flex; gap: .7rem; padding: .45rem 1.125rem; border-top: 1px solid var(--hero-edge); }
-    .hero-art img { width: 62px; }
-    .hero-actions { gap: .65rem; margin-top: 1rem; font-size: .9rem; }
-    .home-primary { padding-inline: .6rem; gap: .35rem; }
+    .hero-art { padding: .75rem 1.125rem 1rem; }
+    .hero-art::before { mask-image: radial-gradient(ellipse closest-side, black 30%, transparent); }
+    .hero-art img { width: 76px; }
     .home-section { margin-top: 1.5rem; padding-top: .95rem; }
     .section-heading { margin-bottom: .75rem; }
     .section-heading .home-link, .section-heading p { font-size: .875rem; }

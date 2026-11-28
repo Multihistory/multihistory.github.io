@@ -120,7 +120,7 @@ The style is a "computational notebook" look, light with a dark counterpart, ins
   - Colours drawn over photos and video covers (the play button, for example) are the same in both schemes and stay where they are used.
   - The dark scheme is slate with warm off-white text. Keep it distinct from the dark theme of Arity Science, which is a near-black purple.
 - "Cells" (`.cell`) are cards on the panel colour (white, or slate in the dark scheme) with a thin warm border. Section labels (`.label`) are orange monospace with a dot.
-- **Hero and logo:** the token–event diamond has a blue input token, two amber events and a shared blue output token. The home page describes the directed graph in SetReplace's `Out[] = Graph[...]` format and links the Wolfram Language source in `public/brand/token-event-graph.wl`. The same mark is used in the header and social card. The favicon uses heavier strokes for small sizes.
+- **Hero and logo:** the token–event diamond has a blue input token, two amber events and a shared blue output token. The homepage image alternative text and the SVG descriptions give the directed graph as a Wolfram Language expression. The same mark is used in the header and social card. The favicon uses heavier strokes for small sizes.
 - **Motion:** keep it subtle and CSS-only, and respect `prefers-reduced-motion` (handled globally). The only client script is the person filter on the timeline page.
 
 ## 7. Decisions already made with the owner (do not undo without asking)
@@ -168,7 +168,8 @@ The style is a "computational notebook" look, light with a dark counterpart, ins
 2. Back every new claim with `sources` or `statement`; check that each URL opens and says what you claim.
 3. Keep statements verbatim and keep the wording neutral (sections 2 and 7).
 4. `npm run build`, then look at the changed pages at 1280px and 390px, in both the light and the dark scheme.
-5. If a URL changes or disappears, add a redirect for it on the host (e.g. a line in `public/_redirects` on Cloudflare Pages or Netlify).
+5. For every pull request that changes the visual layout or structure, embed screenshots of the affected pages in the PR description. Include desktop and mobile views.
+6. If a URL changes or disappears, add a redirect for it on the host (e.g. a line in `public/_redirects` on Cloudflare Pages or Netlify).
 
 ## Administration update — 7 November 2026
 

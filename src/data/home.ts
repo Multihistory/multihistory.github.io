@@ -11,9 +11,7 @@ export const initialSeminars = [
 ] as const;
 
 export const home = {
-  projectName: "Wolfram Physics Project",
-  projectUrl: "https://www.wolframphysics.org/",
-  introduction: "A collaboration of independent researchers who met through their work around the",
+  introduction: "A collaboration of independent researchers studying hypergraph rewriting and its applications.",
   purpose: "This website records their statements and contributions and provides guides and resources.",
   arityUrl: "https://arity.science/",
   youtube: "https://www.youtube.com/@MultiHistoryScience/streams",
