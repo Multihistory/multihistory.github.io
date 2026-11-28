@@ -20,81 +20,12 @@ const featuredPeople = home.people.map(person).filter((member) => member !== und
       <div class="hero-copy">
         <p>{home.introduction}</p>
         <p class="hero-note">{home.purpose}</p>
-        <div class="hero-actions">
-          <a class="home-primary" href="#research">Explore the research <span aria-hidden="true">→</span></a>
-          <a class="home-link" href={href("/statements/")}>Personal statements <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="home-section" id="people" aria-labelledby="people-title">
-      <div class="section-heading">
-        <h2 id="people-title">People</h2>
-        <p>Personal statements</p>
-      </div>
-      <ul class="people-grid">
-        {featuredPeople.map((member) => {
-          const portrait = photo(member.photo);
-          const initials = member.name.split(" ").slice(0, 2).map((name) => name[0]).join("");
-          return (
-            <li>
-              <a class="person" href={href(`/statements/#${member.slug}`)} aria-label={`Personal statement of ${member.name}`}>
-                <span class="avatar" style={`--person-color:${member.color}`} aria-hidden="true">
-                  {portrait ? <Image src={portrait} width={144} height={144} alt="" /> : <span class="initials">{initials}</span>}
-                </span>
-                <span class="person-name">{member.name}</span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
-
-    <section class="home-section" id="timeline" aria-labelledby="timeline-title">
-      <div class="section-heading">
-        <h2 id="timeline-title">Timeline</h2>
-        <a class="home-link" href={href("/timeline/")}>Full timeline <span aria-hidden="true">→</span></a>
-      </div>
-      <ol class="milestones">
-        {home.milestones.map((milestone) => (
-          <li>
-            <a href={link(milestone.href)}>
-              <time datetime={milestone.date}>{milestone.date.slice(0, 4)}</time>
-              <strong>{milestone.label}</strong>
-            </a>
-          </li>
-        ))}
-      </ol>
-    </section>
-
-    <section class="home-section" id="hyperseminar" aria-labelledby="seminar-title">
-      <div class="section-heading">
-        <h2 id="seminar-title">Hyperseminar</h2>
-        <a class="home-link" href={home.youtube}>YouTube channel <span aria-hidden="true">↗</span></a>
-      </div>
-      <div class="video-grid" id="recordings">
-        {home.seminars.map((seminar) => (
-          <a class="video-card" href={`https://www.youtube.com/watch?v=${seminar.videoId}`}>
-            <div class="video-cover">
-              <Image src={seminar.cover} width={720} widths={[360, 720]} sizes="(max-width: 610px) 82vw, 360px" alt="" />
-              <span class="play" aria-hidden="true"></span>
-            </div>
-            <div class="video-info">
-              <p>{seminar.label}</p>
-              <h3>{seminar.title}</h3>
-            </div>
-          </a>
-        ))}
-      </div>
-      <div class="carousel-controls" id="recording-controls" hidden>
-        <button type="button" aria-controls="recordings" aria-label="Previous recording">←</button>
-        <button type="button" aria-controls="recordings" aria-label="Next recording">→</button>
       </div>
     </section>
 
     <section class="home-section" id="research" aria-labelledby="research-title">
       <div class="section-heading">
-        <h2 id="research-title">Main research areas</h2>
+        <h2 id="research-title">Research Area Guides</h2>
         <a class="home-link" id="contributions" href={href("/topics/")}>Browse research topics <span aria-hidden="true">→</span></a>
       </div>
       <div class="research-grid">
@@ -122,6 +53,71 @@ const featuredPeople = home.people.map(person).filter((member) => member !== und
     <p class="more-projects" id="other-research">
       <a class="home-link" id="projects" href={href("/projects/")}>More projects <span aria-hidden="true">→</span></a>
     </p>
+
+    <section class="home-section" id="timeline" aria-labelledby="timeline-title">
+      <div class="section-heading">
+        <h2 id="timeline-title">Timeline</h2>
+        <a class="home-link" href={href("/timeline/")}>Full timeline <span aria-hidden="true">→</span></a>
+      </div>
+      <ol class="milestones">
+        {home.milestones.map((milestone) => (
+          <li>
+            <a href={link(milestone.href)}>
+              <time datetime={milestone.date}>{milestone.date.slice(0, 4)}</time>
+              <strong>{milestone.label}</strong>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="home-section" id="people" aria-labelledby="people-title">
+      <div class="section-heading">
+        <h2 id="people-title">People</h2>
+        <p>Personal statements</p>
+      </div>
+      <ul class="people-grid">
+        {featuredPeople.map((member) => {
+          const portrait = photo(member.photo);
+          const initials = member.name.split(" ").slice(0, 2).map((name) => name[0]).join("");
+          return (
+            <li>
+              <a class="person" href={href(`/statements/#${member.slug}`)} aria-label={`Personal statement of ${member.name}`}>
+                <span class="avatar" style={`--person-color:${member.color}`} aria-hidden="true">
+                  {portrait ? <Image src={portrait} width={144} height={144} alt="" /> : <span class="initials">{initials}</span>}
+                </span>
+                <span class="person-name">{member.name}</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+
+    <section class="home-section" id="hyperseminar" aria-labelledby="seminar-title">
+      <div class="section-heading">
+        <h2 id="seminar-title">Hyperseminar</h2>
+        <a class="home-link" href={home.youtube}>YouTube channel <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="video-grid" id="recordings">
+        {home.seminars.map((seminar) => (
+          <a class="video-card" href={`https://www.youtube.com/watch?v=${seminar.videoId}`}>
+            <div class="video-cover">
+              <Image src={seminar.cover} width={720} widths={[360, 720]} sizes="(max-width: 610px) 82vw, 360px" alt="" />
+              <span class="play" aria-hidden="true"></span>
+            </div>
+            <div class="video-info">
+              <p>{seminar.label}</p>
+              <h3>{seminar.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="carousel-controls" id="recording-controls" hidden>
+        <button type="button" aria-controls="recordings" aria-label="Previous recording">←</button>
+        <button type="button" aria-controls="recordings" aria-label="Next recording">→</button>
+      </div>
+    </section>
   </div>
 </Layout>
 
@@ -171,20 +167,6 @@ const featuredPeople = home.people.map(person).filter((member) => member !== und
   .hero h1 { padding-top: clamp(1.6rem, 4.5vw, 3.5rem); font-size: clamp(2.4rem, 5.65vw, 4.75rem); letter-spacing: -.06em; line-height: 1; margin: 0 0 1.2rem; }
   .hero p { color: var(--ink); font-size: clamp(1.06rem, 1.64vw, 1.32rem); line-height: 1.4; max-width: 46ch; text-wrap: balance; margin: 0; }
   .hero .hero-note { color: var(--muted); margin-top: .6rem; max-width: 53ch; font-size: 1rem; }
-  .hero-actions { display: flex; align-items: center; gap: .65rem 1.35rem; flex-wrap: wrap; margin-top: 1.45rem; }
-  .home-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: .65rem;
-    min-height: 44px;
-    padding: .45rem .95rem;
-    border-radius: 6px;
-    background: var(--green-fill);
-    color: white;
-    text-decoration: none;
-    font-weight: 650;
-  }
-  .home-primary:hover { background: var(--green-fill-hover); color: white; }
   .home-link { color: var(--home-green); font-size: .94rem; text-decoration: none; font-weight: 650; }
   .home-link:hover { color: var(--home-green); text-decoration: underline; }
   .hero-art {
@@ -274,8 +256,6 @@ const featuredPeople = home.people.map(person).filter((member) => member !== und
     .hero-art { padding: .75rem 1.125rem 1rem; }
     .hero-art::before { mask-image: radial-gradient(ellipse closest-side, black 30%, transparent); }
     .hero-art img { width: 76px; }
-    .hero-actions { gap: .65rem; margin-top: 1rem; font-size: .9rem; }
-    .home-primary { padding-inline: .6rem; gap: .35rem; }
     .home-section { margin-top: 1.5rem; padding-top: .95rem; }
     .section-heading { margin-bottom: .75rem; }
     .section-heading .home-link, .section-heading p { font-size: .875rem; }

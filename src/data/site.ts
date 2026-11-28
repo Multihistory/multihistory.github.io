@@ -16,10 +16,10 @@ export const site = {
   disclaimer:
     "The collaboration grew out of research connections made through the Wolfram Institute but is not affiliated with, or endorsed by, Wolfram Research, the Wolfram Foundation, the Wolfram Institute or Stephen Wolfram.",
   nav: [
-    { label: "People", href: "/#people" },
+    { label: "Guides", href: "/#research" },
     { label: "Timeline", href: "/#timeline" },
+    { label: "People", href: "/#people" },
     { label: "Hyperseminar", href: "/#hyperseminar" },
-    { label: "Research", href: "/#research" },
     { label: "Resources", href: "/resources/", id: "resources" },
   ],
 };
