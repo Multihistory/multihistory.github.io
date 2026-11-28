@@ -168,7 +168,8 @@ The style is a "computational notebook" look, light with a dark counterpart, ins
 2. Back every new claim with `sources` or `statement`; check that each URL opens and says what you claim.
 3. Keep statements verbatim and keep the wording neutral (sections 2 and 7).
 4. `npm run build`, then look at the changed pages at 1280px and 390px, in both the light and the dark scheme.
-5. If a URL changes or disappears, add a redirect for it on the host (e.g. a line in `public/_redirects` on Cloudflare Pages or Netlify).
+5. For every pull request that changes the visual layout or structure, embed screenshots of the affected pages in the PR description. Include desktop and mobile views.
+6. If a URL changes or disappears, add a redirect for it on the host (e.g. a line in `public/_redirects` on Cloudflare Pages or Netlify).
 
 ## Administration update — 7 November 2026
 
