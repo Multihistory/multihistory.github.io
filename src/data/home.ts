@@ -1,13 +1,25 @@
 import openingCover from "../assets/home/hyperseminar-0.jpg";
 import arityCover from "../assets/home/hyperseminar-1.jpg";
 import kickoffCover from "../assets/home/hyperseminar-2.jpg";
+import publishingCover from "../assets/home/hyperseminar-3.jpg";
 import geometryCover from "../assets/home/emergent-geometry.jpg";
 import spacetimeCover from "../assets/home/emergent-spacetime.jpg";
 
 export const initialSeminars = [
   { number: 0, title: "Opening session", label: "Hyperseminar #0", videoId: "7yZdt7J2mkc", cover: openingCover },
   { number: 1, title: "Arity Science Findings", label: "Hyperseminar #1 · Carlos Zapata-Carratalá", videoId: "7u6_pvzH_qA", cover: arityCover },
-  { number: 2, title: "Kick-Starting Multihistory Science", label: "Hyperseminar #2 · Pavel Hájek", videoId: "ssW5TOolokQ", cover: kickoffCover },
+  {
+    number: 2,
+    title: "Kick-Starting Multihistory Science",
+    label: "Hyperseminar #2 · Pavel Hájek",
+    videoId: "ssW5TOolokQ",
+    cover: kickoffCover,
+    resources: [
+      { label: "Slides (PDF)", href: "/hyperseminar/02/multihistory-initial-meeting.pdf" },
+      { label: "Whiteboard (PNG)", href: "/hyperseminar/02/whiteboard.png" },
+      { label: "Excalidraw", href: "/hyperseminar/02/whiteboard.excalidraw", download: true },
+    ],
+  },
 ] as const;
 
 export const home = {
@@ -31,7 +43,19 @@ export const home = {
     { date: "2025-06-04", label: "Causality, Observers and Computation grant", href: "https://www.templeton.org/grant/causality-observers-and-computation-a-new-approach-to-fundamental-physics-and-metamathematics" },
     { date: "2026-11-02", label: "Multihistory Science begins", href: "~/timeline/" },
   ],
-  seminars: [...initialSeminars].reverse(),
+  seminars: [
+    ...initialSeminars,
+    {
+      number: 3,
+      title: "Communicating Computational Research in AI Era",
+      label: "Hyperseminar #3 · Pavel Hájek",
+      videoId: "Gt77ciPD0kk",
+      cover: publishingCover,
+      resources: [
+        { label: "Slides (PDF)", href: "/hyperseminar/03/multihistory-hyperseminar-2026-11-27.pdf" },
+      ],
+    },
+  ].reverse(),
   guideCovers: {
     spacetime: spacetimeCover,
     geometry: geometryCover,
