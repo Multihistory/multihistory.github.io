@@ -46,7 +46,7 @@ const socialImage = new URL(href("/brand/social-card.png"), site.url).href;
     <main id="main-content"><slot /></main>
     <footer class="mh-footer" id="about">
       <div class="wrap foot">
-        <p>{site.disclaimer}</p>
+        <p>{site.disclaimer}{Astro.slots.has("footer-credit") && <>{" "}<slot name="footer-credit" /></>}</p>
         <div class="footer-links">
           <a href={href("/principles/")}>Founding principles <span aria-hidden="true">→</span></a>
           <a id="join" href={href("/contact/")}>Contact us <span aria-hidden="true">→</span></a>
@@ -71,6 +71,7 @@ const socialImage = new URL(href("/brand/social-card.png"), site.url).href;
   .mh-footer { margin-top: 2.2rem; padding-block: 1.25rem; border-top: 1px solid var(--rule); background: var(--footer); }
   .foot { display: flex; justify-content: space-between; align-items: baseline; gap: .75rem 1.75rem; flex-wrap: wrap; }
   .foot p { margin: 0; max-width: 82ch; font-size: .875rem; color: var(--muted); }
+  .foot p :global(a) { color: var(--green); }
   .footer-links { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; }
   .footer-links a { font-weight: 650; font-size: .875rem; white-space: nowrap; color: var(--green); text-decoration: none; }
   @media (max-width: 640px) {

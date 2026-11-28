@@ -7,9 +7,9 @@ import { researchAreas } from "../data/research";
 import { link, person, photo } from "../lib/multihistory";
 
 const featuredPeople = home.people.map(person).filter((member) => member !== undefined);
-const introduction = `${home.introduction} ${home.projectName}.`;
 ---
-<Layout description={`${introduction} ${home.purpose}`}>
+<Layout description={`${home.introduction} ${home.purpose}`}>
+  <Fragment slot="footer-credit">This website was inspired by <a href={home.arityUrl}>Arity Science</a>.</Fragment>
   <div class="home wrap">
     <section class="hero" aria-labelledby="home-title">
       <h1 id="home-title">{site.name}</h1>
@@ -18,7 +18,7 @@ const introduction = `${home.introduction} ${home.projectName}.`;
           alt='ImageRotate[GraphPlot@ WolframModel[{{{1}} -> {{1, 2}}, {{1}} -> {{1, 3}}}, {{1}}, \[Infinity], "EventSelectionFunction" -> "MultiwaySpacelike"]["DeduplicatedExpressionsEventsGraph", ImageSize -> 100, VertexSize -> Medium]]' />
       </div>
       <div class="hero-copy">
-        <p>{home.introduction}{" "}<a href={home.projectUrl}>{home.projectName}</a>.</p>
+        <p>{home.introduction}</p>
         <p class="hero-note">{home.purpose}</p>
         <div class="hero-actions">
           <a class="home-primary" href="#research">Explore the research <span aria-hidden="true">→</span></a>
@@ -26,8 +26,6 @@ const introduction = `${home.introduction} ${home.projectName}.`;
         </div>
       </div>
     </section>
-
-    <p class="inspiration">This concept was inspired by <a href={home.arityUrl}>Arity Science</a>.</p>
 
     <section class="home-section" id="people" aria-labelledby="people-title">
       <div class="section-heading">
@@ -172,7 +170,6 @@ const introduction = `${home.introduction} ${home.projectName}.`;
   .hero-copy { padding-bottom: clamp(1.75rem, 4.5vw, 3.3rem); }
   .hero h1 { padding-top: clamp(1.6rem, 4.5vw, 3.5rem); font-size: clamp(2.4rem, 5.65vw, 4.75rem); letter-spacing: -.06em; line-height: 1; margin: 0 0 1.2rem; }
   .hero p { color: var(--ink); font-size: clamp(1.06rem, 1.64vw, 1.32rem); line-height: 1.4; max-width: 46ch; text-wrap: balance; margin: 0; }
-  .hero p a { color: var(--home-green); }
   .hero .hero-note { color: var(--muted); margin-top: .6rem; max-width: 53ch; font-size: 1rem; }
   .hero-actions { display: flex; align-items: center; gap: .65rem 1.35rem; flex-wrap: wrap; margin-top: 1.45rem; }
   .home-primary {
@@ -257,8 +254,6 @@ const introduction = `${home.introduction} ${home.projectName}.`;
   .guide-action { margin-top: auto; padding-top: .7rem; border-top: 1px solid var(--rule); text-align: right; }
   .guide-card:hover .guide-action { text-decoration: underline; }
   .more-projects { margin: 1rem 0 0; }
-  .inspiration { margin: .75rem 0 0; color: var(--muted); font-size: .9rem; }
-  .inspiration a { color: var(--home-green); }
 
   @media (max-width: 840px) {
     .hero { grid-template-columns: minmax(0, 2fr) minmax(0, .8fr); }
