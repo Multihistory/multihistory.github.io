@@ -266,12 +266,13 @@ const introduction = `${home.introduction} ${home.projectName}.`;
   @media (max-width: 610px) {
     .home { padding-top: 1.05rem; }
     .hero { position: relative; display: block; }
-    .hero-copy { position: relative; padding: 1.4rem 1.125rem; }
+    .hero-copy { position: relative; padding: 1.4rem 1.125rem 0; }
     .hero h1 { font-size: clamp(2.2rem, 9vw, 3.3rem); margin-bottom: .75rem; }
     .hero p { max-width: 34ch; }
     .hero .hero-note { max-width: 33ch; }
-    .hero-art { display: flex; padding: .45rem 1.125rem; border-top: 1px solid var(--hero-edge); }
-    .hero-art img { width: 62px; }
+    .hero-art { padding: .75rem 1.125rem 1rem; }
+    .hero-art::before { mask-image: radial-gradient(ellipse closest-side, black 30%, transparent); }
+    .hero-art img { width: 76px; }
     .hero-actions { gap: .65rem; margin-top: 1rem; font-size: .9rem; }
     .home-primary { padding-inline: .6rem; gap: .35rem; }
     .home-section { margin-top: 1.5rem; padding-top: .95rem; }

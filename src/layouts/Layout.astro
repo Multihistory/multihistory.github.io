@@ -25,8 +25,9 @@ const socialImage = new URL(href("/brand/social-card.png"), site.url).href;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#fcfbf7" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#14171c" media="(prefers-color-scheme: dark)" />
-    <link rel="icon" href={href("/favicon.svg")} type="image/svg+xml" />
-    <link rel="apple-touch-icon" href={href("/brand/apple-touch-icon.png")} />
+    <link rel="icon" href={href("/favicon.ico")} sizes="16x16 32x32 48x48" />
+    <link rel="icon" href={href("/favicon.svg?v=token-event")} type="image/svg+xml" sizes="any" />
+    <link rel="apple-touch-icon" href={href("/brand/apple-touch-icon.png?v=token-event")} />
   </head>
   <body>
     <a class="skip" href="#main-content">Skip to content</a>
