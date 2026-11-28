@@ -71,43 +71,37 @@ const introduction = `${home.introduction} ${home.projectName}.`;
     <section class="home-section" id="hyperseminar" aria-labelledby="seminar-title">
       <div class="section-heading">
         <h2 id="seminar-title">Hyperseminar</h2>
-        <a class="home-link" href={home.youtube}>YouTube channel <span aria-hidden="true">↗</span></a>
-      </div>
-      <div class="video-grid" id="recordings">
-        {home.seminars.map((seminar) => (
-          <a class="video-card" href={`https://www.youtube.com/watch?v=${seminar.videoId}`}>
-            <div class="video-cover">
-              <Image src={seminar.cover} width={720} widths={[360, 720]} sizes="(max-width: 610px) 82vw, 360px" alt="" />
-              <span class="play" aria-hidden="true"></span>
-            </div>
-            <div class="video-info">
-              <p>{seminar.label}</p>
-              <h3>{seminar.title}</h3>
-            </div>
-          </a>
-        ))}
-      </div>
-      <div class="carousel-controls" id="recording-controls" hidden>
-        <button type="button" aria-controls="recordings" aria-label="Previous recording">←</button>
-        <button type="button" aria-controls="recordings" aria-label="Next recording">→</button>
-      </div>
-      {home.seminarResources.length > 0 && (
-        <div class="seminar-resources" id="hyperseminar-resources">
-          <h3>Resources</h3>
-          <ul>
-            {home.seminarResources.map((seminar) => (
-              <li>
-                <strong>Hyperseminar #{seminar.number} · {seminar.title}</strong>
-                <ul>
-                  {seminar.resources.map((resource) => (
-                    <li><a href={href(resource.href)} download={"download" in resource}>{resource.label}</a></li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
+        <div class="seminar-actions">
+          <a class="home-link" href={home.youtube}>YouTube channel <span aria-hidden="true">↗</span></a>
+          <div class="carousel-controls" id="recording-controls" hidden>
+            <button type="button" aria-controls="recordings" aria-label="Previous recording">←</button>
+            <button type="button" aria-controls="recordings" aria-label="Next recording">→</button>
+          </div>
         </div>
-      )}
+      </div>
+      <ul class="video-grid" id="recordings" aria-label="Hyperseminar recordings" role="list">
+        {home.seminars.map((seminar) => (
+          <li class="video-card">
+            <a class="video-link" href={`https://www.youtube.com/watch?v=${seminar.videoId}`}>
+              <div class="video-cover">
+                <Image src={seminar.cover} width={720} widths={[360, 720]} sizes="(max-width: 610px) 82vw, (max-width: 840px) 50vw, 360px" alt="" />
+                <span class="play" aria-hidden="true"></span>
+              </div>
+              <div class="video-info">
+                <p>{seminar.label}</p>
+                <h3>{seminar.title}</h3>
+              </div>
+            </a>
+            {"resources" in seminar && (
+              <ul class="video-links" aria-label={`Resources for Hyperseminar #${seminar.number}`} role="list">
+                {seminar.resources.map((resource) => (
+                  <li><a href={href(resource.href)} download={"download" in resource}>{resource.label}</a></li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
     </section>
 
     <section class="home-section" id="research" aria-labelledby="research-title">
@@ -155,17 +149,18 @@ const introduction = `${home.introduction} ${home.projectName}.`;
     const update = () => {
       const remaining = recordings.scrollWidth - recordings.clientWidth;
       controls.hidden = remaining <= 1;
-      previous.disabled = recordings.scrollLeft <= 1;
-      next.disabled = recordings.scrollLeft >= remaining - 1;
+      previous.setAttribute("aria-disabled", String(recordings.scrollLeft <= 1));
+      next.setAttribute("aria-disabled", String(recordings.scrollLeft >= remaining - 1));
     };
-    const scroll = (direction: number) => {
+    const scroll = (direction: number, button: HTMLButtonElement) => {
+      if (button.getAttribute("aria-disabled") === "true") return;
       const distance = second.getBoundingClientRect().left - first.getBoundingClientRect().left;
       const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
       recordings.scrollBy({ left: direction * distance, behavior });
     };
 
-    previous.addEventListener("click", () => scroll(-1));
-    next.addEventListener("click", () => scroll(1));
+    previous.addEventListener("click", () => scroll(-1, previous));
+    next.addEventListener("click", () => scroll(1, next));
     recordings.addEventListener("scroll", update, { passive: true });
     new ResizeObserver(update).observe(recordings);
     update();
@@ -213,11 +208,6 @@ const introduction = `${home.introduction} ${home.projectName}.`;
   .hero-art img { width: min(57%, 218px); }
   .home-section { margin-top: 2.125rem; border-top: 1px solid var(--rule); padding-top: 1.35rem; scroll-margin-top: 1rem; }
   .section-heading { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: baseline; gap: .4rem 1.2rem; margin-bottom: .95rem; }
-  .seminar-resources { margin-top: 1.25rem; }
-  .seminar-resources h3 { margin: 0 0 .35rem; font-size: var(--step-0); }
-  .seminar-resources ul { margin: 0; padding: 0; list-style: none; }
-  .seminar-resources > ul { display: grid; gap: .65rem; }
-  .seminar-resources li ul { display: flex; flex-wrap: wrap; column-gap: 1.1rem; }
   .section-heading h2 { font-size: clamp(1.7rem, 2.75vw, 2.3rem); letter-spacing: -.04em; margin: 0; }
   .section-heading p { color: var(--muted); font-size: .94rem; margin: 0; }
   .people-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; gap: .5rem; }
@@ -235,12 +225,14 @@ const introduction = `${home.introduction} ${home.projectName}.`;
   .milestones a:hover { color: var(--home-green); text-decoration: underline; }
   .milestones time { color: var(--milestone-year); font-weight: 700; font-size: .875rem; }
   .milestones strong { font-size: .94rem; line-height: 1.28; font-weight: 650; }
-  .video-grid { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 2rem) / 3); gap: 1rem; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
-  .video-grid::-webkit-scrollbar { display: none; }
+  .seminar-actions { display: flex; align-items: center; gap: .75rem; }
+  .video-grid { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 2rem) / 3); gap: 1rem; margin: 0; padding: 0 0 .25rem; list-style: none; overflow-x: auto; scrollbar-width: thin; scroll-snap-type: x mandatory; }
   .video-card, .guide-card { border: 1px solid var(--rule); border-radius: 9px; background: var(--panel); color: var(--ink); text-decoration: none; }
   .video-card:hover, .guide-card:hover { border-color: var(--card-hover-edge); box-shadow: 0 2px 9px var(--card-hover-shadow); color: var(--ink); }
   .video-card { display: flex; flex-direction: column; overflow: hidden; scroll-snap-align: start; }
-  .video-card:focus-visible { outline-offset: -3px; }
+  .video-link { display: block; color: inherit; text-decoration: none; }
+  .video-link:hover { color: inherit; }
+  .video-link:focus-visible { outline-offset: -3px; }
   .video-cover { position: relative; aspect-ratio: 16 / 9; background: #111525; }
   .video-cover img { width: 100%; height: 100%; object-fit: cover; }
   .play { position: absolute; right: 10px; bottom: 10px; width: 35px; height: 35px; display: grid; place-items: center; color: white; background: #141b26e0; border: 1px solid #ffffff99; border-radius: 50%; }
@@ -248,9 +240,11 @@ const introduction = `${home.introduction} ${home.projectName}.`;
   .video-info { padding: .6rem .8rem .75rem; }
   .video-info p { color: var(--muted); font-size: .82rem; font-weight: 650; margin: 0 0 .15rem; }
   .video-info h3 { font: 650 1rem/1.25 var(--font-body); letter-spacing: 0; margin: 0; }
-  .carousel-controls:not([hidden]) { display: flex; justify-content: flex-end; gap: .5rem; margin-top: .55rem; }
+  .video-links { display: flex; flex-wrap: wrap; gap: .2rem .85rem; margin: auto .8rem 0; padding: .45rem 0 .65rem; border-top: 1px solid var(--rule); list-style: none; font-size: .875rem; }
+  .video-links a { display: inline-block; padding-block: .2rem; }
+  .carousel-controls:not([hidden]) { display: flex; gap: .35rem; }
   .carousel-controls button { width: 44px; height: 44px; border: 1px solid var(--rule); background: var(--panel); border-radius: 50%; color: var(--ink); font: inherit; cursor: pointer; }
-  .carousel-controls button:disabled { opacity: .4; cursor: default; }
+  .carousel-controls button[aria-disabled="true"] { opacity: .4; cursor: default; }
   .research-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
   .guide-card { display: grid; grid-template-rows: auto 1fr; overflow: hidden; min-width: 0; }
   .guide-cover { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--cover); }
@@ -272,6 +266,7 @@ const introduction = `${home.introduction} ${home.projectName}.`;
     .person { font-size: .875rem; }
     .avatar { width: 58px; }
     .guide-copy { padding: .9rem; }
+    .video-grid { grid-auto-columns: calc((100% - 1rem) / 2); }
   }
 
   @media (max-width: 610px) {

@@ -1,6 +1,7 @@
 import openingCover from "../assets/home/hyperseminar-0.jpg";
 import arityCover from "../assets/home/hyperseminar-1.jpg";
 import kickoffCover from "../assets/home/hyperseminar-2.jpg";
+import publishingCover from "../assets/home/hyperseminar-3.jpg";
 import geometryCover from "../assets/home/emergent-geometry.jpg";
 import spacetimeCover from "../assets/home/emergent-spacetime.jpg";
 
@@ -14,9 +15,9 @@ export const initialSeminars = [
     videoId: "ssW5TOolokQ",
     cover: kickoffCover,
     resources: [
-      { label: "Presentation (PDF)", href: "/hyperseminar/02/multihistory-initial-meeting.pdf" },
+      { label: "Slides (PDF)", href: "/hyperseminar/02/multihistory-initial-meeting.pdf" },
       { label: "Whiteboard (PNG)", href: "/hyperseminar/02/whiteboard.png" },
-      { label: "Editable whiteboard (Excalidraw)", href: "/hyperseminar/02/whiteboard.excalidraw", download: true },
+      { label: "Excalidraw", href: "/hyperseminar/02/whiteboard.excalidraw", download: true },
     ],
   },
 ] as const;
@@ -42,17 +43,19 @@ export const home = {
     { date: "2025-06-04", label: "Causality, Observers and Computation grant", href: "https://www.templeton.org/grant/causality-observers-and-computation-a-new-approach-to-fundamental-physics-and-metamathematics" },
     { date: "2026-11-02", label: "Multihistory Science begins", href: "~/timeline/" },
   ],
-  seminars: [...initialSeminars].reverse(),
-  seminarResources: [
+  seminars: [
+    ...initialSeminars,
     {
       number: 3,
       title: "Communicating Computational Research in AI Era",
+      label: "Hyperseminar #3 · Pavel Hájek",
+      videoId: "Gt77ciPD0kk",
+      cover: publishingCover,
       resources: [
-        { label: "Presentation (PDF)", href: "/hyperseminar/03/multihistory-hyperseminar-2026-11-27.pdf" },
+        { label: "Slides (PDF)", href: "/hyperseminar/03/multihistory-hyperseminar-2026-11-27.pdf" },
       ],
     },
-    ...initialSeminars.filter((seminar) => "resources" in seminar).reverse(),
-  ],
+  ].reverse(),
   guideCovers: {
     spacetime: spacetimeCover,
     geometry: geometryCover,
